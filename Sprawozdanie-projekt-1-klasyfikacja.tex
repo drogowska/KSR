@@ -8,61 +8,73 @@
 \coursename{Komputerowe systemy rozpoznawania}
 \courseyear{2021/2022}
 
-\courseteacher{tytuł/stopień imię }
+\courseteacher{prof. dr hab. inż. Adam Niewiadomski}
 \coursegroup{poniedziałek, 13:45}
 
 \author{
-  \studentinfo{Autor Pierwszy}{nr albumu 1} \and
-  \studentinfo{Autor Drugi}{nr albumu 2} }
+  \studentinfo{Daria Rogowska}{229989} \and
+  \studentinfo{Mateusz Srebnik}{nr albumu 2} }
 
 \title{Projekt 1. Klasyfikacja dokumentów tekstowych}
 
 \begin{document}
 \maketitle
 
-Opis projektu ma formę artykułu naukowego lub raportu z zadania
-badawczego/doświadczalnego/obliczeniowego (wg indywidualnych potrzeb związanych np. z
-pracą inżynierską/naukową/zawodową). Kolejne sekcje muszą być numerowane i
-zatytułowane. Wzory są numerowane, tablice są numerowane i podpisane nad
-tablicą, rysunki sa numerowane i podpisane pod rysunkiem. Podpis rysunku i
-tabeli musi być wyczerpujący (nie ogólnikowy), aby czytelnik nie musiał sięgać do tekstu, aby go
-zrozumieć.\\
-\indent {\bf Wybrane sekcje (rozdziały sprawozdania) są uzupełniane wg wymagań w
-opisie Projektu 1. i Harmonogramie Zajęć na WIKAMP KSR jako efekty zadań w~poszczególnych tygodniach}. 
+% Opis projektu ma formę artykułu naukowego lub raportu z zadania
+% badawczego/doświadczalnego/obliczeniowego (wg indywidualnych potrzeb związanych np. z
+% pracą inżynierską/naukową/zawodową). Kolejne sekcje muszą być numerowane i
+% zatytułowane. Wzory są numerowane, tablice są numerowane i podpisane nad
+% tablicą, rysunki sa numerowane i podpisane pod rysunkiem. Podpis rysunku i
+% tabeli musi być wyczerpujący (nie ogólnikowy), aby czytelnik nie musiał sięgać do tekstu, aby go
+% zrozumieć.\\
+% \indent {\bf Wybrane sekcje (rozdziały sprawozdania) są uzupełniane wg wymagań w
+% opisie Projektu 1. i Harmonogramie Zajęć na WIKAMP KSR jako efekty zadań w~poszczególnych tygodniach}. 
 
 \section{Cel projektu}
-Zwięzły (2-3 zdania) opis
-problemu badawczego/obliczeniowego,  uwzględniający część badawczą i
-implementacyjną. {\bf Nie przepisuj literatury ani teorii -- napisz krótko jak
-rozumiesz to co masz wykonać: jakie działania, na jakim zbiorze danych (link lub
-przypis), jaki jest spodziewany efekt}.\\
-\indent Zamieszczony opis (własny, nie skopiowany) zawiera
-przypisy do literatury (bibliografii) zamieszczonej na końcu raportu/sprawozdania
-zgodnie z~Polską Normą cytowania bibliografii (zob. materiały BG PŁ pt. ,,Bibliografia
-załącznikowa'').\\
-\noindent {\bf Sekcja uzupełniona jako efekt zadania Tydzień 02 wg Harmonogramu Zajęć
-na WIKAMP KSR.}
+Celem projektu jest implementacja algorytmu $k$ najbliższych sąsiadów w celu klasyfikacji
+zbioru dokumentów tekstowych względem kraju, którego dany tekst dotyczy. Aplikacja podzielona jest na moduł ekstrakcji 
+cech tesktu oraz klasyfikatora. 
+Ideą części badawczej projektu jest zbadanie wpływu wielkości parametru $k$
+na dokłądość dopasowania etykiety, również porównanie metryk i miary podobieństwa tekstów.
+
+
+
+% Zwięzły (2-3 zdania) opis
+% problemu badawczego/obliczeniowego,  uwzględniający część badawczą i
+% implementacyjną. {\bf Nie przepisuj literatury ani teorii -- napisz krótko jak
+% rozumiesz to co masz wykonać: jakie działania, na jakim zbiorze danych (link lub
+% przypis), jaki jest spodziewany efekt}.\\
+% \indent Zamieszczony opis (własny, nie skopiowany) zawiera
+% przypisy do literatury (bibliografii) zamieszczonej na końcu raportu/sprawozdania
+% zgodnie z~Polską Normą cytowania bibliografii (zob. materiały BG PŁ pt. ,,Bibliografia
+% załącznikowa'').\\
+% \noindent {\bf Sekcja uzupełniona jako efekt zadania Tydzień 02 wg Harmonogramu Zajęć
+% na WIKAMP KSR.}
 
 
 \section{Klasyfikacja nadzorowana metodą $k$-NN}
-Krótki opis metody $k$-NN: zasada działania, wymagane parametry wejściowe, format
-i~znaczenie wyników/rezultatów. Opis własny z przypisami do literatury -- minimum
-teorii potrzebnej do zadania, tak by inżynier innej specjalności zrozumiał dalszy
-opis \cite{tadeusiewicz90}. {\bf Nie przepisuj literatury ani teorii -- napisz krótko jak
-rozumiesz to co masz wykonać w tym konkretnym przypadku}.\\
-\noindent {\bf Sekcja uzupełniona jako efekt zadania Tydzień 02 wg Harmonogramu Zajęć
-na WIKAMP KSR.}
+% Krótki opis metody $k$-NN: zasada działania, wymagane parametry wejściowe, format
+% i~znaczenie wyników/rezultatów. Opis własny z przypisami do literatury -- minimum
+% teorii potrzebnej do zadania, tak by inżynier innej specjalności zrozumiał dalszy
+% opis \cite{tadeusiewicz90}. {\bf Nie przepisuj literatury ani teorii -- napisz krótko jak
+% rozumiesz to co masz wykonać w tym konkretnym przypadku}.\\
+% \noindent {\bf Sekcja uzupełniona jako efekt zadania Tydzień 02 wg Harmonogramu Zajęć
+% na WIKAMP KSR.}
+
+Algortym $k$ najbliższych sąsiadów (ang. $k$ Nearest Neighbours) wyznacza $k$ sąsiadów, 
+do których badany element ma najbliżej dla wybrnej metryki, a następnie wyznacza wynik w oparciu 
+o głos większości.
 
 \subsection{Ekstrakcja cech, wektory cech}
-Wyekstrahowane cechy liczbowe i tekstowe dokumentów, min. 10 cech, wszystkie
-opisane słownie oraz wzorami, z objaśnieniem oznaczeń i przykładami użycia, do
-tego precyzyjny opis możliwych wartości, które przyjmuje dana cecha (ułatwiający
-czytelnikowi zrozumienie znaczenia w zadaniu klasyfikacji). Pamiętaj, że wybrane
-cechy muszą reprezentować obiekt niezależnie od innych tekstów w tym samym lub w
-innym zbiorze. Podaj postać wektora wartości cech po procesie ekstrakcji. Użyte oznaczenia są jednolite w całym
-raporcie/sprawozdaniu. \\ 
-\noindent {\bf Sekcja uzupełniona jako efekt zadania Tydzień 02 wg Harmonogramu Zajęć
-na WIKAMP KSR.}
+% Wyekstrahowane cechy liczbowe i tekstowe dokumentów, min. 10 cech, wszystkie
+% opisane słownie oraz wzorami, z objaśnieniem oznaczeń i przykładami użycia, do
+% tego precyzyjny opis możliwych wartości, które przyjmuje dana cecha (ułatwiający
+% czytelnikowi zrozumienie znaczenia w zadaniu klasyfikacji). Pamiętaj, że wybrane
+% cechy muszą reprezentować obiekt niezależnie od innych tekstów w tym samym lub w
+% innym zbiorze. Podaj postać wektora wartości cech po procesie ekstrakcji. Użyte oznaczenia są jednolite w całym
+% raporcie/sprawozdaniu. \\ 
+% \noindent {\bf Sekcja uzupełniona jako efekt zadania Tydzień 02 wg Harmonogramu Zajęć
+% na WIKAMP KSR.}
 
 \subsection{Miary jakości klasyfikacji} 
 Miary jakości klasyfikacji (Accuracy, Precision,
