@@ -13,7 +13,7 @@
 
 \author{
   \studentinfo{Daria Rogowska}{229989} \and
-  \studentinfo{Mateusz Srebnik}{nr albumu 2} }
+  \studentinfo{Mateusz Srebnik}{230004} }
 
 \title{Projekt 1. Klasyfikacja dokumentów tekstowych}
 
@@ -32,10 +32,10 @@
 
 \section{Cel projektu}
 Celem projektu jest implementacja algorytmu $k$ najbliższych sąsiadów w celu klasyfikacji
-zbioru dokumentów tekstowych względem kraju, którego dany tekst dotyczy. Aplikacja podzielona jest na moduł ekstrakcji 
+zbioru dokumentów tekstowych (dostępnych do pobrania: http://archive.ics.uci.edu/ml/datasets/Reuters-21578+Text+Categorization+Collection) względem kraju, którego dany tekst dotyczy. Aplikacja podzielona jest na moduł ekstrakcji 
 cech tesktu oraz klasyfikatora. 
 Ideą części badawczej projektu jest zbadanie wpływu wielkości parametru $k$
-na dokłądość dopasowania etykiety, również porównanie metryk i miary podobieństwa tekstów.
+na dokładność dopasowania etykiety, również porównanie metryk i miary podobieństwa tekstów.
 
 
 
@@ -62,8 +62,8 @@ na dokłądość dopasowania etykiety, również porównanie metryk i miary podo
 % na WIKAMP KSR.}
 
 Algortym $k$ najbliższych sąsiadów (ang. $k$ Nearest Neighbours) wyznacza $k$ sąsiadów, 
-do których badany element ma najbliżej dla wybrnej metryki, a następnie wyznacza wynik w oparciu 
-o głos większości.
+do których badany element ma najbliżej dla wybranej metryki, a następnie wyznacza wynik w oparciu 
+o głos większości. Parametrami wejściowymi algorymtu 
 
 \subsection{Ekstrakcja cech, wektory cech}
 % Wyekstrahowane cechy liczbowe i tekstowe dokumentów, min. 10 cech, wszystkie
@@ -75,6 +75,9 @@ o głos większości.
 % raporcie/sprawozdaniu. \\ 
 % \noindent {\bf Sekcja uzupełniona jako efekt zadania Tydzień 02 wg Harmonogramu Zajęć
 % na WIKAMP KSR.}
+
+Poniżej znajduje się lista wyekstrahowanych cech liczbowych i tekstowych:
+
 
 \subsection{Miary jakości klasyfikacji} 
 Miary jakości klasyfikacji (Accuracy, Precision,
