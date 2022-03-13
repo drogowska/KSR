@@ -32,7 +32,8 @@
 
 \section{Cel projektu}
 Celem projektu jest implementacja algorytmu $k$ najbliższych sąsiadów w celu klasyfikacji
-zbioru dokumentów tekstowych (dostępnych do pobrania: http://archive.ics.uci.edu/ml/datasets/Reuters-21578+Text+Categorization+Collection) względem kraju, którego dany tekst dotyczy. Aplikacja podzielona jest na moduł ekstrakcji 
+zbioru dokumentów tekstowych (dostępnych do pobrania: http://archive.ics.uci.edu/ml/datasets/Reuters-21578+Text+Categorization
++Collection) względem kraju, którego dany tekst dotyczy. Aplikacja podzielona jest na moduł ekstrakcji 
 cech tesktu oraz klasyfikatora. 
 Ideą części badawczej projektu jest zbadanie wpływu wielkości parametru $k$
 na dokładność dopasowania etykiety, również porównanie metryk i miary podobieństwa tekstów.
@@ -75,8 +76,8 @@ do których badany element ma najbliżej dla wybranej metryki. Parametrami wejś
 % \noindent {\bf Sekcja uzupełniona jako efekt zadania Tydzień 02 wg Harmonogramu Zajęć
 % na WIKAMP KSR.}
 
-Każdy dokument został poddany procesowi ekstrakcji 10 cech, potrzebnych do procesu klasyfikacji.
-Poniżej znajduje się lista 10 określonych cech liczbowych i tekstowych:
+Każdy dokument został poddany procesowi ekstrakcji cech, potrzebnych do procesu klasyfikacji.
+Poniżej znajduje się lista określonych cech liczbowych i tekstowych:
 \begin{enumerate}
 \item cecha tekstowa F1 - Pierwsza występująca nazwa geograficzna w danym tekście (nazwa geograficzna $f_1$ taka, że $f_1 \in DF1$)
 \item cecha tekstowa F2 - Pierwszy występująca nazwa/symbol waluty w danym tekście (nazwa/symbol waluty $f_2$ taki, że $f_2 \in DF2$)
@@ -105,8 +106,7 @@ gdzie:
 \item $DN4 = \{$Luxembourg Palace, Pompidou Centre, Les Invalides, Paris Opera house, Panthéon, Sacré-Cœur Basilica, Notre-Dame Cathedral, Palais du Louvre, Arc de Triomphe, Eiffel Tower, Eiffel, Palace of Versailles, Millau Viaduct, Abbey of Fontenay, Pont du Gard, Musée d'Orsay$\} $
 \item $DN5 = \{$Buckingham Palace, Westminster Abbey, Big Ben, St Paul's Cathedral, York Minster, St George's Hall Liverpool, Cathedral Church of the Blessed Virgin Mary of Lincoln, Windsor castle, Windsor, Rievaulx Abbey, All Saints Church, Hadrian's Wall, Albert Dock, Coventry Catedry, Blackpool Tower, Warwick castle, British Museum, Chatsworth House, Blenheim Palace, The Shard, Royal Pavilion, Spinnaker Tower, National Gallery, Bankside Power Station, Bath Abbey, Royal Albert Hall, Highclere Castle$\} $
 \item $DN6 = \{$CN Tower, Habitat 67, Canada Place, Science World, Gooderham Building, Fairmont Banff Springs, Château Frontenac, Art Gallery of Ontario, Parliament of Canda$\} $
-\end{itemize}
-\break
+\end{itemize} \hfill \break
 Po procesie ekstrakcji cech, każdemu tekstowi zostaje przypisany wektor cech postaci:
 $\vec{W} = (F1, F2, P1, N1, N2, N3, N4, N5, N6, N7, N8, N9, N10, N11, N12)$
 
