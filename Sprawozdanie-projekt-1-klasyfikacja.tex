@@ -78,8 +78,8 @@ do których badany element ma najbliżej dla wybranej metryki. Parametrami wejś
 Każdy dokument został poddany procesowi ekstrakcji 10 cech, potrzebnych do procesu klasyfikacji.
 Poniżej znajduje się lista 10 określonych cech liczbowych i tekstowych:
 \begin{enumerate}
-\item F1 - Pierwsza występująca nazwa geograficzna w danym tekście (Słownik nazw geograficznych) 
-\item F2 - Pierwsza występujący symbol waluty w danym tekście (Słownik walut)
+\item F1 - Pierwsza występująca nazwa geograficzna w danym tekście 
+\item F2 - Pierwsza występujący symbol waluty w danym tekście
 \item P1 - Najczęściej występujące nazwisko w danym tekście
 \item P2 - Najczęściej występująca nazwa partii politycznej w danym tekście
 \item N1 - Liczba słów związanych z Zachodnimi Niemcami w danym tekście
@@ -89,6 +89,9 @@ Poniżej znajduje się lista 10 określonych cech liczbowych i tekstowych:
 \item N5 - Liczba słów związanych z Wielką Brytanią w danym tekście
 \item N6 - Liczba słów związanych z Kanadą w danym tekście
 \end{enumerate}
+
+Po procesie ekstrakcji cech, każdemu tekstowi zostaje przypisany wektor cech postaci:
+$\vec{W} = (F1, F2, P1, P2, N1, N2, N3, N4, N5, N6)$
 
 \subsection{Miary jakości klasyfikacji} 
 Miary jakości klasyfikacji (Accuracy, Precision,
