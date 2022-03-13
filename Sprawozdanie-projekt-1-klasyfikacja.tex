@@ -78,17 +78,30 @@ do których badany element ma najbliżej dla wybranej metryki. Parametrami wejś
 Każdy dokument został poddany procesowi ekstrakcji 10 cech, potrzebnych do procesu klasyfikacji.
 Poniżej znajduje się lista 10 określonych cech liczbowych i tekstowych:
 \begin{enumerate}
-\item F1 - Pierwsza występująca nazwa geograficzna w danym tekście 
-\item F2 - Pierwsza występujący symbol waluty w danym tekście
-\item P1 - Najczęściej występujące nazwisko w danym tekście
-\item P2 - Najczęściej występująca nazwa partii politycznej w danym tekście
-\item N1 - Liczba słów związanych z Zachodnimi Niemcami w danym tekście
-\item N2 - Liczba słów związanych z USA w danym tekście
-\item N3 - Liczba słów związanych z Japonią w danym tekście
-\item N4 - Liczba słów związanych z Francją w danym tekście
-\item N5 - Liczba słów związanych z Wielką Brytanią w danym tekście
-\item N6 - Liczba słów związanych z Kanadą w danym tekście
+\item cecha tekstowa F1 - Pierwsza występująca nazwa geograficzna w danym tekście (nazwa geograficzna $f_1$ taka, że $f_1 \in DF1$)
+\item cecha tekstowa F2 - Pierwszy występujący symbol waluty w danym tekście (symbol waluty $f_2$ taki, że $f_2 \in DF2$)
+\item cecha tekstowa P1 - Najczęściej występujące nazwisko w danym tekście (nazwisko $p_1$ takie, że $p_1 \in DP1$)
+\item cecha tekstowa P2 - Najczęściej występująca nazwa partii politycznej w danym tekście (nazwa partii politycznej $p_2$ taka, że $p_2 \in DP2$)
+\item cecha liczbowa N1 - Liczba słów związanych z Zachodnimi Niemcami w danym tekście (liczba takich słów $n_1$, że $n_1 \in DN1$)
+\item cecha liczbowa N2 - Liczba słów związanych z USA w danym tekście (liczba takich słów $n_2$, że $n_2 \in DN2$)
+\item cecha liczbowa N3 - Liczba słów związanych z Japonią w danym tekście (liczba takich słów $n_3$, że $n_3 \in DN3$)
+\item cecha liczbowa N4 - Liczba słów związanych z Francją w danym tekście (liczba takich słów $n_4$, że $n_4 \in DN4$)
+\item cecha liczbowa N5 - Liczba słów związanych z Wielką Brytanią w danym tekście (liczba takich słów $n_5$, że $n_5 \in DN5$)
+\item cecha liczbowa N6 - Liczba słów związanych z Kanadą w danym tekście (liczba takich słów $n_6$, że $n_6 \in DN6$)
 \end{enumerate}
+gdzie:
+\begin{itemize}
+\item $DF1 $
+\item $DF2 $
+\item $DP1 $
+\item $DP2 $
+\item $DN1 $
+\item $DN2 $
+\item $DN3 $
+\item $DN4 $
+\item $DN5 $
+\item $DN6 $
+\end{itemize}
 
 Po procesie ekstrakcji cech, każdemu tekstowi zostaje przypisany wektor cech postaci:
 $\vec{W} = (F1, F2, P1, P2, N1, N2, N3, N4, N5, N6)$
