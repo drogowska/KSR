@@ -61,9 +61,8 @@ na dokładność dopasowania etykiety, również porównanie metryk i miary podo
 % \noindent {\bf Sekcja uzupełniona jako efekt zadania Tydzień 02 wg Harmonogramu Zajęć
 % na WIKAMP KSR.}
 
-Algortym $k$ najbliższych sąsiadów (ang. $k$ Nearest Neighbours) wyznacza $k$ sąsiadów, 
-do których badany element ma najbliżej dla wybranej metryki, a następnie wyznacza wynik w oparciu 
-o głos większości. Parametrami wejściowymi algorymtu 
+Algortym $k$ najbliższych sąsiadów (ang. $k$ Nearest Neighbours) wyznacza $k$ sąsiadów 
+do których badany element ma najbliżej dla wybranej metryki. Parametrami wejściowymi algorytmu jest wartość stałej $k$, zbiór uczący elementów spośród, którego wyznaczani będą sąsiedzi oraz zbiór badany, dla którego elementów chcemy przypisać określone klasy. Wynikiem działania algorytmu jest przyporządkowanie elementu (dokumentu tekstowego) do jednej z możliwych klas (państwa, o którym mowa jest w danym dokumencie) na podstawie najbardziej powszechnej klasy wśród wyznaczonego zbioru $k$ sąsiadów \cite{tadeusiewicz90}.
 
 \subsection{Ekstrakcja cech, wektory cech}
 % Wyekstrahowane cechy liczbowe i tekstowe dokumentów, min. 10 cech, wszystkie
@@ -76,7 +75,8 @@ o głos większości. Parametrami wejściowymi algorymtu
 % \noindent {\bf Sekcja uzupełniona jako efekt zadania Tydzień 02 wg Harmonogramu Zajęć
 % na WIKAMP KSR.}
 
-Poniżej znajduje się lista wyekstrahowanych cech liczbowych i tekstowych:
+Każdy dokument został poddany procesowy ekstrakcji 10 cech, potrzebny do procesu klasyfikacji.
+Poniżej znajduje się lista 10 określonych cech liczbowych i tekstowych:
 
 
 \subsection{Miary jakości klasyfikacji} 
