@@ -125,17 +125,26 @@ W celu oceny jakości klasyfikacji dokumentów tekstowych \cite{teksty} przez al
 \item $A$ - wartość oznaczająca czy poprawnie zaklasyfikowano dokument (możliwe wartości = $\{F, P\}$)
 \item $b$ - wartość oznaczająca kraj, o którym mowa w dokumencie (możliwe wartości = $\{$France, Canda, UK, USA, West-Germany, Japan$\}$)
 \item $c$ - wartość oznaczająca kraj, do którego został zaklasyfikowany dokument (możliwe wartości = $\{$France, Canda, UK, USA, West-Germany, Japan$\}$)
+\item $A=F \iff b \neq c$
+\item $A=P \iff b = c$
 \end{itemize} \hfill \break
 Przykładowo:
 \begin{itemize}
 \item Wartość $F_{UK}$ $_{Canada}$ oznacza liczbę dokumentów traktujących o Wielkiej Brytanii, które niepoprawnie zostały zaklasyfikowane jako dokumenty traktujące o Kanadzie
 \item Zapis $P_{UK}$ $_{UK} = 12$ oznacza 12 dokumentów traktujących o Wielkiej Brytanii zostało zaklasyfikowane poprawnie 
 \end{itemize} \hfill \break
-Pewne kombinacje wartości $A$, $b$ oraz $c$ są logicznie niepoprawne i nie będę wykorzystywane w sprawozdaniu, przykładowo:
+Pewne kombinacje wartości $A$, $b$ oraz $c$ są logicznie niepoprawne i nie będą wykorzystywane w sprawozdaniu, przykładowo:
 \begin{itemize}
-\item Wartość $F_{UK}$ $_{Canada}$ oznacza liczbę dokumentów traktujących o Wielkiej Brytanii, które niepoprawnie zostały zaklasyfikowane jako dokumenty traktujące o Kanadzie
-\item Zapis „$P_{UK}$ $_{UK} = 12$" oznacza, że 12 dokumentów traktujących o Wielkiej Brytanii zostało zaklasyfikowane poprawnie 
+\item Zapis $F_{UK}$ $_{UK}$ jest logicznie sprzeczny ($A=F \iff b \neq c$)
 \end{itemize} \hfill \break
+
+Ocena klasyfikacji przez wykorzystany algorytm została wykonana przy pomocy następujących miar:
+\begin{enumerate}
+\item Accuracy
+\item Precision
+\item Recall
+\item F1
+\end{enumerate}
 
 %\begin{tabular}{ c c c }
 %cell1 & cell2 & cell3 \\ 
