@@ -106,19 +106,47 @@ gdzie:
 Po procesie ekstrakcji cech, każdemu tekstowi zostaje przypisany wektor cech postaci:
 $\vec{W} = (K1, F2, P1, N1, N2, N3, N4, N5, N6, R1, M1)$
 
-\subsection{Miary jakości klasyfikacji} 
-Miary jakości klasyfikacji (Accuracy, Precision,
-Recall, F1). We wprowadzeniu zaprezentować minimum teorii potrzebnej do realizacji
-zadania, tak by inżynier innej specjalności zrozumiał dalszy opis. Należy podać {\bf konkretne wzory miar użyte w tym eksperymencie oraz krótko
-opisać ich znaczenie i zakresy przyjmowanych wartości. Należy podać przykłądowe
-wartości każdej miary. Nie przepisuj
-teorii, ale podaj link/przypis i opisz jak rozumiesz jej zastosowanie w tym konkretnym
-zadaniu}. \\
-\indent Stosowane wzory, oznaczenia z objaśnieniami znaczenia symboli użytych w
-doświadczeniu. Oznaczenia jednolite w obrębie całego sprawozdania.  Opis zawiera przypisy do bibliografii zgodnie z
-Polską Normą, (zob. materiały BG PŁ).\\
-\noindent {\bf Sekcja uzupełniona jako efekt zadania Tydzień 03 wg Harmonogramu Zajęć
-na WIKAMP KSR.}
+\subsection{Miary jakości klasyfikacji}
+%Miary jakości klasyfikacji (Accuracy, Precision,
+%Recall, F1). We wprowadzeniu zaprezentować minimum teorii potrzebnej do realizacji
+%zadania, tak by inżynier innej specjalności zrozumiał dalszy opis. Należy podać {\bf konkretne wzory miar użyte w tym eksperymencie oraz krótko
+%opisać ich znaczenie i zakresy przyjmowanych wartości. Należy podać przykłądowe
+%wartości każdej miary. Nie przepisuj
+%teorii, ale podaj link/przypis i opisz jak rozumiesz jej zastosowanie w tym konkretnym
+%zadaniu}. \\
+%\indent Stosowane wzory, oznaczenia z objaśnieniami znaczenia symboli użytych w
+%doświadczeniu. Oznaczenia jednolite w obrębie całego sprawozdania.  Opis zawiera przypisy do bibliografii zgodnie z
+%Polską Normą, (zob. materiały BG PŁ).\\
+%\noindent {\bf Sekcja uzupełniona jako efekt zadania Tydzień 03 wg Harmonogramu Zajęć
+%na WIKAMP KSR.}
+
+W celu oceny jakości klasyfikacji dokumentów tekstowych \cite{teksty} przez algorytm, przyjęto oznaczenie $A_b$$_c$, potrzebne do wyznacznia miar jakości klasyfikacji, gdzie:
+\begin{itemize}
+\item $A$ - wartość oznaczająca czy poprawnie zaklasyfikowano dokument (możliwe wartości = $\{F, P\}$)
+\item $b$ - wartość oznaczająca kraj, o którym mowa w dokumencie (możliwe wartości = $\{$France, Canda, UK, USA, West-Germany, Japan$\}$)
+\item $c$ - wartość oznaczająca kraj, do którego został zaklasyfikowany dokument (możliwe wartości = $\{$France, Canda, UK, USA, West-Germany, Japan$\}$)
+\end{itemize} \hfill \break
+Przykładowo:
+\begin{itemize}
+\item Wartość $F_{UK}$ $_{Canada}$ oznacza liczbę dokumentów traktujących o Wielkiej Brytanii, które niepoprawnie zostały zaklasyfikowane jako dokumenty traktujące o Kanadzie
+\item Zapis $P_{UK}$ $_{UK} = 12$ oznacza 12 dokumentów traktujących o Wielkiej Brytanii zostało zaklasyfikowane poprawnie 
+\end{itemize} \hfill \break
+Pewne kombinacje wartości $A$, $b$ oraz $c$ są logicznie niepoprawne i nie będę wykorzystywane w sprawozdaniu, przykładowo:
+\begin{itemize}
+\item Wartość $F_{UK}$ $_{Canada}$ oznacza liczbę dokumentów traktujących o Wielkiej Brytanii, które niepoprawnie zostały zaklasyfikowane jako dokumenty traktujące o Kanadzie
+\item Zapis „$P_{UK}$ $_{UK} = 12$" oznacza, że 12 dokumentów traktujących o Wielkiej Brytanii zostało zaklasyfikowane poprawnie 
+\end{itemize} \hfill \break
+
+%\begin{tabular}{ c c c }
+%cell1 & cell2 & cell3 \\ 
+%cell4 & cell5 & cell6 \\  
+%cell7 & cell8 & cell9    
+%\end{tabular}
+
+
+%\begin{enumerate}
+%\item hej
+%\end{enumerate}
 
 
 \section{Klasyfikacja z użyciem metryk i miar podobieństwa tekstów}
@@ -183,7 +211,8 @@ podać merytoryczne (ale nie czasowe) przyczyny tych braków.
 \begin{thebibliography}{0}
 \bibitem{tadeusiewicz90} R. Tadeusiewicz: Rozpoznawanie obrazów, PWN, Warszawa, 1991.  
 \bibitem{niewiadomski08} A. Niewiadomski, Methods for the Linguistic Summarization of Data: Applications of Fuzzy Sets and Their Extensions, Akademicka Oficyna Wydawnicza EXIT, Warszawa, 2008.
-\bibitem{teksty}  http://archive.ics.uci.edu/ml/datasets/Reuters-21578+Text+Categorization+Collection
+\bibitem{teksty} http://archive.ics.uci.edu/ml/datasets/Reuters-21578+Text+Categorization+Collection
+\bibitem{tablicapomylek} https://pl.wikipedia.org/wiki/Tablica\textunderscore pomyłek
 \end{thebibliography}
 
 Literatura zawiera wyłącznie źródła recenzowane i/lub o potwierdzonej wiarygodności,
