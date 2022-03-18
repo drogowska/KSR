@@ -120,7 +120,7 @@ $\vec{W} = (K1, F2, P1, N1, N2, N3, N4, N5, N6, R1, M1)$
 %\noindent {\bf Sekcja uzupełniona jako efekt zadania Tydzień 03 wg Harmonogramu Zajęć
 %na WIKAMP KSR.}
 
-W celu oceny jakości klasyfikacji dokumentów tekstowych \cite{teksty} przez algorytm, przyjęto konwencje nazewniczą oznaczeń $A_b$$_c$, potrzebną do wyznacznia miar jakości klasyfikacji, gdzie:
+W celu oceny jakości klasyfikacji dokumentów tekstowych \cite{teksty} przez algorytm, przyjęto konwencje nazewniczą $A_b$$_c$, potrzebną do wyznacznia miar jakości klasyfikacji, gdzie:
 \begin{itemize}
 \item $A$ - wartość oznaczająca czy poprawnie zaklasyfikowano dokument (możliwe wartości = $\{F, P\}$)
 \item $b$ - wartość oznaczająca kraj, o którym mowa w dokumencie (możliwe wartości = $\{$France, Canda, UK, USA, West-Germany, Japan$\}$)
@@ -138,14 +138,23 @@ Pewne kombinacje wartości $A$, $b$ oraz $c$ są logicznie niepoprawne i nie bę
 \item Zapis $F_{UK}$ $_{UK}$ jest logicznie sprzeczny ($A=F \iff b \neq c$)
 \end{itemize} \hfill \break
 
-Ocena klasyfikacji przez wykorzystany algorytm została wykonana przy pomocy następujących miar (wzory miar wykorzystują powyższą konwencje nazewniczą wartości):
+Ocena klasyfikacji przez wykorzystany algorytm została wykonana przy pomocy następujących miar \cite{tablicapomylek} (wzory miar wykorzystują powyższą konwencje nazewniczą wartości):
 \begin{enumerate}
 \item miara dokładności ACC (ang. accuracy) określana dla całości wyników klasyfikacji (liczba dokumentów zaklasyfikowanych poprawnie podzielona przez liczbę wszystkich dokumentów klasyfikowanych)
 \break $ACC = \sum_{x} P$$_x$ $_x$ $ / (\sum_{x} P$$_x$ $_x$ $ + \sum_{xy}  F$$_x$ $_y$ $)$, gdzie $ x\neq y$
 \item miara precyzji PPV (ang. precision) określana dla poszczególnych klas krajów, do których możemy zaklasyfikować dokumenty (liczba dokumentów zaklasyfikowana poprawnie do danego kraju "x" podzielona przez sumę liczby dokumentów zaklasyfikowanych poprawnie do kraju "x" oraz liczby dokumentów niepoprawnie zaklasyfikowanych do kraju "x")
 \break $PPV(x) = P$$_x$ $_x$ $ / (P$$_x$ $_x$ $ + \sum_{y}  F$$_y$ $_x$ $)$ , gdzie $ x\neq y$
-\item Recall
-\item F1
+\item miara czułości TPR (ang. recall) określana dla poszczególnych klas krajów, do których możemy zaklasyfikować dokumenty (liczba dokumentów zaklasyfikowana poprawnie do danego kraju "x" podzielona przez sumę liczby dokumentów zaklasyfikowanych poprawnie do kraju "x" oraz liczby dokumentów niepoprawnie zaklasyfikowanych do kraju innego niż "x")
+\break $TPR(x) = P$$_x$ $_x$ $ / (P$$_x$ $_x$ $ + \sum_{y}  F$$_x$ $_y$ $)$ , gdzie $ x\neq y$
+\item miara precyzji PPV$_c$ określana dla całości wyników klasyfikacji (średnia 
+\item miara czułości TPR$_c$ określana dla całości wyników klasyfikacji (średnia 
+\item miara F1 określana dla całości wyników klasyfikacji (średnia 
+
+% BRAKUJE TUTAJ JESZCZE: 
+% - OPISÓW, WZORÓW DLA MIAR PPV, TPR, F1
+% - WARTOŚCI KTÓRE MOŻE PRZYJMOWAĆ KAŻDA Z MIAR, I JAK JEST LEPIEJ (WIEKSZA WARTOŚĆ CZY MNIEJSZA?)
+% - SPRAWDZENIA POPRAWNOŚCI WZORÓW i OPISÓW
+
 \end{enumerate}
 
 %\begin{tabular}{ c c c }
