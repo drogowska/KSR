@@ -109,7 +109,8 @@ $\vec{W} = (K1, F2, P1, N1, N2, N3, N4, N5, N6, R1, M1)$
 \subsection{Miary jakości klasyfikacji}
 %Miary jakości klasyfikacji (Accuracy, Precision,
 %Recall, F1). We wprowadzeniu zaprezentować minimum teorii potrzebnej do realizacji
-%zadania, tak by inżynier innej specjalności zrozumiał dalszy opis. Należy podać {\bf konkretne wzory miar użyte w tym eksperymencie oraz krótko
+%zadania, tak by inżynier innej specjalności zrozumiał dalszy opis. Należy podać 
+% {\bf konkretne wzory miar użyte w tym eksperymencie oraz krótko
 %opisać ich znaczenie i zakresy przyjmowanych wartości. Należy podać przykłądowe
 %wartości każdej miary. Nie przepisuj
 %teorii, ale podaj link/przypis i opisz jak rozumiesz jej zastosowanie w tym konkretnym
@@ -138,41 +139,56 @@ Pewne kombinacje wartości $A$, $b$ oraz $c$ są logicznie niepoprawne i nie bę
 \item Zapis $F_{UK}$ $_{UK}$ jest logicznie sprzeczny ($A=F \iff b \neq c$)
 \end{itemize} \hfill \break
 
-Ocena klasyfikacji przez wykorzystany algorytm została wykonana przy pomocy następujących miar \cite{tablicapomylek} (wzory miar wykorzystują powyższą konwencje nazewniczą wartości):
+Ocena klasyfikacji przez wykorzystany algorytm została wykonana przy pomocy następujących miar \cite{tablicapomylek} (wzory miar wykorzystują powyższą konwencje nazewniczą wartości):\\
 \begin{enumerate}
 \item miara dokładności ACC (ang. accuracy) określana dla całości wyników klasyfikacji (iloraz liczby dokumentów zaklasyfikowanych poprawnie oraz liczby wszystkich dokumentów podlegających klasyfikacji).
-Wskaźnik ten pozwala ocenić jakość dokonanej klasyfikacji takstu. Przyjmuje on wartości z przedziału [0,1], przy czym wartość 1 oznacza, że wszystkie badane elementy zostały zaklasyfikowane poprawnie.\\
-
-$ACC = \sum_{x} P$$_x$ $_x$ $ / (\sum_{x} P$$_x$ $_x$ $ + \sum_{xy}  F$$_x$ $_y$ $)$, gdzie $ x\neq y$ \\
+Wskaźnik ten pozwala ocenić jakość dokonanej klasyfikacji takstu. Przyjmuje on wartości z przedziału [0,1], przy czym wartość 1 oznacza, że wszystkie badane elementy zostały zaklasyfikowane poprawnie.
+Przykładowo miara $ACC =  0.85$, oznacza, że 85\% wszytkich badanych elementów zostało poprawnie zaklasyfikowanych. \\
+\begin{center}
+    $ACC = \sum_{x} P$$_x$ $_x$ $ / (\sum_{x} P$$_x$ $_x$ $ + \sum_{xy}  F$$_x$ $_y$ $)$, gdzie $ x\neq y$ \\
+\end{center} \hfill \break
 
 \item miara precyzji PPV (ang. precision) określana dla poszczególnych klas krajów, do których możemy zaklasyfikować dokumenty (iloraz liczby dokumentów zaklasyfikowanych poprawnie do danego kraju "x" i sumy liczby dokumentów zaklasyfikowanych poprawnie do kraju "x" oraz liczby dokumentów niepoprawnie zaklasyfikowanych do kraju "x")
-Wskaźnik ten obrazuje ile wśród przykładów zaklasyfikowanych pozytywani jest rzeczywiście prawidowo dokanana. Precyzja przyjmuje maksymalną wartość równą 1, co oznacza, że wszystkie poprawnie zaklasyfikowane wekotry rzeczywiście należą do danej klasy. \\
-
- $PPV(x) = P$$_x$ $_x$ $ / (P$$_x$ $_x$ $ + \sum_{y}  F$$_y$ $_x$ $)$ , gdzie $ x\neq y$ \\
+Wskaźnik ten obrazuje ile wśród przykładów zaklasyfikowanych pozytywani jest rzeczywiście prawidowo dokanana. Precyzja przyjmuje maksymalną wartość równą 1, co oznacza, że wszystkie poprawnie zaklasyfikowane wekotry rzeczywiście należą do danej klasy. 
+Przykładowo miara $PPV =  0.55$, oznacza, że 55\% wszytkich pozytywanie zaklasyfikowanych elementów rzeczywiście należy do przyporządkowanej klasy. \\
+\begin{center}
+    $PPV(x) = P$$_x$ $_x$ $ / (P$$_x$ $_x$ $ + \sum_{y}  F$$_y$ $_x$ $)$ , gdzie $ x\neq y$ \\
+\end{center} \hfill \break
 
 \item miara czułości TPR (ang. recall) określana dla poszczególnych klas krajów, do których możemy zaklasyfikować dokumenty (stosunek liczby dokumentów zaklasyfikowanych poprawnie do danego kraju "x" do sumy liczby dokumentów zaklasyfikowanych poprawnie do kraju "x" oraz liczby dokumentów niepoprawnie zaklasyfikowanych do kraju innego niż "x")\\
-Miara ta pozwala ocenić jaki jest udział prawidłowo rozpoznanych przypadków wśród wszystkich przypadków pozytywnych. Czułość jest również parametrem, który powinien przyjmować wartości jak najbliższe 1.\\
-
-$TPR(x) = P$$_x$ $_x$ $ / (P$$_x$ $_x$ $ + \sum_{y}  F$$_x$ $_y$ $)$ , gdzie $ x\neq y$ \\
-\break
+Miara ta pozwala ocenić jaki jest udział prawidłowo rozpoznanych przypadków wśród wszystkich przypadków pozytywnych. Czułość jest również parametrem, który powinien przyjmować wartości jak najbliższe 1.
+Przykładowo, kiedy miara TPR osiągneła wartość 0.30, oznacza to, że 30\% wszystkich elementów, które powinny do danej klasy należeć, rzeczywiście do niej należy.\\
+\begin{center}
+    $TPR(x) = P$$_x$ $_x$ $ / (P$$_x$ $_x$ $ + \sum_{y}  F$$_x$ $_y$ $)$ , gdzie $ x\neq y$ \\
+\end{center} \hfill \break
 
 \item miara precyzji PPV$_c$, określana dla całości wyników klasyfikacji, obliczana jest jako średnia ważona poszczególnych wartości miary \(PPV\) dla danej klasy i jej liczebności.
+Miara ta przyjmuje wartości z zakresu analogicznego jak miara PPV. W najlepszym przypadku przyjmuje wartość 1, jest to sytuacja kiedy dla wszystkich rozważanych klas poszczególne miary PPV osiągneły wartość maksymalną.
 \\
+\begin{center}
+  PPV$_c = (\sum_{x} PPV$$_x$ $ \cdot n_{x}) / \sum_{x} n_{x}$,\\ 
+\end{center}
+    gdzie $n$ jest liczebnością danej klasy, $n\in C$.\\
 
-PPV$_c = (\sum_{x} PPV$$_x$ $ \cdot n_{x}) / \sum_{x} n_{x}$, gdzie $n$ jest liczebnością danej klasy.\\
+\item miara czułości TPR$_c$, określana dla całości wyników klasyfikacji, obliczana jest jako średnia ważona poszczególnych wartości miary \(TPR\) dla danej klasy i jej liczebności.
+Miara ta przyjmuje wartości z zakresu analogicznego jak miara TPR. W najlepszym przypadku przyjmuje wartość 1, jest to sytuacja kiedy dla wszystkich rozważanych klas poszczególne miary TPR osiągneły wartość maksymalną.
+\\
+\begin{center}
+    TPR$_c = (\sum_{x} PPV$$_x$ $ \cdot n_{x}) / \sum_{x} n_{x}$, \\
+  \end{center}
+gdzie $n$ jest liczebnością danej klasy, $n\in C$.\\
 
-\item miara czułości TPR$_c$, określana dla całości wyników klasyfikacji, obliczana jest jako średnia ważona poszczególnych wartości miary \(TPR\) dla danej klasy i jej liczebności.\\
+\item miara F1 \((F1-score)\), określana dla każdej z klas z osobna, oblliczana jako średnia harmoniczna pomiedzy precyzją i czułością.
+Im otrzymana wartość jest bliższa jedynce, tym lepiej to świadczy o dokłdności algorytmu klasyfikującego. W najlepszym przypadku przyjmuje ona wartość 1, zaś w najgorszym - 0.
+Miara ta pozwala na wyznaczenie dokładności algorytmu, bazując tylko wyznaczonej wcześniej jego dokładności i prezycji.\\
+\begin{center}
+    $F1(x)$ = $2 \cdot \frac{PPV_{x} \cdot TPR_{x}} {PPV_{x} + TPR_{x}}$, gdzie \(x\) określa daną klasę.\\
+  \end{center} \hfill \break
 
-TPR$_c = (\sum_{x} PPV$$_x$ $ \cdot n_{x}) / \sum_{x} n_{x}$, gdzie $n$ jest liczebnością danej klasy.\\
-
-\item miara F1, określana dla każdej z klas z osobna, oblliczana jako średnia harmoniczna pomiedzy precyzją i czułością.
-Im otrzymana wartość jest bliższa jedynce, tym lepiej to świadczy o algorytmie klasyfikującym. W najlepszym przypadku przyjmuje ona wartość 1. \\
-
-$F1(x)$ = $2 \cdot \frac{PPV_{x} \cdot TPR_{x}} {PPV_{x} + TPR_{x}}$, gdzie \(x\) określa daną klasę.\\
-
-\item miara F1$_c$, określana dla całości wyników klasyfikacji, obliczana jako średnia ważona wartości miary F1 dla każdej z klas. \\
-
-F1$_c = (\sum_{x} F1$$_x$ $ \cdot n_{x}) / \sum_{x} n_{x}$, gdzie $n$ jest liczebnością danej klasy.
+\item miara F1$_c$, określana dla całości wyników klasyfikacji, obliczana jako średnia ważona wartości miary F1 dla każdej z klas. Miara ta przyjmuej wartości z zakresu analogicznego jak w przydapku miary F1. \\
+\begin{center}
+    F1$_c = (\sum_{x} F1$$_x$ $ \cdot n_{x}) / \sum_{x} n_{x}$, gdzie $n$ jest liczebnością danej klasy.
+  \end{center}
 
 \end{enumerate}
 
