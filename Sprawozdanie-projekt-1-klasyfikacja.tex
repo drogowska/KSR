@@ -149,7 +149,7 @@ Przykładowo miara $ACC =  0.85$, oznacza, że 85\% wszytkich badanych elementó
 \end{center} \hfill \break
 
 \item miara precyzji PPV (ang. precision) określana dla poszczególnych klas krajów, do których możemy zaklasyfikować dokumenty (iloraz liczby dokumentów zaklasyfikowanych poprawnie do danego kraju "x" i sumy liczby dokumentów zaklasyfikowanych poprawnie do kraju "x" oraz liczby dokumentów niepoprawnie zaklasyfikowanych do kraju "x")
-Wskaźnik ten obrazuje ile wśród przykładów zaklasyfikowanych pozytywani jest rzeczywiście prawidowo dokanana. Precyzja przyjmuje maksymalną wartość równą 1, co oznacza, że wszystkie poprawnie zaklasyfikowane wekotry rzeczywiście należą do danej klasy. 
+Wskaźnik ten obrazuje ile wśród przykładów zaklasyfikowanych pozytywnie jest rzeczywiście prawidowo dokanana. Precyzja przyjmuje maksymalną wartość równą 1, co oznacza, że wszystkie poprawnie zaklasyfikowane wektory rzeczywiście należą do danej klasy. 
 Przykładowo miara $PPV =  0.55$, oznacza, że 55\% wszytkich pozytywanie zaklasyfikowanych elementów rzeczywiście należy do przyporządkowanej klasy. \\
 \begin{center}
     $PPV(x) = P$$_x$ $_x$ $ / (P$$_x$ $_x$ $ + \sum_{y}  F$$_y$ $_x$ $)$ , gdzie $ x\neq y$ \\
@@ -185,7 +185,7 @@ Miara ta pozwala na wyznaczenie dokładności algorytmu, bazując tylko wyznaczo
     $F1(x)$ = $2 \cdot \frac{PPV_{x} \cdot TPR_{x}} {PPV_{x} + TPR_{x}}$, gdzie \(x\) określa daną klasę.\\
   \end{center} \hfill \break
 
-\item miara F1$_c$, określana dla całości wyników klasyfikacji, obliczana jako średnia ważona wartości miary F1 dla każdej z klas. Miara ta przyjmuej wartości z zakresu analogicznego jak w przydapku miary F1. \\
+\item miara F1$_c$, określana dla całości wyników klasyfikacji, obliczana jako średnia ważona wartości miary F1 dla każdej z klas. Miara ta przyjmuej wartości z zakresu analogicznego jak w przypadku miary F1. \\
 \begin{center}
     F1$_c = (\sum_{x} F1$$_x$ $ \cdot n_{x}) / \sum_{x} n_{x}$, gdzie $n$ jest liczebnością danej klasy.
   \end{center}
