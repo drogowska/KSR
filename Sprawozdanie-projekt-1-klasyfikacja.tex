@@ -88,7 +88,7 @@ Poniżej znajduje się lista określonych cech liczbowych i tekstowych:
 \item cecha liczbowa N5 - Liczba nazw znanych angielskich budowli w danym tekście (liczba takich nazw znanych budowli $n_5$, że $n_5 \in DN5$)
 \item cecha liczbowa N6 - Liczba nazw znanych kanadyjskich budowli w danym tekście (liczba takich nazw znanych budowli $n_6$, że $n_6 \in DN6$)
 \item cecha tekstowa R1 - Najczęściej występująca nazwa kraju w danym tekście (nazwa kraju $r_1$ taka, że $r_1 \in DR1$)
-\item cecha tekstowa M1 - Godzina opublikowania dokumentu w formacie tekstowym (wartość cechy dla danego dokumentu jest zawarta w jego sekcji "DATE")
+\item cecha tekstowa L1 - Godzina opublikowania dokumentu w formacie tekstowym (wartość cechy dla danego dokumentu jest zawarta w jego sekcji "DATE")
 \end{enumerate}
 gdzie:
 \begin{itemize}
@@ -104,7 +104,7 @@ gdzie:
 \item $DR1 = \{$Germany, USA, America, United States, Japan, France, England, Great Britain, United Kingdom, Canada$\}$
 \end{itemize} \hfill \break
 Po procesie ekstrakcji cech, każdemu tekstowi zostaje przypisany wektor cech postaci:
-$\vec{W} = (K1, F2, P1, N1, N2, N3, N4, N5, N6, R1, M1)$
+$\vec{W} = (K1, F2, P1, N1, N2, N3, N4, N5, N6, R1, L1)$
 
 \subsection{Miary jakości klasyfikacji}
 %Miary jakości klasyfikacji (Accuracy, Precision,
@@ -121,23 +121,34 @@ $\vec{W} = (K1, F2, P1, N1, N2, N3, N4, N5, N6, R1, M1)$
 %\noindent {\bf Sekcja uzupełniona jako efekt zadania Tydzień 03 wg Harmonogramu Zajęć
 %na WIKAMP KSR.}
 
-W celu oceny jakości klasyfikacji dokumentów tekstowych \cite{teksty} przez algorytm, przyjęto konwencje nazewniczą $A_b$$_c$, potrzebną do wyznacznia miar jakości klasyfikacji, gdzie:
+% W celu oceny jakości klasyfikacji dokumentów tekstowych \cite{teksty} przez algorytm, przyjęto konwencje nazewniczą $A_b$$_c$, potrzebną do wyznacznia miar jakości klasyfikacji, gdzie:
+% \begin{itemize}
+% \item $A$ - wartość oznaczająca czy poprawnie zaklasyfikowano dokument (możliwe wartości = $\{F, P\}$)
+% \item $b$ - wartość oznaczająca kraj, o którym mowa w dokumencie (możliwe wartości = $\{$France, Canda, UK, USA, West-Germany, Japan$\}$)
+% \item $c$ - wartość oznaczająca kraj, do którego został zaklasyfikowany dokument (możliwe wartości = $\{$France, Canda, UK, USA, West-Germany, Japan$\}$)
+% \item $A=F \iff b \neq c$
+% \item $A=P \iff b = c$
+% \end{itemize} \hfill \break
+
+W celu oceny jakości klasyfikacji dokumentów tekstowych \cite{teksty} przez algorytm, przyjęto konwencje nazewniczą $A_x$, potrzebną do wyznacznia miar jakości klasyfikacji, gdzie:
 \begin{itemize}
-\item $A$ - wartość oznaczająca czy poprawnie zaklasyfikowano dokument (możliwe wartości = $\{F, P\}$)
-\item $b$ - wartość oznaczająca kraj, o którym mowa w dokumencie (możliwe wartości = $\{$France, Canda, UK, USA, West-Germany, Japan$\}$)
-\item $c$ - wartość oznaczająca kraj, do którego został zaklasyfikowany dokument (możliwe wartości = $\{$France, Canda, UK, USA, West-Germany, Japan$\}$)
-\item $A=F \iff b \neq c$
-\item $A=P \iff b = c$
+\item $A$ - wartość oznaczająca czy poprawnie zaklasyfikowano dokument (możliwe wartości = $\{N, P, FP, FN\}$)
+%FN - fałszywie negatywne, FP - fałszywie pozytywne, 
+\item $x$ - wartość oznaczająca kraj, o którym mowa w dokumencie (możliwe wartości X = $\{$FR, CAN, UK, USA, WGER, JAP$\}$)
+% \item $c$ - wartość oznaczająca kraj, do którego został zaklasyfikowany dokument (możliwe wartości = $\{$France, Canda, UK, USA, West-Germany, Japan$\}$)
+% \item $A=F \iff b \neq c$
+% \item $A=P \iff b = c$
 \end{itemize} \hfill \break
-Przykładowo:
-\begin{itemize}
-\item Wartość $F_{UK}$ $_{Canada}$ oznacza liczbę dokumentów traktujących o Wielkiej Brytanii, które niepoprawnie zostały zaklasyfikowane jako dokumenty traktujące o Kanadzie
-\item Zapis $P_{UK}$ $_{UK} = 12$ oznacza 12 dokumentów traktujących o Wielkiej Brytanii zostało zaklasyfikowane poprawnie 
-\end{itemize} \hfill \break
-Pewne kombinacje wartości $A$, $b$ oraz $c$ są logicznie niepoprawne i nie będą wykorzystywane w sprawozdaniu, przykładowo:
-\begin{itemize}
-\item Zapis $F_{UK}$ $_{UK}$ jest logicznie sprzeczny ($A=F \iff b \neq c$)
-\end{itemize} \hfill \break
+
+% Przykładowo:
+% \begin{itemize}
+% \item Wartość $F_{UK}$ $_{Canada}$ oznacza liczbę dokumentów traktujących o Wielkiej Brytanii, które niepoprawnie zostały zaklasyfikowane jako dokumenty traktujące o Kanadzie
+% \item Zapis $P_{UK}$ $_{UK} = 12$ oznacza 12 dokumentów traktujących o Wielkiej Brytanii zostało zaklasyfikowane poprawnie 
+% \end{itemize} \hfill \break
+% Pewne kombinacje wartości $A$, $b$ oraz $c$ są logicznie niepoprawne i nie będą wykorzystywane w sprawozdaniu, przykładowo:
+% \begin{itemize}
+% \item Zapis $F_{UK}$ $_{UK}$ jest logicznie sprzeczny ($A=F \iff b \neq c$)
+% \end{itemize} \hfill \break
 
 Ocena klasyfikacji przez wykorzystany algorytm została wykonana przy pomocy następujących miar \cite{tablicapomylek} (wzory miar wykorzystują powyższą konwencje nazewniczą wartości):\\
 \begin{enumerate}
@@ -145,36 +156,45 @@ Ocena klasyfikacji przez wykorzystany algorytm została wykonana przy pomocy nas
 Wskaźnik ten pozwala ocenić jakość dokonanej klasyfikacji takstu. Przyjmuje on wartości z przedziału [0,1], przy czym wartość 1 oznacza, że wszystkie badane elementy zostały zaklasyfikowane poprawnie.
 Przykładowo miara $ACC =  0.85$, oznacza, że 85\% wszytkich badanych elementów zostało poprawnie zaklasyfikowanych. \\
 \begin{center}
-    $ACC = \sum_{x} P$$_x$ $_x$ $ / (\sum_{x} P$$_x$ $_x$ $ + \sum_{xy}  F$$_x$ $_y$ $)$, gdzie $ x\neq y$ \\
+    $ACC = \frac{\sum_{x} P_x }{\sum_{x} P_x+ \sum_{x}  N_x}$, gdzie $x\in X$
 \end{center} \hfill \break
+
+%zmienic mianownik, jako ilość wszystkich tekstów, x: takie, że
+%FC_x // FX_y gdzie x - nazwa do kórej należy, Y - 
+%FPx_y
+%P/F/FP/FN/_x 
+
 
 \item miara precyzji PPV (ang. precision) określana dla poszczególnych klas krajów, do których możemy zaklasyfikować dokumenty (iloraz liczby dokumentów zaklasyfikowanych poprawnie do danego kraju "x" i sumy liczby dokumentów zaklasyfikowanych poprawnie do kraju "x" oraz liczby dokumentów niepoprawnie zaklasyfikowanych do kraju "x")
 Wskaźnik ten obrazuje ile wśród przykładów zaklasyfikowanych pozytywnie jest rzeczywiście prawidowo dokanana. Precyzja przyjmuje maksymalną wartość równą 1, co oznacza, że wszystkie poprawnie zaklasyfikowane wektory rzeczywiście należą do danej klasy. 
 Przykładowo miara $PPV =  0.55$, oznacza, że 55\% wszytkich pozytywanie zaklasyfikowanych elementów rzeczywiście należy do przyporządkowanej klasy. \\
 \begin{center}
-    $PPV(x) = P$$_x$ $_x$ $ / (P$$_x$ $_x$ $ + \sum_{y}  F$$_y$ $_x$ $)$ , gdzie $ x\neq y$ \\
+      $PPV(x) = \frac{P_x}{ P_x + \sum_{x}  FP_x}$ , gdzie $x\in X$\\
+    % $PPV(x) = P$$_x$ $_x$ $ / (P$$_x$ $_x$ $ + \sum_{y}  F$$_y$ $_x$ $)$ , gdzie $ x\neq y$ \\
 \end{center} \hfill \break
 
 \item miara czułości TPR (ang. recall) określana dla poszczególnych klas krajów, do których możemy zaklasyfikować dokumenty (stosunek liczby dokumentów zaklasyfikowanych poprawnie do danego kraju "x" do sumy liczby dokumentów zaklasyfikowanych poprawnie do kraju "x" oraz liczby dokumentów niepoprawnie zaklasyfikowanych do kraju innego niż "x")\\
 Miara ta pozwala ocenić jaki jest udział prawidłowo rozpoznanych przypadków wśród wszystkich przypadków pozytywnych. Czułość jest również parametrem, który powinien przyjmować wartości jak najbliższe 1.
 Przykładowo, kiedy miara TPR osiągneła wartość 0.30, oznacza to, że 30\% wszystkich elementów, które powinny do danej klasy należeć, rzeczywiście do niej należy.\\
 \begin{center}
-    $TPR(x) = P$$_x$ $_x$ $ / (P$$_x$ $_x$ $ + \sum_{y}  F$$_x$ $_y$ $)$ , gdzie $ x\neq y$ \\
+  $PPV(x) = \frac{P_x}{ P_x + \sum_{x}  FN_x}$ , gdzie $x\in X$ \\
+
+    % $TPR(x) = P$$_x$ $_x$ $ / (P$$_x$ $_x$ $ + \sum_{y}  F$$_x$ $_y$ $)$ , gdzie $ x\neq y$ \\
 \end{center} \hfill \break
 
 \item miara precyzji PPV$_c$, określana dla całości wyników klasyfikacji, obliczana jest jako średnia ważona poszczególnych wartości miary \(PPV\) dla danej klasy i jej liczebności.
 Miara ta przyjmuje wartości z zakresu analogicznego jak miara PPV. W najlepszym przypadku przyjmuje wartość 1, jest to sytuacja kiedy dla wszystkich rozważanych klas poszczególne miary PPV osiągneły wartość maksymalną.
 \\
 \begin{center}
-  PPV$_c = (\sum_{x} PPV$$_x$ $ \cdot n_{x}) / \sum_{x} n_{x}$,\\ 
+  PPV$_c = \frac{\sum_{x} PPV_x \cdot n_{x}}{\sum_{x} n_{x}}$,\\ 
 \end{center}
-    gdzie $n$ jest liczebnością danej klasy, $n\in C$.\\
+    gdzie $n_x$ jest liczebnością klasy $x$, $n\in C$, oraz $x\in X$.\\
 
 \item miara czułości TPR$_c$, określana dla całości wyników klasyfikacji, obliczana jest jako średnia ważona poszczególnych wartości miary \(TPR\) dla danej klasy i jej liczebności.
 Miara ta przyjmuje wartości z zakresu analogicznego jak miara TPR. W najlepszym przypadku przyjmuje wartość 1, jest to sytuacja kiedy dla wszystkich rozważanych klas poszczególne miary TPR osiągneły wartość maksymalną.
 \\
 \begin{center}
-    TPR$_c = (\sum_{x} PPV$$_x$ $ \cdot n_{x}) / \sum_{x} n_{x}$, \\
+    TPR$_c = \frac{\sum_{x} TPR_x \cdot n_{x}}{\sum_{x} n_{x}}$, \\
   \end{center}
 gdzie $n$ jest liczebnością danej klasy, $n\in C$.\\
 
@@ -182,29 +202,64 @@ gdzie $n$ jest liczebnością danej klasy, $n\in C$.\\
 Im otrzymana wartość jest bliższa jedynce, tym lepiej to świadczy o dokłdności algorytmu klasyfikującego. W najlepszym przypadku przyjmuje ona wartość 1, zaś w najgorszym - 0.
 Miara ta pozwala na wyznaczenie dokładności algorytmu, bazując tylko wyznaczonej wcześniej jego dokładności i prezycji.\\
 \begin{center}
-    $F1(x)$ = $2 \cdot \frac{PPV_{x} \cdot TPR_{x}} {PPV_{x} + TPR_{x}}$, gdzie \(x\) określa daną klasę.\\
+    $F1(x)$ = $2 \cdot \frac{PPV_{x} \cdot TPR_{x}} {PPV_{x} + TPR_{x}}$, gdzie $x\in X$.\\
   \end{center} \hfill \break
 
 \item miara F1$_c$, określana dla całości wyników klasyfikacji, obliczana jako średnia ważona wartości miary F1 dla każdej z klas. Miara ta przyjmuej wartości z zakresu analogicznego jak w przypadku miary F1. \\
 \begin{center}
-    F1$_c = (\sum_{x} F1$$_x$ $ \cdot n_{x}) / \sum_{x} n_{x}$, gdzie $n$ jest liczebnością danej klasy.
+    $F1_c = \frac{\sum_{x} F1_x \cdot n_{x}}{\sum_{x} n_{x}}$, \\
   \end{center}
-
+  gdzie $n$ jest liczebnością danej klasy, $n\in C$, $x\in X$.
 \end{enumerate}
 
 
 
 \section{Klasyfikacja z użyciem metryk i miar podobieństwa tekstów}
-Wzory, znaczenia i opisy symboli zastosowanych metryk z
-przykładami. Wzory, opisy i znaczenia miar
-podobieństwa tekstów zastosowanych w obliczaniu metryk dla wektorów cech z
-przykładami dla każdej miary \cite{niewiadomski08}.  Oznaczenia jednolite w obrębie całego sprawozdania.  Wstępne wyniki miary Accuracy dla próbnych klasyfikacji na ograniczonym zbiorze tekstów (podać parametry i kryteria
-wyboru wg punktów 3.-8. z opisu Projektu 1.). {\bf Podaj metryki i miary
-podobieństwa nie z literatury (te wystarczy zacytować linkiem), ale konkretne ich
-postaci stosowane w zadaniu. Jakie zakresy wartości przyjmują te miary i
-metryki, co oznaczają ich wartości? Podaj przykładowe wartości dla przykładowych wektorów cech}. \\ 
-\noindent {\bf Sekcja uzupełniona jako efekt zadania Tydzień 04 wg Harmonogramu Zajęć
-na WIKAMP KSR.}
+W celu określenia podobieństwa $N$-wymiarowych wektorów cech tekstu stosujemy następujące miary i metryki: \\
+%Ze względu na różne przyjmowane typy elementów wektora cech, zarówno wartości liczbowe jak i tekstowe,  
+
+\begin{enumerate}
+  \item Miara euklidesowa (M1) - miara liczbowa, pozwalająca na obliczenie odległości pomiędzy dwoma liczbowymi elementami wektora. Wyliczana zgodnie ze wzorem:
+  \begin{center}
+    $M1(a, b) = \sqrt{\sum_{i=1}^{N}(a_i - b_i)^2}$,\\
+  \end{center}
+  przy czym $a$ i $b$ określają dwa wektory liczbowe, N-wymiarowe.\\
+  Miara przyjmuje najmniejszą możliwą wartość równą 0, w sytuacji gdy badane wartości liczbowe są sobie równe.
+  Im otrzymana wartość miary jest bliższa zeru, tym lepiej to świadczy o podobieństwie dwóch wartości liczbowych. \\
+  \item Metryka uliczna (M2) - 
+  \begin{center}
+    $M2(a, b) = \sum_{i=1}^{N} |a_i - b_i|$, \\
+  \end{center}
+  przy czym $a$ i $b$ określają dwa wektory liczbowe, N-wymiarowe.\\
+  \item Metryka Czebyszewa (M3) - miara odległości pomiędzy dwoma wartościami liczbowymi. Miara ta pozwala na zdefiniowanie dwóch obiektów jako 'inne', na podstawie różnicy ich wartości w jednym dowolnym wymiarze.
+  Przyjmuje wartość najmniejszą równą zeru, kiedy badane wektory są sobie równe we wszystkich wymiarach. \\
+  \begin{center}
+    $M(a, b) = \max_{i=1, ..., N} |a_i - b_i|$, \\
+  \end{center}
+  przy czym $a$ i $b$ określają dwa wektory liczbowe, N-wymiarowe.\\
+  \item Metoda \(n\)-gramów (M4)- metoda ta pozwala na określenie podobieństwa łańcuchów tekstowych, w oparciu o ilość wspólnych podciągów \(n\)-elementowych. Stosowana w celu porównania tekstowych elementów wektora cech (cechy: \(K1, F2, R1, L1)\). 
+  Przyjmuje wartośći z przedziału [0,1], przy czym wartość 1 ozancza identyczność dwóch fraz. Przykładowo, otrzymana wartość miary 0.3, dla dwóch wyrazów, ozancza, że 30\% wyrazu dłuższego stanowią frazy pojawiające się w krótszym. \\ 
+  \begin{center}
+    $M4(s_1, s_2) = \frac{1}{N-n+1} \sum_{i=1}^{N-n+1} h(i)$,\\
+  \end{center}
+  gdzie \(h(i)\) przyjmuje wartość 1, gdy w \(n\)-elementowy podciąg, zaczynający się od \(i\)-tej pozycji w wyrazie \(s_1\) występuje przynajmniej raz w \(s_2\).
+\end{enumerate} 
+
+
+
+
+
+
+% Wzory, znaczenia i opisy symboli zastosowanych metryk z
+% przykładami. Wzory, opisy i znaczenia miar
+% podobieństwa tekstów zastosowanych w obliczaniu metryk dla wektorów cech z
+% przykładami dla każdej miary \cite{niewiadomski08}.  Oznaczenia jednolite w obrębie całego sprawozdania.  Wstępne wyniki miary Accuracy dla próbnych klasyfikacji na ograniczonym zbiorze tekstów (podać parametry i kryteria
+% wyboru wg punktów 3.-8. z opisu Projektu 1.). {\bf Podaj metryki i miary
+% podobieństwa nie z literatury (te wystarczy zacytować linkiem), ale konkretne ich
+% postaci stosowane w zadaniu. Jakie zakresy wartości przyjmują te miary i
+% metryki, co oznaczają ich wartości? Podaj przykładowe wartości dla przykładowych wektorów cech}. \\ 
+% \noindent {\bf Sekcja uzupełniona jako efekt zadania Tydzień 04 wg Harmonogramu Zajęć
+% na WIKAMP KSR.}
 
 \section{Budowa aplikacji}
 \subsection{Diagramy UML}
