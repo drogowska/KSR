@@ -11,7 +11,6 @@ public class FileReader {
         return null;
     }
 
-    public static void writeResult() {
-
+    public static void writeResult(List<Article> articles) {
     }
 }

@@ -10,7 +10,6 @@ public class App {
     private Extractor extractor;
     private Classifier classifier;
     private FileReader fileReader;
-    private KnnAlgorithm knnAlgorithm;
 
     public static void main(String[] args) {
     }

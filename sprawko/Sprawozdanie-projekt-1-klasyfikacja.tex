@@ -248,19 +248,19 @@ jeden z trzech możliwych metryk: \\
 %Ze względu na różne przyjmowane typy elementów wektora cech, zarówno wartości liczbowe jak i tekstowe,  
 
 \begin{enumerate}
-  \item Miara euklidesowa (M1) - miara liczbowa, pozwalająca na obliczenie odległości pomiędzy dwoma liczbowymi elementami wektora. Wyliczana zgodnie ze wzorem:
+  \item Metryka euklidesowa (M1) -  metryka, pozwalająca na obliczenie odległości pomiędzy dwoma liczbowymi elementami wektora. Wyliczana zgodnie ze wzorem:
   \begin{center}
     $M1(a, b) = \sqrt{\sum_{i=1}^{N}(a_i - b_i)^2}$,\\
   \end{center}
   przy czym $a$ i $b$ określają dwa wektory liczbowe, N-wymiarowe.\\
-  Miara przyjmuje najmniejszą możliwą wartość równą 0, w sytuacji gdy badane wartości liczbowe są sobie równe.
+  Metryka przyjmuje najmniejszą możliwą wartość równą 0, w sytuacji gdy badane wartości liczbowe są sobie równe.
   Im otrzymana wartość miary jest bliższa zeru, tym lepiej to świadczy o podobieństwie dwóch wartości liczbowych. \\
   \item Metryka uliczna (M2) - 
   \begin{center}
     $M2(a, b) = \sum_{i=1}^{N} |a_i - b_i|$, \\
   \end{center}
   przy czym $a$ i $b$ określają dwa wektory liczbowe, N-wymiarowe.\\
-  \item Metryka Czebyszewa (M3) - miara odległości pomiędzy dwoma wartościami liczbowymi. Miara ta pozwala na zdefiniowanie dwóch obiektów jako 'inne', na podstawie różnicy ich wartości w jednym dowolnym wymiarze.
+  \item Metryka Czebyszewa (M3) - metryka odległości pomiędzy dwoma wartościami liczbowymi. Miara ta pozwala na zdefiniowanie dwóch obiektów jako 'inne', na podstawie różnicy ich wartości w jednym dowolnym wymiarze.
   Przyjmuje wartość najmniejszą równą zeru, kiedy badane wektory są sobie równe we wszystkich wymiarach. \\
   \begin{center}
     $M(a, b) = \max_{i=1, ..., N} |a_i - b_i|$, \\

@@ -7,6 +7,8 @@ import java.util.List;
 
 public class Classifier {
 
-    public void classify(int k, List<Article> testingGroup, List<Metric> metrics, List<Article> articles) {
+    KnnAlgorithm knnAlgorithm;
+
+    public void classify(int k, List<Article> testingGroup, Metric metric, List<Article> articles) {
     }
 }

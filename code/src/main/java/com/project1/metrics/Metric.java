@@ -2,7 +2,7 @@ package com.project1.metrics;
 
 import com.project1.model.VectorOfCharacteristics;
 
-public interface Metric {
+public abstract class Metric {
 
-    public  double count(VectorOfCharacteristics a, VectorOfCharacteristics b);
+    public abstract double count(VectorOfCharacteristics a, VectorOfCharacteristics b);
 }

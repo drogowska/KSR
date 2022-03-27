@@ -1,20 +1,20 @@
 package com.project1.model;
 
-public class VectorOfCharacteristics {
+public class NoStringVectorOfCharacteristics {
 
-    private String K1;
-    private String F2;
-    private String P1;
+    private long K1;
+    private long F2;
+    private long P1;
     private long N1;
     private long N2;
     private long N3;
     private long N4;
     private long N5;
     private long N6;
-    private String R1;
-    private String L1;
+    private long R1;
+    private long L1;
 
-    public VectorOfCharacteristics(String k1, String f2, String p1, long n1, long n2, long n3, long n4, long n5, long n6, String r1, String l1) {
+    public NoStringVectorOfCharacteristics(long k1, long f2, long p1, long n1, long n2, long n3, long n4, long n5, long n6, long r1, long l1) {
         K1 = k1;
         F2 = f2;
         P1 = p1;
@@ -28,27 +28,27 @@ public class VectorOfCharacteristics {
         L1 = l1;
     }
 
-    public String getK1() {
+    public long getK1() {
         return K1;
     }
 
-    public void setK1(String k1) {
+    public void setK1(long k1) {
         K1 = k1;
     }
 
-    public String getF2() {
+    public long getF2() {
         return F2;
     }
 
-    public void setF2(String f2) {
+    public void setF2(long f2) {
         F2 = f2;
     }
 
-    public String getP1() {
+    public long getP1() {
         return P1;
     }
 
-    public void setP1(String p1) {
+    public void setP1(long p1) {
         P1 = p1;
     }
 
@@ -100,19 +100,19 @@ public class VectorOfCharacteristics {
         N6 = n6;
     }
 
-    public String getR1() {
+    public long getR1() {
         return R1;
     }
 
-    public void setR1(String r1) {
+    public void setR1(long r1) {
         R1 = r1;
     }
 
-    public String getL1() {
+    public long getL1() {
         return L1;
     }
 
-    public void setL1(String l1) {
+    public void setL1(long l1) {
         L1 = l1;
     }
 }
