@@ -221,13 +221,16 @@ podobieństwo pomiędzy $K_1$, $F_2$, $P_1$, $R_1$, i $L_1$ odpowiadającymi ele
 w wektorze \(S\), wpisujemy wartości 0, zaś dla \(Z\)- wartości wynikowe.
 
 Do obliczenia wspomianego podobieństwa tekstów zostosowano metodę \(n\)-gramów (M4), metoda ta pozwala na określenie podobieństwa łańcuchów tekstowych, w oparciu o ilość wspólnych podciągów \(n\)-elementowych. Stosowana w celu porównania tekstowych elementów wektora cech. 
-Przyjmuje wartośći z przedziału [0,1], przy czym wartość 1 ozancza identyczność dwóch fraz. Przykładowo, otrzymana wartość miary 0.3, dla dwóch wyrazów, oznacza, że 30\% wyrazu dłuższego stanowią frazy pojawiające się w krótszym. 
+Przyjmuje wartości z przedziału [0,1], przy czym wartość 1 ozancza identyczność dwóch fraz. Przykładowo, otrzymana wartość miary 0.3, dla dwóch wyrazów, oznacza, że 30\% wyrazu dłuższego stanowią frazy pojawiające się w krótszym. 
     \begin{equation}
       M4(s_1, s_2) = \frac{1}{N-n+1} \sum_{i=1}^{N-n+1} h(i),
     \end{equation}
-  gdzie \(h(i)\) przyjmuje wartość 1, gdy w \(n\)-elementowy podciąg, zaczynający się od \(i\)-tej pozycji w wyrazie \(s_1\) występuje przynajmniej raz w \(s_2\). \\
+  gdzie \(h(i)\) przyjmuje wartość 1, gdy w \(n\)-elementowy podciąg, zaczynający się od \(i\)-tej pozycji w wyrazie \(s_1\) występuje przynajmniej raz w \(s_2\). Przykładowo dla 2-gramów:
+\begin{equation}
+      M4("ABAB", "AB") = \frac{1}{4-2+1} * 2 = \frac{2}{3},
+\end{equation}
 
-W celu zliczania wystąpień nazw budowli dla poszczególnych krajów, wykorzystano Term Frequency Matrix (TFM). Metoda ta bazuje na znanym zestawie słów kluczowych (słownikach \cite{slowniki}), na podstwaie wzoru \((10)\) określa czy dany, słownikowy wyraz,
+W celu zliczania wystąpień nazw budowli dla poszczególnych krajów, wykorzystano Term Frequency Matrix (TFM). Metoda ta bazuje na znanym zestawie słów kluczowych (słownikach \cite{slowniki}), na podstawie wzoru \((10)\) określa czy dany, słownikowy wyraz,
 wystąpił w tekście, a następnie w wzorze \((9)\) zliczamy wystąpienia dla całości dokumentów.
   \begin{equation}
     N_k(d) = \sum_{i}^{p} t(i,d)
@@ -239,41 +242,53 @@ wystąpił w tekście, a następnie w wzorze \((9)\) zliczamy wystąpienia dla c
       0 &\text{ jeśli } s_1 \neq s_2
     \end{cases}
   \end{equation}
-gdzie $k \in [1,6]$, zaś \(p\) oznacza zbiór słów w danym słwoniku, \(t(i)\) określa liczbę wystąpień w badanym dokumencie \(i\)-tego słowa ze słwonika, \(d\) - zawartość dokumentu. \\
+gdzie $k \in [1,6]$, zaś \(p\) oznacza zbiór słów w danym słwoniku, \(t(i)\) określa liczbę wystąpień w badanym dokumencie \(i\)-tego słowa ze słwonika, \(d\) - zawartość dokumentu. Zbiór wartości metody $\in [0; \infty) $. \\
 
+
+% BRAKUJE: %
+% Wstępne wyniki Accuracy dla próbnych klasyfikacji
 
 W kolejnym etapie obliczane zostaje odległość pomiędzy wektorami, z wykorzystaniem
 jeden z trzech możliwych metryk: \\
-
+(przykłady w poniższych metrykach będą zbudowane przy pomocy wektorów cech: \\ $c = (0, 0, 0, 3, 2, 0, 2, 1, 1, 0, 0)$ \\
+    $d = (1, 2, 4, 3, 2, 0, 2, 1, 1, 0, 7)$)
 % W celu określenia podobieństwa $N$-wymiarowych wektorów cech tekstu stosujemy następujące miary i metryki: \\
 %Ze względu na różne przyjmowane typy elementów wektora cech, zarówno wartości liczbowe jak i tekstowe,  
 
 \begin{enumerate}
   \item Metryka euklidesowa (M1) -  metryka, pozwalająca na obliczenie odległości pomiędzy dwoma liczbowymi elementami wektora. Wyliczana zgodnie ze wzorem:
-  \begin{center}
-    $M1(a, b) = \sqrt{\sum_{i=1}^{N}(a_i - b_i)^2}$,\\
-  \end{center}
-  przy czym $a$ i $b$ określają dwa wektory liczbowe, N-wymiarowe.\\
+  \begin{equation}
+    M1(a, b) = \sqrt{\sum_{i=1}^{N}(a_i - b_i)^2},
+  \end{equation}
+  przy czym $a$ i $b$ określają dwa wektory liczbowe, N-wymiarowe. Zbiór wartości metryki $\in [0; \infty) $.
   Metryka przyjmuje najmniejszą możliwą wartość równą 0, w sytuacji gdy badane wartości liczbowe są sobie równe.
-  Im otrzymana wartość miary jest bliższa zeru, tym lepiej to świadczy o podobieństwie dwóch wartości liczbowych. \\
+  Im większa wartość metryki, tym dwa badane wektory są od siebie bardziej różne. Przykładowo:
+  \begin{equation}
+    M1(c, d) = \sqrt{70} \approx 8
+  \end{equation}
   \item Metryka uliczna (M2) - 
-  \begin{center}
-    $M2(a, b) = \sum_{i=1}^{N} |a_i - b_i|$, \\
-  \end{center}
-  przy czym $a$ i $b$ określają dwa wektory liczbowe, N-wymiarowe.\\
+  \begin{equation}
+    M2(a, b) = \sum_{i=1}^{N} |a_i - b_i|, 
+  \end{equation}
+  przy czym $a$ i $b$ określają dwa wektory liczbowe, N-wymiarowe. Zbiór wartości metryki $\in [0; \infty) $.
+  Im otrzymana wartość miary jest bliższa zeru, tym lepiej to świadczy o podobieństwie dwóch wektorów. Przykładowo:
+  \begin{equation}
+    M2(c, d) = 14
+  \end{equation}
   \item Metryka Czebyszewa (M3) - metryka odległości pomiędzy dwoma wartościami liczbowymi. Miara ta pozwala na zdefiniowanie dwóch obiektów jako 'inne', na podstawie różnicy ich wartości w jednym dowolnym wymiarze.
-  Przyjmuje wartość najmniejszą równą zeru, kiedy badane wektory są sobie równe we wszystkich wymiarach. \\
-  \begin{center}
-    $M(a, b) = \max_{i=1, ..., N} |a_i - b_i|$, \\
-  \end{center}
-  przy czym $a$ i $b$ określają dwa wektory liczbowe, N-wymiarowe.\\
+  Przyjmuje wartość najmniejszą równą zeru, kiedy badane wektory są sobie równe we wszystkich wymiarach.
+  \begin{equation}
+    M3(a, b) = \max_{i=1, ..., N} |a_i - b_i|, 
+  \end{equation}
+  przy czym $a$ i $b$ określają dwa wektory liczbowe, N-wymiarowe. Zbiór wartości metryki $\in [0; \infty) $. Wartość przykładowa:
+  \begin{equation}
+    M3(c, d) = 7
+  \end{equation}
+
 \end{enumerate} 
 
-% BRAKUJE: %
-% Wstępne wyniki Accuracy dla próbnych klasyfikacji
-% Zakresy miar, co oznaczają ich wartości, przykładowe wartości dla wektorów cech
-
-
+Przeprowadzono również 3 próbne klasyfikacje a następnie w każdej z nich obliczono miarę Accuracy. 
+Zbiór testowy wszystkich próbnych klasyfikacji składał się z 6 dokumentów, każdy mówiący o innym państwie spośród: 
 
 % Wzory, znaczenia i opisy symboli zastosowanych metryk z
 % przykładami. Wzory, opisy i znaczenia miar
