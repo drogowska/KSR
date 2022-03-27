@@ -2,6 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{color}
 \usepackage{amsmath}
+\usepackage{graphicx}
 
 \studycycle{Informatyka, studia STACJONARNE, I st.}
 \coursesemester{VI}
@@ -271,9 +272,8 @@ jeden z trzech możliwych metryk: \\
 % BRAKUJE: %
 % Wstępne wyniki Accuracy dla próbnych klasyfikacji
 % Zakresy miar, co oznaczają ich wartości, przykładowe wartości dla wektorów cech
-% 
-% UML i opis modułów aplikacji (4.1)
-%
+
+
 
 % Wzory, znaczenia i opisy symboli zastosowanych metryk z
 % przykładami. Wzory, opisy i znaczenia miar
@@ -289,10 +289,24 @@ jeden z trzech możliwych metryk: \\
 
 \section{Budowa aplikacji}
 \subsection{Diagramy UML}
-Diagramy UML i zwięzłe opisy: idei aplikacji, modułu ekstrakcji i modułu
-klasyfikatora.\\
-\noindent {\bf Sekcja uzupełniona jako efekt zadania Tydzień 03 wg Harmonogramu Zajęć
-na WIKAMP KSR.}
+%Diagramy UML i zwięzłe opisy: idei aplikacji, modułu ekstrakcji i modułu
+%klasyfikatora.\\
+%\noindent {\bf Sekcja uzupełniona jako efekt zadania Tydzień 03 wg Harmonogramu Zajęć
+%na WIKAMP KSR.}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.66\textwidth]{uml1.png}
+\caption{Diagram UML klas aplikacji, wraz z ich parametrami}
+\label{fig1}
+\end{figure}
+
+Ideą aplikacji jest jej prostota (sposóbu użycia, wyglądu, zapisu danych) oraz rozłożenie logiki na 3 główne moduły (klasy): 
+\begin{enumerate}
+\item moduł FileReader - moduł odpowiadający za operacje na plikach i danych w nich zawartych. Pobiera dane z plików tekstowych, \cite{teksty} a następnie mapuje je na model klasy Article
+\item moduł Extractor - moduł odpowiadający za ekstrakcje wektorów cech z każdego dokumentu tekstowego przedstawionego za pomocą klasy Article
+\item moduł Classifier - moduł odpowiadający za klasyfikacje dokumentów (klasy Article) na podstawie ich wektorów cech za pomocą algorytmu KNN \cite{tadeusiewicz90} (klasa KnnAlgorithm) i jednej z wybranych przez użytkownika metryk (klasy M1, M2, M3)
+\end{enumerate}
 
 \subsection{Prezentacja wyników, interfejs użytkownika}  
 %in - k, proporcje zbiorów na uczącuy i testowy, wybór miary i/lub metryki podobieństwa
@@ -301,7 +315,7 @@ Aplikacja komunikuje sie z użytkownikiem za pomocą konsolowego interfejsu. Na 
 wartość $k$, określająca liczbę sąsiadów stosowanych w algorytmie klasyfikującym; 
 procent zbioru dokumentów, który ma stanowić zbiór uczący, a także wybiera miary/metryki podobieństwa wektorów cech. Wybór parametrów wejściowych odbywa się poprzez podanie
 cyfry/litery odpowiadającej jednemu z możliwych do wyboru wariantów, w przypadku wyboru miar/metryk. Natomiast jako wartość zmiennej $k$, jak i podział zbioru na uczący i testowy, jest podana przez użytkownika liczba całkowita mieszcząca się w podanym zakresie.
-Po zakończeniu klasyfikacji wyniki wraz z obliczonymi miarami jakości klasyfikacji zostają zapisane do pliku tekstowego o wybranej przez użytkownika nazwie bądź domyślnie o nazwie: \textbf{"results.txt"}
+Po zakończeniu klasyfikacji wyniki wraz z obliczonymi miarami jakości klasyfikacji zostają wyświetlone w konsolowym interfejsie oraz zapisane do pliku tekstowego o wybranej przez użytkownika nazwie bądź domyślnie o nazwie: \textbf{"results.txt"}
 
 Aplikacja jest uruchamiana z linii poleceń, wymagane jest posiadanie JDK w wersji 17. 
 
