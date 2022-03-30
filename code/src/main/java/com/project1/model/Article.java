@@ -10,22 +10,23 @@ public class Article {
     private List<String> topic;
     private List<String> places;
     private String title;
-    private String dateline;
+//    private String dateline;
     private String body;
 
     private VectorOfCharacteristics vectorOfCharacteristics;
     private NoStringVectorOfCharacteristics noStringVectorOfCharacteristics;
     private CountryClass countryClass;
 
-    public Article(int id, String date, List<String> topic, List<String> places, String title, String dateline, String body) {
+    public Article(int id, String date, List<String> topic, List<String> places, String title, String body) {
         this.id = id;
         this.date = date;
         this.topic = topic;
         this.places = places;
         this.title = title;
-        this.dateline = dateline;
+//        this.dateline = dateline;
         this.body = body;
     }
+
 
     public VectorOfCharacteristics getVectorOfCharacteristics() {
         return vectorOfCharacteristics;
@@ -71,9 +72,6 @@ public class Article {
         return title;
     }
 
-    public String getDateline() {
-        return dateline;
-    }
 
     public String getBody() {
         return body;
