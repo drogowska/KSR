@@ -1,11 +1,12 @@
 package com.project1.modules;
 
+import com.project1.classes.CountryClass;
 import com.project1.model.Article;
 import com.project1.model.Dictionary;
+import org.apache.commons.lang3.StringUtils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class Extractor {
@@ -18,7 +19,9 @@ public class Extractor {
         fillDictionaries();
         firstOccurrence(1);
         firstOccurrence(0);
-        System.out.println("");
+        numberOfFamousBuild(3);
+        setPublishedHour();
+        mostCommonCountry();
     }
 
     private void firstOccurrence(int dictNumb) {
@@ -32,6 +35,41 @@ public class Extractor {
                     break;
                 }
             }
+        });
+    }
+
+    private void numberOfFamousBuild(int dictNumb) {
+        AtomicInteger sum = new AtomicInteger();
+        articles.forEach(article -> {
+            dictionaries.get(dictNumb).getContent().forEach(s -> {
+                if(article.getBody().contains(s)) {
+                    sum.getAndIncrement();
+                }
+            });
+            if(dictNumb == 3) article.getVectorOfCharacteristics().setN1(sum.get());
+            else if(dictNumb == 4) article.getVectorOfCharacteristics().setN2(sum.get());
+            else if(dictNumb == 5) article.getVectorOfCharacteristics().setN3(sum.get());
+            else if(dictNumb == 6) article.getVectorOfCharacteristics().setN5(sum.get());
+            else if(dictNumb == 7) article.getVectorOfCharacteristics().setN6(sum.get());
+        });
+    }
+
+    private void setPublishedHour() {
+        articles.forEach(article -> {
+            article.getVectorOfCharacteristics().setL1(article.getDate().substring(12));
+        });
+    }
+
+    //test
+    private void mostCommonCountry() {
+        CountryClass classes = new CountryClass();
+        articles.forEach(article -> {
+            HashMap<String, Integer> countryOccur = new HashMap<>();
+            classes.forEach(c -> {
+                countryOccur.put(c, StringUtils.countMatches(article.getBody().toLowerCase(),c));
+            });
+            if (countryOccur.entrySet().iterator().next().getValue() == 0) article.getVectorOfCharacteristics().setR1("");
+            else article.getVectorOfCharacteristics().setR1(countryOccur.entrySet().iterator().next().getKey());
         });
     }
 
