@@ -25,6 +25,7 @@ public class Article {
         this.title = title;
 //        this.dateline = dateline;
         this.body = body;
+        vectorOfCharacteristics = new VectorOfCharacteristics();
     }
 
 

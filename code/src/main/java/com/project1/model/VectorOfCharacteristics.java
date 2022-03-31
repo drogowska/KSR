@@ -14,6 +14,9 @@ public class VectorOfCharacteristics {
     private String R1;
     private String L1;
 
+    public VectorOfCharacteristics() {
+    }
+
     public VectorOfCharacteristics(String k1, String f2, String p1, long n1, long n2, long n3, long n4, long n5, long n6, String r1, String l1) {
         K1 = k1;
         F2 = f2;

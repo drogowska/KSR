@@ -26,7 +26,6 @@ public class FileReader {
     private static final String DATELINE = "DATELINE";
     private static final String BODY = "BODY";
 
-
     public static List<Article> extract(List<String> filesDirPath) throws ParserConfigurationException {
         List<Article> docs = new ArrayList<>();
 
