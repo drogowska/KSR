@@ -1,5 +1,6 @@
 package com.project1;
 
+import com.project1.model.Article;
 import com.project1.modules.Classifier;
 import com.project1.modules.Extractor;
 import com.project1.modules.FileReader;
@@ -17,8 +18,8 @@ public class Main {
     private FileReader fileReader;
 
     public static void main(String[] args) throws ParserConfigurationException {
-            FileReader.extract(Collections.singletonList("E:\\KSR\\code\\src\\main\\resources\\reut2-000.sgm"));
-
+            List<Article> docs = FileReader.extract(Collections.singletonList("E:\\KSR\\code\\src\\main\\resources\\reut2-000.sgm"));
+            docs.size();
     }
 
     private void initializeModules() {

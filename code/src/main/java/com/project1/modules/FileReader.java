@@ -4,6 +4,7 @@ import com.project1.model.Article;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.nodes.Node;
 import org.jsoup.parser.Parser;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
@@ -36,20 +37,24 @@ public class FileReader {
                 Document doc = Jsoup.parse(String.valueOf(sgml),"" ,Parser.xmlParser());
                 final int[] i = {0};
                 doc.select(REUTERS).forEach(d -> {
-                    Element node = d.getElementsByTag(BODY).first();
+                    Element textNode = d.getElementsByTag(TEXT).first();
+                    String content = (d.getElementsByTag(BODY).first()==null)? textNode.childNode(textNode.childNodeSize()-1).toString() :
+                                                                                d.getElementsByTag(BODY).first().text();
+                    String title = (textNode.getElementsByTag(TITLE).first() == null)? "" :
+                                                            textNode.getElementsByTag(TITLE).first().text();
                     docs.add(new Article(i[0],
                             d.getElementsByTag(DATE).first().text(),
                             d.getElementsByTag(TOPICS).first().getElementsByTag("D").eachText(),
                             d.getElementsByTag(PLACES).first().getElementsByTag("D").eachText(),
-                            d.getElementsByTag(TITLE).first().text(),
-                            d.getElementsByTag(BODY).first().text()));
+                            title,
+                            content));
                     i[0]++;
                 });
             } catch (IOException e) {
                 e.printStackTrace();
             }
         });
-        return null;
+        return docs;
     }
 
     public static void writeResult(List<Article> articles) {
