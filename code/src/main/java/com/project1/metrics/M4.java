@@ -9,4 +9,8 @@ public class M4 {
         return null;
     }
 
+    public static double countSimilarity(String a, String b) {
+        
+        return 0;
+    }
 }

@@ -39,14 +39,15 @@ public class Extractor {
             for(String s : dictionaries.get(dictNumb).getContent()) {
                 if(article.getBody().contains(s)) {
                     res.set(s);
-                    if (dictNumb == 1) article.getVectorOfCharacteristics().setF2(s);
-                    else if (dictNumb == 0) article.getVectorOfCharacteristics().setK1(s);
+                    if (dictNumb == 1) article.getVectorOfCharacteristics().setFeatures(1,s);
+                    else if (dictNumb == 0) article.getVectorOfCharacteristics().setFeatures(0, s);
                     break;
                 }
             }
         });
     }
 
+    //todo rozdzielic na panstwa
     private void numberOfFamousBuild(int dictNumb) {
         AtomicInteger sum = new AtomicInteger();
         articles.forEach(article -> {
@@ -55,20 +56,20 @@ public class Extractor {
                     sum.getAndIncrement();
                 }
             });
-            if(dictNumb == 3) article.getVectorOfCharacteristics().setN1(sum.get());
-            else if(dictNumb == 4) article.getVectorOfCharacteristics().setN2(sum.get());
-            else if(dictNumb == 5) article.getVectorOfCharacteristics().setN3(sum.get());
-            else if(dictNumb == 6) article.getVectorOfCharacteristics().setN5(sum.get());
-            else if(dictNumb == 7) article.getVectorOfCharacteristics().setN6(sum.get());
+            if(dictNumb == 3) article.getVectorOfCharacteristics().setFeatures(3, sum.get()); //article.getVectorOfCharacteristics().setN1(sum.get());
+            else if(dictNumb == 4) article.getVectorOfCharacteristics().setFeatures(4, sum.get());
+            else if(dictNumb == 5) article.getVectorOfCharacteristics().setFeatures(5,sum.get());
+            else if(dictNumb == 6) article.getVectorOfCharacteristics().setFeatures(6,sum.get());
+            else if(dictNumb == 7) article.getVectorOfCharacteristics().setFeatures(7,sum.get());
         });
     }
 
     private void setPublishedHour() {
         articles.forEach(article -> {
-            article.getVectorOfCharacteristics().setL1(article.getDate().substring(12));
+            article.getVectorOfCharacteristics().setFeatures(8, article.getDate().substring(12));
+//            article.getVectorOfCharacteristics().setL1(article.getDate().substring(12));
         });
     }
-
 
     private void mostCommonCountry() {
         List<String> classes = Arrays.asList("u.s","uk","france","west german","japan","canad");
@@ -85,7 +86,8 @@ public class Extractor {
                 }
             });
             if (entry.getValue() != 0)
-                article.getVectorOfCharacteristics().setR1(entry.getKey());
+                article.getVectorOfCharacteristics().setFeatures(9, entry.getKey());
+//                article.getVectorOfCharacteristics().setR1(entry.getKey());
         });
     }
 
