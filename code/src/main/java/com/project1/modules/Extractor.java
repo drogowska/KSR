@@ -81,7 +81,6 @@ public class Extractor {
             });
             if (entry.getValue() != 0)
                 article.getVectorOfCharacteristics().setFeatures(9, entry.getKey());
-//                article.getVectorOfCharacteristics().setR1(entry.getKey());
         });
     }
 
