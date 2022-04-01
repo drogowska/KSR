@@ -20,6 +20,8 @@ public class VectorOfCharacteristics {
     private List<Feature> features = new ArrayList<>();
 
     public VectorOfCharacteristics() {
+        for (int i = 0; i < 11; i++)
+            features.add(new Feature());
     }
 
     public List<Feature> getFeatures() {

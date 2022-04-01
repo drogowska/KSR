@@ -39,8 +39,7 @@ public class Extractor {
             for(String s : dictionaries.get(dictNumb).getContent()) {
                 if(article.getBody().contains(s)) {
                     res.set(s);
-                    if (dictNumb == 1) article.getVectorOfCharacteristics().setFeatures(1,s);
-                    else if (dictNumb == 0) article.getVectorOfCharacteristics().setFeatures(0, s);
+                    article.getVectorOfCharacteristics().setFeatures(dictNumb,s);
                     break;
                 }
             }
@@ -56,18 +55,13 @@ public class Extractor {
                     sum.getAndIncrement();
                 }
             });
-            if(dictNumb == 3) article.getVectorOfCharacteristics().setFeatures(3, sum.get()); //article.getVectorOfCharacteristics().setN1(sum.get());
-            else if(dictNumb == 4) article.getVectorOfCharacteristics().setFeatures(4, sum.get());
-            else if(dictNumb == 5) article.getVectorOfCharacteristics().setFeatures(5,sum.get());
-            else if(dictNumb == 6) article.getVectorOfCharacteristics().setFeatures(6,sum.get());
-            else if(dictNumb == 7) article.getVectorOfCharacteristics().setFeatures(7,sum.get());
+            article.getVectorOfCharacteristics().setFeatures(dictNumb, sum.get());
         });
     }
 
     private void setPublishedHour() {
         articles.forEach(article -> {
             article.getVectorOfCharacteristics().setFeatures(8, article.getDate().substring(12));
-//            article.getVectorOfCharacteristics().setL1(article.getDate().substring(12));
         });
     }
 
