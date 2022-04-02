@@ -19,14 +19,14 @@ public class VectorOfCharacteristics {
 //    private long N6;
 //    private String R1;
 //    private String L1;
-    private CountryClass label;
+    private String label;
     private List<Feature> features = new ArrayList<>();
 
-    public void setLabel(CountryClass label) {
+    public void setLabel(String label) {
         this.label = label;
     }
 
-    public CountryClass getLabel() {
+    public String getLabel() {
         return label;
     }
 

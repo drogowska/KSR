@@ -30,7 +30,7 @@ public class KnnAlgorithm {
             distances.put(doc, metric.count(object, doc));
         });
 
-        Map<CountryClass, Long> res = distances.entrySet().stream()
+        Map<String, Long> res = distances.entrySet().stream()
                 .sorted(Map.Entry.comparingByValue())
                 .map(Map.Entry::getKey)
                 .limit(k)

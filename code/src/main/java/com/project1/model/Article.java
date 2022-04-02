@@ -15,7 +15,7 @@ public class Article {
 
     private VectorOfCharacteristics vectorOfCharacteristics;
     private NoStringVectorOfCharacteristics noStringVectorOfCharacteristics;
-    private CountryClass countryClass;
+//    private CountryClass countryClass;
 
     public Article(int id, String date, List<String> topic, List<String> places, String title, String body) {
         this.id = id;
@@ -27,7 +27,6 @@ public class Article {
         this.body = body;
         vectorOfCharacteristics = new VectorOfCharacteristics();
     }
-
 
     public VectorOfCharacteristics getVectorOfCharacteristics() {
         return vectorOfCharacteristics;
@@ -43,14 +42,6 @@ public class Article {
 
     public void setNoStringVectorOfCharacteristics(NoStringVectorOfCharacteristics noStringVectorOfCharacteristics) {
         this.noStringVectorOfCharacteristics = noStringVectorOfCharacteristics;
-    }
-
-    public CountryClass getCountryClass() {
-        return countryClass;
-    }
-
-    public void setCountryClass(CountryClass countryClass) {
-        this.countryClass = countryClass;
     }
 
     public int getId() {
