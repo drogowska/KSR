@@ -11,12 +11,12 @@ public class Classifier {
 
     KnnAlgorithm knnAlgorithm;
 
-    public void classify(int k, List<Article> testingGroup, Metric metric, List<Article> articles) {
+    public void classify(int k, List<Article> testingGroup, Metric metric, List<Article> trainingGroup) {
         List<VectorOfCharacteristics> testingVectors = new ArrayList();
-        testingGroup.forEach(doc -> {
+        trainingGroup.forEach(doc -> {
             testingVectors.add(doc.getVectorOfCharacteristics());
         });
         knnAlgorithm = new KnnAlgorithm(k, testingVectors, metric);
-        articles.forEach(article -> knnAlgorithm.run(article.getVectorOfCharacteristics()));
+        testingGroup.forEach(article -> knnAlgorithm.run(article.getVectorOfCharacteristics()));
     }
 }

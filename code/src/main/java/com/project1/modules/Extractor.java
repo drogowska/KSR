@@ -2,10 +2,7 @@ package com.project1.modules;
 
 import com.project1.model.Article;
 import org.apache.commons.lang3.StringUtils;
-
 import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
 import static com.project1.Constants.*;
@@ -15,14 +12,15 @@ public class Extractor {
 
     private List<Article> articles;
 
-    public void extract(List<Article> articles) {
-        this.articles = articles;
+    public List<Article> extract(List<Article> articles) {
+        this.articles = new ArrayList<>(articles);
         filterArticles();
         firstOccurrence(1);
         firstOccurrence(0);
-        numberOfFamousBuild(3);
+        numberOfFamousBuild();
         setPublishedHour();
         mostCommonCountry();
+        return this.articles;
     }
 
     private void filterArticles() {
@@ -30,46 +28,49 @@ public class Extractor {
                 .collect(Collectors.toList());
     }
 
-    //todo - zapis panstwa nie miasta/waluty
+    //todo - sprawdza po słowie nie po frazie
     //k1, f2 // 0, 1
     private void firstOccurrence(int dictNumb) {
-        AtomicReference<String> res = new AtomicReference<>("");
+        final boolean[] flag = {true};
         articles.stream().forEach(article -> {
-            classes.forEach(clas -> {
-                for(String s : clas.getDic(dictNumb).getContent()) {
-                    if(article.getBody().contains(s)) {
-                        res.set(s);
-                        article.getVectorOfCharacteristics().setFeatures(dictNumb, clas.getLabel());
-                        break;
-                    }
-                }
-            });
+             article.getBody().forEach(w -> {
+                 if(flag[0]) {
+                     classes.forEach(clas -> {
+                         for (String s : clas.getDic(dictNumb).getContent()) {
+                             if (w.equals(s)) {
+                                 article.getVectorOfCharacteristics().setFeatures(dictNumb, clas.getLabel());
+                                 flag[0] = false;
+                                 return;
+                             }
+                         }
+                     });
+                 }
+             });
         });
     }
 
     //n1-6
-    private void numberOfFamousBuild(int dictNumb) {
-        AtomicInteger sum = new AtomicInteger();
+    private void numberOfFamousBuild() {
+        final int[] sum = {0};
         articles.forEach(article -> {
-                classes.forEach(clas -> {
-                    clas.getDic(dictNumb).getContent().forEach(s -> {
-                        if (article.getBody().contains(s))
-                            sum.getAndIncrement();
-        //                sum += StringUtils.countMatches(article.getBody().toLowerCase(), s);
-                    });
-                    article.getVectorOfCharacteristics().setFeatures(dictNumb, sum.get());
-            });
+            for(int i = 0; i < classes.size(); i++) {
+                classes.get(i).getDN().getContent().forEach(s -> {
+                    sum[0] += StringUtils.countMatches(StringUtils.join(article.getBody(), " "), s);
+                });
+                article.getVectorOfCharacteristics().setFeatures(i + 3, sum[0]);
+                sum[0] = 0;
+            }
         });
     }
 
     //l1
     private void setPublishedHour() {
         articles.forEach(article -> {
-            article.getVectorOfCharacteristics().setFeatures(8, article.getDate().substring(12));
+            article.getVectorOfCharacteristics().setFeatures(10, article.getDate().substring(12));
         });
     }
+
     //p1
-    //todo podzial na karaje
     private void politicianParty() {
 
     }
@@ -78,12 +79,16 @@ public class Extractor {
     private void mostCommonCountry() {
         articles.forEach(article -> {
             HashMap<String, Integer> countryOccur = new HashMap<>();
-            classes.forEach(c -> countryOccur.put(c.getLabel(),0));
+            classes.forEach(c -> countryOccur.put(c.getLabel(), 0));
             classes.forEach(c -> {
-                c.getDR1().getContent().forEach(s -> { //?
-                    countryOccur.put(c.getLabel(), StringUtils.countMatches(article.getBody().toLowerCase(), s));
+                c.getDR1().getContent().forEach(s -> {
+                    final int[] k = {0}; //StringUtils.countMatches(StringUtils.join(article.getBody(), " "),   s);
+                    article.getBody().forEach(w -> {
+                        if (w.equals(s))
+                            k[0]++;
+                    });
+                    countryOccur.put(c.getLabel(), countryOccur.get(c.getLabel()) + k[0]);
                 });
-//                countryOccur.put(c.getLabel(), StringUtils.countMatches(article.getBody().toLowerCase(), c.getDic(9)));
             });
             Map.Entry<String, Integer> entry =  Collections.max(countryOccur.entrySet(), new Comparator<Map.Entry<String, Integer>>() {
                 @Override

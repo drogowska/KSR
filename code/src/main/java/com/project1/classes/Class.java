@@ -18,6 +18,7 @@ public class Class {
 
     double PPV;
     double TPR;
+    double F1;
 
     public String getLabel() {
         return label;
@@ -31,6 +32,66 @@ public class Class {
         DN = new Dictionary("DN", prefix);
         DR1 = new Dictionary("DR1", prefix);
         DF2 = new Dictionary("DF2", prefix);
+    }
+
+    private void countPPV() {
+        PPV = P / (N + FP);
+    }
+
+    private void countTPR() {
+        TPR = P / (P + FN);
+    }
+
+    private void countF1() {
+        F1 = 2 * (PPV * TPR) / (PPV + TPR);
+    }
+
+    public void setP(int p) {
+        P = p;
+    }
+
+    public void setFP(int FP) {
+        this.FP = FP;
+    }
+
+    public double getPPV() {
+        return PPV;
+    }
+
+    public double getTPR() {
+        return TPR;
+    }
+
+    public double getF1() {
+        return F1;
+    }
+
+    public void setFN(int FN) {
+        this.FN = FN;
+    }
+
+    public void setN(int n) {
+        N = n;
+    }
+
+    public int getP() {
+        return P;
+    }
+
+    public int getFP() {
+        return FP;
+    }
+
+    public int getFN() {
+        return FN;
+    }
+
+    public int getN() {
+        return N;
+    }
+
+    public void setTPR(double TPR) {
+        this.TPR = TPR;
     }
 
     public Dictionary getDic(int i) {

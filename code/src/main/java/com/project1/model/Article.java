@@ -2,7 +2,9 @@ package com.project1.model;
 
 import com.project1.classes.CountryClass;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Article {
     private int id;
@@ -11,7 +13,7 @@ public class Article {
     private List<String> places;
     private String title;
 //    private String dateline;
-    private String body;
+    private List<String> body;
 
     private VectorOfCharacteristics vectorOfCharacteristics;
     private NoStringVectorOfCharacteristics noStringVectorOfCharacteristics;
@@ -24,8 +26,12 @@ public class Article {
         this.places = places;
         this.title = title;
 //        this.dateline = dateline;
-        this.body = body;
+        this.body = Arrays.stream(body.toLowerCase().replaceAll("\\p{Punct}", "").split(" ")).collect(Collectors.toList());
         vectorOfCharacteristics = new VectorOfCharacteristics();
+    }
+
+    public List<String> getBody() {
+        return body;
     }
 
     public VectorOfCharacteristics getVectorOfCharacteristics() {
@@ -65,7 +71,4 @@ public class Article {
     }
 
 
-    public String getBody() {
-        return body;
-    }
 }

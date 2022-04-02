@@ -7,7 +7,7 @@ import java.util.List;
 
 public class M4 {
 
-    private static int n = 4;
+    private static int n = 2;
 
     public NoStringVectorOfCharacteristics convert(VectorOfCharacteristics vectorOfCharacteristics) {
         return null;
