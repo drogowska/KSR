@@ -30,7 +30,7 @@ public class Statistics {
 
             clas.setN((int) docs.stream()
                     .filter(article -> !(article.getPlaces().get(0).equals(article.getVectorOfCharacteristics().getLabel()) ||
-                            article.getPlaces().equals(clas.getLabel()) ||
+                            article.getPlaces().get(0).equals(clas.getLabel()) ||
                             article.getVectorOfCharacteristics().getLabel().equals(clas.getLabel())))
                     .count());
 

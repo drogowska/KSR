@@ -19,7 +19,8 @@ public class Extractor {
         firstOccurrence(0);
         numberOfFamousBuild();
         setPublishedHour();
-        mostCommonCountry();
+        mostCommonCountry(2);
+        mostCommonCountry(9);
         return this.articles;
     }
 
@@ -70,24 +71,15 @@ public class Extractor {
         });
     }
 
-    //p1
-    private void politicianParty() {
-
-    }
-
-    //r1
-    private void mostCommonCountry() {
+    //r1, p1 (9,2)
+    private void mostCommonCountry(int party) {
         articles.forEach(article -> {
             HashMap<String, Integer> countryOccur = new HashMap<>();
             classes.forEach(c -> countryOccur.put(c.getLabel(), 0));
             classes.forEach(c -> {
-                c.getDR1().getContent().forEach(s -> {
-                    final int[] k = {0}; //StringUtils.countMatches(StringUtils.join(article.getBody(), " "),   s);
-                    article.getBody().forEach(w -> {
-                        if (w.equals(s))
-                            k[0]++;
-                    });
-                    countryOccur.put(c.getLabel(), countryOccur.get(c.getLabel()) + k[0]);
+                c.getDic(party).getContent().forEach(s -> {
+                        countryOccur.put(c.getLabel(), countryOccur.get(c.getLabel()) +
+                                StringUtils.countMatches(" " + StringUtils.join(article.getBody(), " ")," " + s + " "));
                 });
             });
             Map.Entry<String, Integer> entry =  Collections.max(countryOccur.entrySet(), new Comparator<Map.Entry<String, Integer>>() {
@@ -97,7 +89,7 @@ public class Extractor {
                 }
             });
             if (entry.getValue() != 0)
-                article.getVectorOfCharacteristics().setFeatures(9, entry.getKey());
+                article.getVectorOfCharacteristics().setFeatures(party, entry.getKey());
         });
     }
 

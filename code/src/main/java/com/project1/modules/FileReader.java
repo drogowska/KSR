@@ -41,12 +41,13 @@ public class FileReader {
                                                                                 d.getElementsByTag(BODY).first().text();
                     String title = (textNode.getElementsByTag(TITLE).first() == null)? "" :
                                                             textNode.getElementsByTag(TITLE).first().text();
+                    String dateline = (d.getElementsByTag(DATELINE).first() == null)? "" : d.getElementsByTag(DATELINE).first().text();
                     docs.add(new Article(i[0],
                             d.getElementsByTag(DATE).first().text(),
                             d.getElementsByTag(TOPICS).first().getElementsByTag("D").eachText(),
                             d.getElementsByTag(PLACES).first().getElementsByTag("D").eachText(),
                             title,
-                            content));
+                            title + " " + dateline + " " + content));
                     i[0]++;
                 });
             } catch (IOException e) {

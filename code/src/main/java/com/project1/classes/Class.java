@@ -35,11 +35,11 @@ public class Class {
     }
 
     private void countPPV() {
-        PPV = P / (N + FP);
+        PPV = (double) P / (N + FP);
     }
 
     private void countTPR() {
-        TPR = P / (P + FN);
+        TPR = (double) P / (P + FN);
     }
 
     private void countF1() {
