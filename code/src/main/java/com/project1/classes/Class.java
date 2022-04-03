@@ -34,18 +34,6 @@ public class Class {
         DF2 = new Dictionary("DF2", prefix);
     }
 
-    private void countPPV() {
-        PPV = (double) P / (N + FP);
-    }
-
-    private void countTPR() {
-        TPR = (double) P / (P + FN);
-    }
-
-    private void countF1() {
-        F1 = 2 * (PPV * TPR) / (PPV + TPR);
-    }
-
     public void setP(int p) {
         P = p;
     }
@@ -55,14 +43,26 @@ public class Class {
     }
 
     public double getPPV() {
+        PPV = (double) P / (N + FP);
+        if(Double.isNaN(PPV)) {
+            PPV = 0;
+        }
         return PPV;
     }
 
     public double getTPR() {
+        TPR = (double) P / (P + FN);
+        if(Double.isNaN(TPR)) {
+            TPR = 0;
+        }
         return TPR;
     }
 
     public double getF1() {
+        F1 = 2 * (PPV * TPR) / (PPV + TPR);
+        if(Double.isNaN(F1)) {
+            F1 = 0;
+        }
         return F1;
     }
 
