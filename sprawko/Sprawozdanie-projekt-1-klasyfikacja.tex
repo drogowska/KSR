@@ -3,6 +3,7 @@
 \usepackage{color}
 \usepackage{amsmath}
 \usepackage{graphicx}
+\usepackage{adjustbox}
 
 \studycycle{Informatyka, studia STACJONARNE, I st.}
 \coursesemester{VI}
@@ -384,7 +385,101 @@ Aplikacja jest uruchamiana z linii poleceń, wymagane jest posiadanie JDK w wers
 %\noindent {\bf Sekcja uzupełniona jako efekt zadania Tydzień 05 wg Harmonogramu Zajęć
 %na WIKAMP KSR.}
 
+Poniżej zamieszczono tabele wynikowe oraz wykresy zależności miary Accuracy od poszczególnych parametrów:
 
+\begin{table}[!htbp]
+    \centering
+\caption{Tabela zawierająca wyniki klasyfikacji w zależności od wartości parametru k algorytmu KNN dla metryki M2, 8000 dokumentów oraz dla klasyfikacji 30\% zbioru artykułów (70\% dokumentów należało do zbioru uczącego). Wykres zawiera linię trendu wykazającą wspomnianą zależność}
+\begin{adjustbox}{max width=\textwidth}
+    \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+    \hline
+        K & Acc & PPVc & TPRc & F1c & PPV & ~ & ~ & ~ & ~ & ~ & TPR & ~ & ~ & ~ & ~ & ~ \\ \hline
+        ~ & ~ & ~ & ~ & ~ & west-germany  & usa  & japan & france & uk & canada & west-germany  & usa  & japan & france & uk & canada \\ \hline
+        2 & 0.7597 & 0.5923 & 0.7549 & 0.6635 & 0.0000 & 0.7627 & 0.0061 & 0.0000 & 0.0038 & 0.0073 & 0.0000 & 0.9732 & 0.0012 & 0.0000 & 0.0012 & 0.0024 \\ \hline
+        3 & 0.7606 & 0.5921 & 0.7573 & 0.6641 & 0.0000 & 0.7619 & 0.0205 & 0.0000 & 0.0036 & 0.0036 & 0.0000 & 0.9764 & 0.0035 & 0.0000 & 0.0012 & 0.0012 \\ \hline
+        4 & 0.7712 & 0.6000 & 0.7684 & 0.6734 & 0.0000 & 0.7721 & 0.0208 & 0.0000 & 0.0037 & 0.0040 & 0.0000 & 0.9907 & 0.0036 & 0.0000 & 0.0012 & 0.0012 \\ \hline
+        5 & 0.7720 & 0.5997 & 0.7705 & 0.6742 & 0.0000 & 0.7724 & 0.0069 & 0.0000 & 0.0000 & 0.0081 & 0.0000 & 0.9935 & 0.0012 & 0.0000 & 0.0000 & 0.0025 \\ \hline
+        6 & 0.7751 & 0.6016 & 0.7744 & 0.6769 & 0.0000 & 0.7751 & 0.0070 & 0.0000 & 0.0039 & 0.0000 & 0.0000 & 0.9986 & 0.0012 & 0.0000 & 0.0012 & 0.0000 \\ \hline
+        7 & 0.7753 & 0.6016 & 0.7749 & 0.6772 & 0.0000 & 0.7752 & 0.0070 & 0.0000 & 0.0039 & 0.0000 & 0.0000 & 0.9993 & 0.0012 & 0.0000 & 0.0012 & 0.0000 \\ \hline
+        8 & 0.7753 & 0.6011 & 0.7753 & 0.6772 & 0.0000 & 0.7753 & 0.0000 & 0.0000 & 0.0000 & 0.0000 & 0.0000 & 1.0000 & 0.0000 & 0.0000 & 0.0000 & 0.0000 \\ \hline
+        9 & 0.7753 & 0.6011 & 0.7753 & 0.6772 & 0.0000 & 0.7753 & 0.0000 & 0.0000 & 0.0000 & 0.0000 & 0.0000 & 1.0000 & 0.0000 & 0.0000 & 0.0000 & 0.0000 \\ \hline
+        10 & 0.7753 & 0.6011 & 0.7753 & 0.6772 & 0.0000 & 0.7753 & 0.0000 & 0.0000 & 0.0000 & 0.0000 & 0.0000 & 1.0000 & 0.0000 & 0.0000 & 0.0000 & 0.0000 \\ \hline
+        11 & 0.7753 & 0.6011 & 0.7753 & 0.6772 & 0.0000 & 0.7753 & 0.0000 & 0.0000 & 0.0000 & 0.0000 & 0.0000 & 1.0000 & 0.0000 & 0.0000 & 0.0000 & 0.0000 \\ \hline
+    \end{tabular}
+\end{adjustbox}
+\end{table}
+
+\begin{table}[!htbp]
+    \centering
+\caption{Tabela zawierająca wyniki klasyfikacji w zależności od wartości procentowej zbioru klasyfikowanego dla metryki M1, 8000 dokumentów oraz dla wartości parametru k algorytmu KNN równej 5. Wykres zawiera linię trendu wykazającą wspomnianą zależnośćć}
+\begin{adjustbox}{max width=\textwidth}
+    \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+    \hline
+        Split (\%) & Acc & PPVc & TPRc & F1c & PPV & ~ & ~ & ~ & ~ & ~ & TPR & ~ & ~ & ~ & ~ & ~ \\ \hline
+        ~ & ~ & ~ & ~ & ~ & west-germany  & usa  & japan & france & uk & canada & west-germany  & usa  & japan & france & uk & canada \\ \hline
+        10 & 0.7910 & 0.6341 & 0.7889 & 0.7027 & 0.0000 & 0.7913 & 0.0000 & 0.0000 & 0.0227 & 0.0033 & 0.0000 & 0.9865 & 0.0000 & 0.0000 & 0.0073 & 0.0011 \\ \hline
+        20 & 0.7921 & 0.6332 & 0.7907 & 0.7032 & 0.0000 & 0.7930 & 0.0000 & 0.0000 & 0.0037 & 0.0000 & 0.0000 & 0.9906 & 0.0000 & 0.0000 & 0.0012 & 0.0000 \\ \hline
+        30 & 0.7927 & 0.6338 & 0.7915 & 0.7037 & 0.0000 & 0.7933 & 0.0084 & 0.0000 & 0.0042 & 0.0000 & 0.0000 & 0.9913 & 0.0013 & 0.0000 & 0.0014 & 0.0000 \\ \hline
+        40 & 0.7864 & 0.6227 & 0.7850 & 0.6941 & 0.0000 & 0.7864 & 0.0206 & 0.0000 & 0.0000 & 0.0102 & 0.0000 & 0.9930 & 0.0030 & 0.0000 & 0.0000 & 0.0031 \\ \hline
+        50 & 0.7841 & 0.6203 & 0.7812 & 0.6913 & 0.0000 & 0.7858 & 0.0111 & 0.0000 & 0.0056 & 0.0000 & 0.0000 & 0.9907 & 0.0018 & 0.0000 & 0.0018 & 0.0000 \\ \hline
+    \end{tabular}
+\end{adjustbox}
+\end{table}
+
+\begin{table}[!htbp]
+    \centering
+\caption{Tabela zawierająca wyniki klasyfikacji w zależności od wybranej metryki dla 8000 dokumentów, wartości parametru k algorytmu KNN równej 5 oraz dla klasyfikacji 30\% zbioru artykułów (70\% dokumentów należało do zbioru uczącego).}
+\begin{adjustbox}{max width=\textwidth}
+    \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+    \hline
+        Metryka & Acc & PPVc & TPRc & F1c & PPV & ~ & ~ & ~ & ~ & ~ & TPR & ~ & ~ & ~ & ~ & ~ \\ \hline
+        ~ & ~ & ~ & ~ & ~ & west-germany  & usa  & japan & france & uk & canada & west-germany  & usa  & japan & france & uk & canada \\ \hline
+        M1 & 0.7836 & 0.6181 & 0.7818 & 0.6901 & 0.0000 & 0.7843 & 0.0000 & 0.0000 & 0.0112 & 0.0042 & 0.0000 & 0.9933 & 0.0000 & 0.0000 & 0.0039 & 0.0013 \\ \hline
+        M2 & 0.7836 & 0.6181 & 0.7818 & 0.6901 & 0.0000 & 0.7843 & 0.0000 & 0.0000 & 0.0112 & 0.0042 & 0.0000 & 0.9933 & 0.0000 & 0.0000 & 0.0039 & 0.0013 \\ \hline
+        M3 & 0.7836 & 0.6181 & 0.7818 & 0.6901 & 0.0000 & 0.7843 & 0.0000 & 0.0000 & 0.0112 & 0.0042 & 0.0000 & 0.9933 & 0.0000 & 0.0000 & 0.0039 & 0.0013 \\ \hline
+    \end{tabular}
+\end{adjustbox}
+\end{table}
+
+\begin{table}[!htbp]
+    \centering
+\caption{Tabela zawierająca wyniki klasyfikacji w zależności od wybranych podzbiorów cech używanych w obliczeniach odległości w algorytmie KNN dla 8000 dokumentów, klasyfikacji 30\% zbioru artykułów (70\% dokumentów należało do zbioru uczącego), wartości parametru k algorytmu KNN równej 5 oraz dla metryki M1.}
+\begin{adjustbox}{max width=\textwidth}
+    \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+    \hline
+        Podzbiór cech & Acc & PPVc & TPRc & F1c & PPV & ~ & ~ & ~ & ~ & ~ & TPR & ~ & ~ & ~ & ~ & ~ \\ \hline
+        ~ & ~ & ~ & ~ & ~ & west-germany  & usa  & japan & france & uk & canada & west-germany  & usa  & japan & france & uk & canada \\ \hline
+        N1, N2, N3, N4, N5, N6 & 0.7927 & 0.6283 & 0.7927 & 0.7010 & 0.0000 & 0.7927 & 0.0000 & 0.0000 & 0.0000 & 0.0000 & 0.0000 & 1.0000 & 0.0000 & 0.0000 & 0.0000 & 0.0000 \\ \hline
+        K1, F2, P1, R1, L1 & 0.7962 & 0.6371 & 0.7954 & 0.7074 & 0.0000 & 0.7965 & 0.0082 & 0.0000 & 0.0000 & 0.0000 & 0.0000 & 0.9948 & 0.0014 & 0.0000 & 0.0000 & 0.0000 \\ \hline
+        R1, L1 & 0.8003 & 0.6461 & 0.7998 & 0.7147 & 0.0000 & 0.8005 & 0.0079 & 0.0000 & 0.0000 & 0.0000 & 0.0000 & 0.9914 & 0.0014 & 0.0000 & 0.0000 & 0.0000 \\ \hline
+        K1, F2, P1, N1, N2, N3, N4, N5, N6 & 0.7847 & 0.6158 & 0.7847 & 0.6901 & 0.0000 & 0.7847 & 0.0000 & 0.0000 & 0.0000 & 0.0000 & 0.0000 & 1.0000 & 0.0000 & 0.0000 & 0.0000 & 0.0000 \\ \hline
+    \end{tabular}
+\end{adjustbox}
+\end{table}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.66\textwidth]{wykres5.png}
+\caption{Wykres zależności miary Accuracy od wartości parametru k algorytmu KNN dla metryki M2, 8000 dokumentów oraz dla klasyfikacji 30\% zbioru artykułów (70\% dokumentów należało do zbioru uczącego). Wykres zawiera linię trendu wykazającą wspomnianą zależność.}
+\end{figure}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.66\textwidth]{wykres6.png}
+\caption{Wykres zależności miary Accuracy od wartości procentowej zbioru klasyfikowanego dla metryki M1, 8000 dokumentów oraz dla wartości parametru k algorytmu KNN równej 5. Wykres zawiera linię trendu wykazającą wspomnianą zależność}
+\end{figure}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.66\textwidth]{wykres7.png}
+\caption{Wykres zależności miary Accuracy od wybranej metryki dla 8000 dokumentów, wartości parametru k algorytmu KNN równej 5 oraz dla klasyfikacji 30\% zbioru artykułów (70\% dokumentów należało do zbioru uczącego).}
+\end{figure}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.66\textwidth]{wykres8.png}
+\caption{Wykres zależności miary Accuracy od wybranych podzbiorów cech używanych w obliczeniach odległości w algorytmie KNN dla 8000 dokumentów, klasyfikacji 30\% zbioru artykułów (70\% dokumentów należało do zbioru uczącego), wartości parametru k algorytmu KNN równej 5 oraz dla metryki M1.}
+\end{figure}
 
 
 \section{Dyskusja, wnioski}
