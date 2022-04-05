@@ -223,15 +223,15 @@ podobieństwo pomiędzy $K_1$, $F_2$, $P_1$, $R_1$, i $L_1$ odpowiadającymi ele
 przy obliczeniach odległości badanego wektora od sąsiadów. %zapisujemy w miejsca odpowiednich fraz, przy czym
 %w wektorze \(S\), wpisujemy wartości 0, zaś dla \(Z\)- wartości wynikowe.
 
-Do obliczenia wspomianego podobieństwa tekstów zostosowano metodę \(n\)-gramów (M4), w szczególności \(4\)-gramów, metoda ta pozwala na określenie podobieństwa łańcuchów tekstowych, w oparciu o ilość wspólnych podciągów \(4\)-elementowych. Stosowana w celu porównania tekstowych elementów wektora cech. 
+Do obliczenia wspomianego podobieństwa tekstów zostosowano metodę \(n\)-gramów (M4), w szczególności \(2\)-gramów, metoda ta pozwala na określenie podobieństwa łańcuchów tekstowych, w oparciu o ilość wspólnych podciągów \(2\)-elementowych. Stosowana w celu porównania tekstowych elementów wektora cech. 
 Przyjmuje wartości z przedziału [0,1], przy czym wartość 1 ozancza identyczność dwóch fraz. Przykładowo, otrzymana wartość miary 0.3, dla dwóch wyrazów, oznacza, że 30\% wyrazu dłuższego stanowią frazy pojawiające się w krótszym. 
     \begin{equation}
-      M4(s_1, s_2) = \frac{1}{N-3} \sum_{i=1}^{N-3} h(i),
+      M4(s_1, s_2) = \frac{1}{N-3} \sum_{i=1}^{N-1} h(i),
     \end{equation}
-  gdzie \(h(i)\) przyjmuje wartość 1, gdy w \(n\)-elementowy podciąg, zaczynający się od \(i\)-tej pozycji w wyrazie \(s_1\) występuje przynajmniej raz w \(s_2\);
-  \(N\) - liczba określająca długość dłuższego z wyrazów.\\ Przykładowo dla 4-gramów:
+  gdzie \(h(i)\) przyjmuje wartość 1, gdy w \(2\)-elementowy podciąg, zaczynający się od \(i\)-tej pozycji w wyrazie \(s_1\) występuje przynajmniej raz w \(s_2\);
+  \(N\) - liczba określająca długość dłuższego z wyrazów.\\ Przykładowo dla 2-gramów:
 \begin{equation}
-      M4("ABCDABCD", "ABCD") = \frac{1}{8-3} * 2 = \frac{2}{5},
+      M4("ABCD", "AB") = \frac{1}{4-1} * 2 = \frac{2}{3},
 \end{equation}
 
 %bez sensu

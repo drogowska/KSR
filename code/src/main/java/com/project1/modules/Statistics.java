@@ -41,51 +41,51 @@ public class Statistics {
             clas.setP((int) zaklasyfikowaneDoClas.stream().filter(article ->
                     article.getPlaces().get(0).equals(article.getVectorOfCharacteristics().getLabel())).count());
 
-           clas.setN((int) nieZaklasyfikowaneDoClas.stream().filter(article ->
-                   article.getPlaces().get(0).equals(article.getVectorOfCharacteristics().getLabel())).count());
+            clas.setN((int) nieZaklasyfikowaneDoClas.stream().filter(article ->
+                    article.getPlaces().get(0).equals(article.getVectorOfCharacteristics().getLabel())).count());
 
-           clas.setFP((int) zaklasyfikowaneDoClas.stream().filter(article ->
-                   !article.getPlaces().get(0).equals(article.getVectorOfCharacteristics().getLabel())).count());
+            clas.setFP((int) zaklasyfikowaneDoClas.stream().filter(article ->
+                    !article.getPlaces().get(0).equals(article.getVectorOfCharacteristics().getLabel())).count());
 
-           clas.setFN((int) nieZaklasyfikowaneDoClas.stream().filter(article ->
-                   !article.getPlaces().get(0).equals(article.getVectorOfCharacteristics().getLabel())).count());
+            clas.setFN((int) nieZaklasyfikowaneDoClas.stream().filter(article ->
+                    !article.getPlaces().get(0).equals(clas.getLabel())).count());
         });
     }
 
     public void setN() {
         classes.forEach(clas -> {
-            clas.setN((int) articles.stream()
-                            .filter(article -> article.getPlaces().get(0).equals(clas.getLabel())).count());
+            clas.setCount((int) articles.stream()
+                    .filter(article -> article.getPlaces().get(0).equals(clas.getLabel())).count());
         });
     }
 
     public double getF1c() {
         double result = 0;
         double sumOfWeights = 0;
-        for(Class c : classes) {
-            result = result + c.getN() * c.getF1();
-            sumOfWeights = sumOfWeights + c.getN();
+        for (Class c : classes) {
+            result = result + c.getCount() * c.getF1();
+            sumOfWeights = sumOfWeights + c.getCount();
         }
-        return result/sumOfWeights;
+        return result / sumOfWeights;
     }
 
     public double getTPRc() {
         double result = 0;
         double sumOfWeights = 0;
-        for(Class c : classes) {
-            result = result + c.getN() * c.getTPR();
-            sumOfWeights = sumOfWeights + c.getN();
+        for (Class c : classes) {
+            result = result + c.getCount() * c.getTPR();
+            sumOfWeights = sumOfWeights + c.getCount();
         }
-        return result/sumOfWeights;
+        return result / sumOfWeights;
     }
 
     public double getPPVc() {
         double result = 0;
         double sumOfWeights = 0;
-        for(Class c : classes) {
-            result = result + c.getN() * c.getPPV();
-            sumOfWeights = sumOfWeights + c.getN();
+        for (Class c : classes) {
+            result = result + c.getCount() * c.getPPV();
+            sumOfWeights = sumOfWeights + c.getCount();
         }
-        return result/sumOfWeights;
+        return result / sumOfWeights;
     }
 }

@@ -1,8 +1,7 @@
 package com.project1.modules;
 
-import com.project1.classes.CountryClass;
+
 import com.project1.metrics.Metric;
-import com.project1.model.Article;
 import com.project1.model.VectorOfCharacteristics;
 
 import java.util.Collections;
@@ -26,7 +25,7 @@ public class KnnAlgorithm {
 
     public void run(VectorOfCharacteristics object) {
         HashMap<VectorOfCharacteristics, Double> distances = new HashMap<>();
-        docs.forEach(doc ->{
+        docs.forEach(doc -> {
             distances.put(doc, metric.count(object, doc));
         });
 

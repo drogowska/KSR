@@ -1,23 +1,19 @@
 package com.project1.model;
 
-import com.project1.classes.CountryClass;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Article {
-    private int id;
-    private String date;
-    private List<String> topic;
-    private List<String> places;
-    private String title;
-//    private String dateline;
-    private List<String> body;
+    private final int id;
+    private final String date;
+    private final List<String> topic;
+    private final List<String> places;
+    private final String title;
+    //    private String dateline;
+    private final List<String> body;
 
     private VectorOfCharacteristics vectorOfCharacteristics;
-    private NoStringVectorOfCharacteristics noStringVectorOfCharacteristics;
-//    private CountryClass countryClass;
 
     public Article(int id, String date, List<String> topic, List<String> places, String title, String body) {
         this.id = id;
@@ -42,14 +38,6 @@ public class Article {
         this.vectorOfCharacteristics = vectorOfCharacteristics;
     }
 
-    public NoStringVectorOfCharacteristics getNoStringVectorOfCharacteristics() {
-        return noStringVectorOfCharacteristics;
-    }
-
-    public void setNoStringVectorOfCharacteristics(NoStringVectorOfCharacteristics noStringVectorOfCharacteristics) {
-        this.noStringVectorOfCharacteristics = noStringVectorOfCharacteristics;
-    }
-
     public int getId() {
         return id;
     }
@@ -69,6 +57,5 @@ public class Article {
     public String getTitle() {
         return title;
     }
-
 
 }

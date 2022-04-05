@@ -1,7 +1,7 @@
 package com.project1.modules;
 
-import com.project1.model.Article;
 import com.project1.metrics.Metric;
+import com.project1.model.Article;
 import com.project1.model.VectorOfCharacteristics;
 
 import java.util.ArrayList;

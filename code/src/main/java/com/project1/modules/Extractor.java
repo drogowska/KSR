@@ -2,10 +2,9 @@ package com.project1.modules;
 
 import com.project1.model.Article;
 import org.apache.commons.lang3.StringUtils;
-import java.util.*;
-import java.util.stream.Collectors;
 
-import static com.project1.Constants.*;
+import java.util.*;
+
 import static com.project1.Main.classes;
 
 public class Extractor {
@@ -14,7 +13,6 @@ public class Extractor {
 
     public List<Article> extract(List<Article> articles) {
         this.articles = new ArrayList<>(articles);
-        filterArticles();
         firstOccurrence(1);
         firstOccurrence(0);
         numberOfFamousBuild();
@@ -37,29 +35,24 @@ public class Extractor {
         return this.articles;
     }
 
-    private void filterArticles() {
-        articles = articles.stream().filter(doc -> doc.getPlaces().size() == 1 && placesList.contains(doc.getPlaces().get(0)))
-                .collect(Collectors.toList());
-    }
 
-    //todo - sprawdza po słowie nie po frazie
     //k1, f2 // 0, 1
     private void firstOccurrence(int dictNumb) {
         final boolean[] flag = {true};
         articles.stream().forEach(article -> {
-             article.getBody().forEach(w -> {
-                 if(flag[0]) {
-                     classes.forEach(clas -> {
-                         for (String s : clas.getDic(dictNumb).getContent()) {
-                             if (w.equals(s)) {
-                                 article.getVectorOfCharacteristics().setFeatures(dictNumb, clas.getLabel());
-                                 flag[0] = false;
-                                 return;
-                             }
-                         }
-                     });
-                 }
-             });
+            article.getBody().forEach(w -> {
+                if (flag[0]) {
+                    classes.forEach(clas -> {
+                        for (String s : clas.getDic(dictNumb).getContent()) {
+                            if (w.equals(s)) {
+                                article.getVectorOfCharacteristics().setFeatures(dictNumb, clas.getLabel());
+                                flag[0] = false;
+                                return;
+                            }
+                        }
+                    });
+                }
+            });
         });
     }
 
@@ -67,7 +60,7 @@ public class Extractor {
     private void numberOfFamousBuild() {
         final int[] sum = {0};
         articles.forEach(article -> {
-            for(int i = 0; i < classes.size(); i++) {
+            for (int i = 0; i < classes.size(); i++) {
                 classes.get(i).getDN().getContent().forEach(s -> {
                     sum[0] += StringUtils.countMatches(StringUtils.join(article.getBody(), " "), s);
                 });
@@ -87,15 +80,16 @@ public class Extractor {
     //r1, p1 (9,2)
     private void mostCommonCountry(int party) {
         articles.forEach(article -> {
+//        for (Article article : articles) {
             HashMap<String, Integer> countryOccur = new HashMap<>();
             classes.forEach(c -> countryOccur.put(c.getLabel(), 0));
             classes.forEach(c -> {
                 c.getDic(party).getContent().forEach(s -> {
-                        countryOccur.put(c.getLabel(), countryOccur.get(c.getLabel()) +
-                                StringUtils.countMatches(" " + StringUtils.join(article.getBody(), " ")," " + s + " "));
+                    countryOccur.put(c.getLabel(), countryOccur.get(c.getLabel()) +
+                            StringUtils.countMatches(" " + StringUtils.join(article.getBody(), " "), " " + s + " "));
                 });
             });
-            Map.Entry<String, Integer> entry =  Collections.max(countryOccur.entrySet(), new Comparator<Map.Entry<String, Integer>>() {
+            Map.Entry<String, Integer> entry = Collections.max(countryOccur.entrySet(), new Comparator<Map.Entry<String, Integer>>() {
                 @Override
                 public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
                     return o1.getValue().compareTo(o2.getValue());
@@ -104,6 +98,7 @@ public class Extractor {
             if (entry.getValue() != 0)
                 article.getVectorOfCharacteristics().setFeatures(party, entry.getKey());
         });
+//        }
     }
 
 }
