@@ -81,20 +81,21 @@ do których badany element ma najbliżej dla wybranej metryki. Parametrami wejś
 Każdy dokument został poddany procesowi ekstrakcji cech, potrzebnych do procesu klasyfikacji.
 Poniżej znajduje się lista określonych cech liczbowych i tekstowych:
 \begin{enumerate}
-\item cecha tekstowa K1 - Pierwsza występująca nazwa geograficzna w danym tekście (nazwa geograficzna $k_1$ taka, że $k_1 \in DK1$)
-\item cecha tekstowa F2 - Pierwszy występująca nazwa/symbol waluty w danym tekście (nazwa/symbol waluty $f_2$ taki, że $f_2 \in DF2$)
-\item cecha tekstowa P1 - Najczęściej występująca nazwa partii politycznej w danym tekście (nazwa partii politycznej $p_1$ taka, że $p_1 \in DP1$)
-\item cecha liczbowa N1 - Liczba nazw znanych zachodnioniemieckich budowli w danym tekście (liczba takich nazw znanych budowli $n_1$, że $n_1 \in DN1$)
-\item cecha liczbowa N2 - Liczba nazw znanych amerykańskich budowli w danym tekście (liczba takich nazw znanych budowli $n_2$, że $n_2 \in DN2$)
-\item cecha liczbowa N3 - Liczba nazw znanych japońskich budowli w danym tekście (liczba takich nazw znanych budowli $n_3$, że $n_3 \in DN3$)
-\item cecha liczbowa N4 - Liczba nazw znanych francuskich budowli w danym tekście (liczba takich nazw znanych budowli $n_4$, że $n_4 \in DN4$)
-\item cecha liczbowa N5 - Liczba nazw znanych angielskich budowli w danym tekście (liczba takich nazw znanych budowli $n_5$, że $n_5 \in DN5$)
-\item cecha liczbowa N6 - Liczba nazw znanych kanadyjskich budowli w danym tekście (liczba takich nazw znanych budowli $n_6$, że $n_6 \in DN6$)
-\item cecha tekstowa R1 - Najczęściej występująca nazwa kraju w danym tekście (nazwa kraju $r_1$ taka, że $r_1 \in DR1$)
+\item cecha tekstowa K1 - Nazwa kraju, dla którego jako pierwsza występuje nazwa geograficzna w danym tekście (nazwa geograficzna $k_1$ taka, że $k_1 \in DK1_x$)
+\item cecha tekstowa F2 - Nazwa karju, dla którego jako pierwszy występuje nazwa/symbol waluty w danym tekście (nazwa/symbol waluty $f_2$ taki, że $f_2 \in DF2_x$)
+\item cecha tekstowa P1 - Nazwa karju, dla którego najczęściej występuje nazwa partii politycznej w danym tekście (nazwa partii politycznej $p_1$ taka, że $p_1 \in DP1_x$)
+\item cecha liczbowa N1 - Liczba nazw znanych zachodnioniemieckich budowli w danym tekście (liczba takich nazw znanych budowli $n_1$, że $n_1 \in DN_{we}$)
+\item cecha liczbowa N2 - Liczba nazw znanych amerykańskich budowli w danym tekście (liczba takich nazw znanych budowli $n_2$, że $n_2 \in DN_{us}$)
+\item cecha liczbowa N3 - Liczba nazw znanych japońskich budowli w danym tekście (liczba takich nazw znanych budowli $n_3$, że $n_3 \in DN_{ja}$)
+\item cecha liczbowa N4 - Liczba nazw znanych francuskich budowli w danym tekście (liczba takich nazw znanych budowli $n_4$, że $n_4 \in DN_{fr}$)
+\item cecha liczbowa N5 - Liczba nazw znanych angielskich budowli w danym tekście (liczba takich nazw znanych budowli $n_5$, że $n_5 \in DN_{uk}$)
+\item cecha liczbowa N6 - Liczba nazw znanych kanadyjskich budowli w danym tekście (liczba takich nazw znanych budowli $n_6$, że $n_6 \in DN_{ca}$)
+\item cecha tekstowa R1 - Najczęściej występująca nazwa kraju w danym tekście (nazwa kraju $r_1$ taka, że $r_1 \in DR1_x$)
 \item cecha tekstowa L1 - Godzina opublikowania dokumentu w formacie tekstowym (wartość cechy dla danego dokumentu jest zawarta w jego sekcji "DATE")\\
 \end{enumerate}
-gdzie $DK1$, $DF2$, $DP1$, $DN1$, $DN2$, $DN3$, $DN4$, $DN5$, $DN6$, $DR1$ oznaczają słowniki dla poszczególnych ementów wektora. Poglądowo fragment słownika $DK1$ wygląda następująco:\\
- $DK1 = \{$Alabama, Alaska, American Samoa, Arizona, Arkansas, ....$\} $. \\
+gdzie $DK1_x$, $DF2_x$, $DP1_x$, $DN_{we}$, $DN_{us}$, $DN_{ja}$, $DN_{fr}$, $DN_{uk}$, $DN_{ca}$, $DR1_x$ oznaczają słowniki dla poszczególnych ementów wektora, \(x\) określa dwie pierwsze litery etykiety danej klasy (\(x \in \{we, ja, us, uk, ca, fr\}\)).
+Poglądowo fragment słownika $DK1$ wygląda następująco:\\
+ $DK1_us = \{$Alabama, Alaska, American Samoa, Arizona, Arkansas, ....$\} $. \\
 Natomiast wszystkie wykorzystane słownik znajdują się w załączonym wraz z raportem plikiem \cite{slowniki}.
 % gdzie:
 % \begin{itemize}
@@ -110,7 +111,10 @@ Natomiast wszystkie wykorzystane słownik znajdują się w załączonym wraz z r
 % \item $DR1 = \{$Germany, USA, America, United States, Japan, France, England, Great Britain, United Kingdom, Canada$\}$
 % \end{itemize} \hfill \break
 Po procesie ekstrakcji cech, każdemu tekstowi zostaje przypisany wektor cech postaci:
-$\vec{W} = (K1, F2, P1, N1, N2, N3, N4, N5, N6, R1, L1)$
+\begin{center}
+  $\vec{W} = (K1, F2, P1, N1, N2, N3, N4, N5, N6, R1, L1)$
+\end{center}
+
 
 \subsection{Miary jakości klasyfikacji}
 %Miary jakości klasyfikacji (Accuracy, Precision,
@@ -226,7 +230,7 @@ przy obliczeniach odległości badanego wektora od sąsiadów. %zapisujemy w mie
 Do obliczenia wspomianego podobieństwa tekstów zostosowano metodę \(n\)-gramów (M4), w szczególności \(2\)-gramów, metoda ta pozwala na określenie podobieństwa łańcuchów tekstowych, w oparciu o ilość wspólnych podciągów \(2\)-elementowych. Stosowana w celu porównania tekstowych elementów wektora cech. 
 Przyjmuje wartości z przedziału [0,1], przy czym wartość 1 ozancza identyczność dwóch fraz. Przykładowo, otrzymana wartość miary 0.3, dla dwóch wyrazów, oznacza, że 30\% wyrazu dłuższego stanowią frazy pojawiające się w krótszym. 
     \begin{equation}
-      M4(s_1, s_2) = \frac{1}{N-3} \sum_{i=1}^{N-1} h(i),
+      M4(s_1, s_2) = \frac{1}{N-1} \sum_{i=1}^{N-1} h(i),
     \end{equation}
   gdzie \(h(i)\) przyjmuje wartość 1, gdy w \(2\)-elementowy podciąg, zaczynający się od \(i\)-tej pozycji w wyrazie \(s_1\) występuje przynajmniej raz w \(s_2\);
   \(N\) - liczba określająca długość dłuższego z wyrazów.\\ Przykładowo dla 2-gramów:
@@ -256,13 +260,13 @@ Przyjmuje wartości z przedziału [0,1], przy czym wartość 1 ozancza identyczn
 W kolejnym etapie obliczane zostaje odległość pomiędzy wektorami, z wykorzystaniem
 jeden z trzech możliwych metryk: 
 (przykłady w poniższych metrykach będą zbudowane przy pomocy wektorów cech: \\
- $c = ("", "franc", "", 0, 3, 2, 0, 2, 1, 1, "France", \text{"20-MAR-1987 05:24:53.48"})$ \\
- $d = ("", "frf", "", 4, 3, 2, 0, 2, 1, 1, "France", \text{"20-MAR-1987 05:24:53.48"})$)
+ $c = ("", "france", "", 0, 3, 2, 0, 2, 1, 1, "france", \text{"05:24:53.48"})$ \\
+ $d = ("", "france", "", 4, 3, 2, 0, 2, 1, 1, "france", \text{"05:24:53.48"})$)
 % W celu określenia podobieństwa $N$-wymiarowych wektorów cech tekstu stosujemy następujące miary i metryki: \\
 %Ze względu na różne przyjmowane typy elementów wektora cech, zarówno wartości liczbowe jak i tekstowe,  
 
 \begin{enumerate}
-  \item Metryka euklidesowa (M1) -  metryka, pozwalająca na obliczenie odległości pomiędzy dwoma liczbowymi elementami wektora. Wyliczana zgodnie ze wzorem:
+  \item Metryka euklidesowa ($M1$) -  metryka, pozwalająca na obliczenie odległości pomiędzy dwoma liczbowymi elementami wektora. Wyliczana zgodnie ze wzorem:
   \begin{equation}
     M1(a,b) = \sqrt{\sum_{i=1}^{11} W(a, b)^2},
   \end{equation} 
@@ -281,7 +285,7 @@ jeden z trzech możliwych metryk:
   \begin{equation}
     M1(c, d) = \sqrt{19} \approx 4
   \end{equation}
-  \item Metryka uliczna (M2)
+  \item Metryka uliczna ($M2$)
   \begin{equation}
     M2(a, b) = \sum_{i=1}^{11} |W(a,b)|, 
   \end{equation}
@@ -290,7 +294,7 @@ jeden z trzech możliwych metryk:
   \begin{equation}
     M2(c, d) = 4
   \end{equation}
-  \item Metryka Czebyszewa (M3) - metryka odległości pomiędzy dwoma wartościami liczbowymi. Miara ta pozwala na zdefiniowanie dwóch obiektów jako 'inne', na podstawie różnicy ich wartości w jednym dowolnym wymiarze.
+  \item Metryka Czebyszewa ($M3$) - metryka odległości pomiędzy dwoma wartościami liczbowymi. Miara ta pozwala na zdefiniowanie dwóch obiektów jako 'inne', na podstawie różnicy ich wartości w jednym dowolnym wymiarze.
   Przyjmuje wartość najmniejszą równą zeru, kiedy badane wektory są sobie równe we wszystkich wymiarach.
   \begin{equation}
     M3(a, b) = \max_{i=1, ..., 11} |W(a,b)|, 
@@ -307,12 +311,12 @@ Zbiór testowy wszystkich próbnych klasyfikacji składał się z 6 dokumentów,
 
 Wektory cech dokumentu w zbiorze testowym mówiącego o:
 \begin{itemize}
-\item Francji - $v1 = ("", "franc", "", 0, 0, 0, 0, 0, 0, "France", "19-MAR-1987 07:44:43.08")$
-\item Zachodnich Niemiec - $v2 = ("", "mark", "", 0, 0, 0, 0, 0, 0, "U.S", "19-MAR-1987 09:18:25.05")$
-\item Kanady - $v3 = ("Toronto", "", "", 0, 0, 0, 0, 0, 0, "", "19-MAR-1987 10:19:37.13")$
-\item Japonii - $v4 = ("Tokyo", "yen", "", 0, 0, 0, 0, 0, 0, 0, "", "19-MAR-1987 07:29:03.46")$
-\item Amerykii - $v5 = ("", "", "", 0, 0, 0, 0, 0, 0, "America", "19-MAR-1987 10:19:48.63")$
-\item Wielkiej Brytanii - $v6 = ("London", "", "", 0, 0, 0, 0, 0, 0, "England", "20-MAR-1987 05:24:53.48")$ \\
+\item Francji - $v1 = ("", "france", "", 0, 0, 0, 0, 0, 0, "france", "07:44:43.08")$
+\item Zachodnich Niemiec - $v2 = ("", "west-germany", "", 0, 0, 0, 0, 0, 0, "usa", "09:18:25.05")$
+\item Kanady - $v3 = ("usa", "", "", 0, 0, 0, 0, 0, 0, "", "10:19:37.13")$
+\item Japonii - $v4 = ("japan", "japan", "", 0, 0, 0, 0, 0, 0, 0, "", "07:29:03.46")$
+\item Amerykii - $v5 = ("", "", "", 0, 0, 0, 0, 0, 0, "usa", "10:19:48.63")$
+\item Wielkiej Brytanii - $v6 = ("uk", "", "", 0, 0, 0, 0, 0, 0, "uk", "05:24:53.48")$ \\
 \end{itemize} 
 
 Klasyfikacje:
@@ -355,7 +359,7 @@ Ideą aplikacji jest jej prostota (sposóbu użycia, wyglądu, zapisu danych) or
 \begin{enumerate}
 \item moduł FileReader - moduł odpowiadający za operacje na plikach i danych w nich zawartych. Pobiera dane z plików tekstowych, \cite{teksty} a następnie mapuje je na model klasy Article
 \item moduł Extractor - moduł odpowiadający za ekstrakcje wektorów cech z każdego dokumentu tekstowego przedstawionego za pomocą klasy Article
-\item moduł Classifier - moduł odpowiadający za klasyfikacje dokumentów (klasy Article) na podstawie ich wektorów cech za pomocą algorytmu KNN \cite{tadeusiewicz90} (klasa KnnAlgorithm) i jednej z wybranych przez użytkownika metryk (klasy M1, M2, M3)
+\item moduł Classifier - moduł odpowiadający za klasyfikacje dokumentów (klasy Article) na podstawie ich wektorów cech za pomocą algorytmu \(k\)NN \cite{tadeusiewicz90} (klasa KnnAlgorithm) i jednej z wybranych przez użytkownika metryk (klasy M1, M2, M3)
 \end{enumerate}
 
 \subsection{Prezentacja wyników, interfejs użytkownika}  
@@ -512,6 +516,6 @@ podać merytoryczne (ale nie czasowe) przyczyny tych braków.
 \bibitem{slowniki} dictonaries.txt - plik załączany wraz z raportem, zawierający słowniki użyte w projekcie.
 \end{thebibliography}
 
-Literatura zawiera wyłącznie źródła recenzowane i/lub o potwierdzonej wiarygodności,
-możliwe do weryfikacji i cytowane w sprawozdaniu. 
+% Literatura zawiera wyłącznie źródła recenzowane i/lub o potwierdzonej wiarygodności,
+% możliwe do weryfikacji i cytowane w sprawozdaniu. 
 \end{document}
