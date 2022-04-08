@@ -12,7 +12,7 @@ import java.util.List;
 public class Dictionary {
 
     private List<String> content = new ArrayList<>();
-    private final String file = "E:\\KSR\\code\\src\\main\\resources\\dic.txt";
+    private final String file = "D:\\KSR\\code\\src\\main\\resources\\dic.txt";
 
     public Dictionary(String dictType, String prefix) {
         fill(dictType, prefix);

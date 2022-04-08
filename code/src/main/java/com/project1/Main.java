@@ -133,7 +133,7 @@ public class Main {
             while (number.length() != 3) {
                 number = '0' + number;
             }
-            training.addAll(FileReader.extract(Collections.singletonList("E:\\KSR\\code\\src\\main\\resources\\articles\\reut2-" + number + ".sgm")));
+            training.addAll(FileReader.extract(Collections.singletonList("D:\\KSR\\code\\src\\main\\resources\\articles\\reut2-" + number + ".sgm")));
         }
 //        Collections.shuffle(training);
         filterArticles();

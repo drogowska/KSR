@@ -58,4 +58,10 @@ public class Article {
         return title;
     }
 
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("About: ").append(places.get(0)).append(", Vector[").append(vectorOfCharacteristics.toString()).append("]");
+        return stringBuilder.toString();
+    }
+
 }

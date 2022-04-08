@@ -33,4 +33,9 @@ public class VectorOfCharacteristics {
         features.get(i).setText(value);
     }
 
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        features.forEach(feature -> stringBuilder.append(feature.isText() ? feature.getText() : feature.getValue()).append(", "));
+        return stringBuilder.toString();
+    }
 }
