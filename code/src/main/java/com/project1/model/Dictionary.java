@@ -1,18 +1,19 @@
 package com.project1.model;
 
+import com.project1.modules.FileReader;
+
 import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Dictionary {
 
     private List<String> content = new ArrayList<>();
-    private final String file = "D:\\KSR\\code\\src\\main\\resources\\dic.txt";
+    private final String dictionaryFileName = "dic.txt";
 
     public Dictionary(String dictType, String prefix) {
         fill(dictType, prefix);
@@ -20,21 +21,10 @@ public class Dictionary {
 
     private void fill(String type, String prefix) {
         String dic;
-        try (InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(file)) {
-            BufferedReader bf = new BufferedReader(new FileReader(Paths.get(file).toAbsolutePath().toFile()));
-            String line;
-            while ((line = bf.readLine()) != null) {
-                if (line.contains(type + "_" + prefix)) {
-                    line = line.toLowerCase();
-                    dic = line.substring(10, line.length() - 1);
-                    content = new ArrayList<>(Arrays.asList(dic.split(", ")));
-                    break;
-                }
-            }
-            bf.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        List<String> lines = FileReader.readFromResources(dictionaryFileName);
+        String dicLine = lines.stream().filter(line -> line.contains(type + "_" + prefix)).collect(Collectors.toList()).get(0);
+        dicLine = dicLine.toLowerCase().substring(10, dicLine.length() - 1);
+        content = new ArrayList<>(Arrays.asList(dicLine.split(", ")));
     }
 
     public List<String> getContent() {

@@ -127,15 +127,14 @@ public class Main {
     }
 
     private static void loadTraining() throws ParserConfigurationException {
-//        training = FileReader.extract(Collections.singletonList("E:\\KSR\\code\\src\\main\\resources\\articles\\reut2-001.sgm"));
         for (int i = 0; i < 22; i++) {
             String number = Integer.toString(i);
             while (number.length() != 3) {
                 number = '0' + number;
             }
-            training.addAll(FileReader.extract(Collections.singletonList("D:\\KSR\\code\\src\\main\\resources\\articles\\reut2-" + number + ".sgm")));
+            training.addAll(FileReader.extract("articles/reut2-" + number + ".sgm"));
         }
-//        Collections.shuffle(training);
+        Collections.shuffle(training);
         filterArticles();
         training = training.subList(0, 1000);
         Collections.shuffle(training);
