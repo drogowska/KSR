@@ -132,7 +132,7 @@ public class Main {
             while (number.length() != 3) {
                 number = '0' + number;
             }
-            training.addAll(FileReader.extract("articles/reut2-" + number + ".sgm"));
+            training.addAll(FileReader.extract("/articles/reut2-" + number + ".sgm"));
         }
         Collections.shuffle(training);
         filterArticles();
