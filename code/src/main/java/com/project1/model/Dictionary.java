@@ -2,9 +2,6 @@ package com.project1.model;
 
 import com.project1.modules.FileReader;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

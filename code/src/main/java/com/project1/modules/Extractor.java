@@ -4,6 +4,7 @@ import com.project1.model.Article;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import static com.project1.Main.classes;
 
@@ -38,15 +39,15 @@ public class Extractor {
 
     //k1, f2 // 0, 1
     private void firstOccurrence(int dictNumb) {
-        final boolean[] flag = {true};
+        AtomicBoolean flag = new AtomicBoolean(true);
         articles.stream().forEach(article -> {
             article.getBody().forEach(w -> {
-                if (flag[0]) {
+                if (flag.get()) {
                     classes.forEach(clas -> {
                         for (String s : clas.getDic(dictNumb).getContent()) {
-                            if (w.equals(s)) {
+                            if (w.toLowerCase().equals(s.toLowerCase())) {
                                 article.getVectorOfCharacteristics().setFeatures(dictNumb, clas.getLabel());
-                                flag[0] = false;
+                                flag.set(false);
                                 return;
                             }
                         }

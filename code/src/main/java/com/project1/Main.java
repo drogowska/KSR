@@ -34,69 +34,20 @@ public class Main {
         training = new ArrayList<>(extractor.extract(training));
         int splitPercent = 30;
         splitArray(splitPercent);
-
+        setDefaultLabel();
 
         M2 m2 = new M2();
         for (int k = 2; k <= 11; k = k + 1) {
             classifier.classify(k, testing, m2, training);
             statistics = new Statistics(testing);
-            //classes.forEach(clas -> System.out.print(clas.getLabel() + " "));
-            //System.out.println("");
-            System.out.print(statistics.ACC() + " " + statistics.getPPVc() + " " + statistics.getTPRc() + " " + statistics.getF1c() + " ");
-            classes.forEach(clas -> System.out.print(clas.getPPV() + " "));
-            classes.forEach(clas -> System.out.print(clas.getTPR() + " "));
+            System.out.println(statistics.toString());
+            classes.forEach(clas -> System.out.println(clas.getLabel() + " PPV: " + String.format("%.4f", clas.getPPV()) + " TPR: " + String.format("%.4f", clas.getTPR())));
             System.out.println();
-            //System.out.println("--------------------------------------------------");
         }
+    }
 
-        /*List<Article> originalTraining = new ArrayList<>(training);
-
-        for(int splitPercent=10; splitPercent<=50; splitPercent=splitPercent+10) {
-            training = new ArrayList<>(originalTraining);
-            splitArray(splitPercent);
-            classifier = new Classifier();
-            M1 m1 = new M1();
-            classifier.classify(5,testing, m1, training);
-            statistics = new Statistics(testing);
-            //classes.forEach(clas -> System.out.print(clas.getLabel() + " "));
-            //System.out.println("");
-            System.out.print(statistics.ACC() + " " +  statistics.getPPVc() + " " +  statistics.getTPRc() + " " +  statistics.getF1c() + " ");
-            classes.forEach(clas -> System.out.print(clas.getPPV() + " "));
-            classes.forEach(clas -> System.out.print(clas.getTPR() + " "));
-            System.out.println("");
-            //System.out.println("--------------------------------------------------");
-        }*/
-
-        /*int splitPercent = 30;
-        splitArray(splitPercent);
-
-        classifier = new Classifier();
-        M2 m2 = new M2();
-        List.of(new M1(), new M2(), new M3()).forEach(metric -> {
-            classifier.classify(5,testing, m2, training);
-            statistics = new Statistics(testing);
-            //classes.forEach(clas -> System.out.print(clas.getLabel() + " "));
-            //System.out.println("");
-            System.out.print(statistics.ACC() + " " +  statistics.getPPVc() + " " +  statistics.getTPRc() + " " +  statistics.getF1c() + " ");
-            classes.forEach(clas -> System.out.print(clas.getPPV() + " "));
-            classes.forEach(clas -> System.out.print(clas.getTPR() + " "));
-            System.out.println("");
-            //System.out.println("--------------------------------------------------");
-        });*/
-
-        /*int splitPercent = 30;
-        splitArray(splitPercent);
-
-        classifier = new Classifier();
-        M2 m2 = new M2();
-        classifier.classify(5,testing, m2, training);
-        statistics = new Statistics(testing);
-        //classes.forEach(clas -> System.out.print(clas.getLabel() + " "));
-        //System.out.println("");
-        System.out.print(statistics.ACC() + " " +  statistics.getPPVc() + " " +  statistics.getTPRc() + " " +  statistics.getF1c() + " ");
-        classes.forEach(clas -> System.out.print(clas.getPPV() + " "));
-        classes.forEach(clas -> System.out.print(clas.getTPR() + " "));
-        System.out.println("");*/
+    private static void setDefaultLabel() {
+        training.forEach(doc -> doc.getVectorOfCharacteristics().setLabel(doc.getPlaces().get(0)));
     }
 
     private static void initializeModules() {
@@ -123,7 +74,6 @@ public class Main {
             testing.add(training.get(numb));
             training.remove(numb);
         }
-        training.forEach(doc -> doc.getVectorOfCharacteristics().setLabel(doc.getPlaces().get(0)));
     }
 
     private static void loadTraining() throws ParserConfigurationException {
@@ -139,4 +89,6 @@ public class Main {
         training = training.subList(0, 1000);
         Collections.shuffle(training);
     }
+
+
 }

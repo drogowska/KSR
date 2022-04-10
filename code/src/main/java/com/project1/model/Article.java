@@ -60,7 +60,9 @@ public class Article {
 
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("About: ").append(places.get(0)).append(", Vector[").append(vectorOfCharacteristics.toString()).append("]");
+        stringBuilder.append("About: ").append(places.get(0))
+                .append(", Vector[").append(vectorOfCharacteristics.toString()).append("]")
+                .append(" Classified as: ").append(vectorOfCharacteristics.getLabel());
         return stringBuilder.toString();
     }
 

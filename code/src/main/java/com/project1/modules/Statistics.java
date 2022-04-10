@@ -19,7 +19,7 @@ public class Statistics {
         setN();
     }
 
-    public double ACC() {
+    public double getACC() {
         int p = (int) articles.stream().filter(article -> article.getPlaces().get(0).equals(article.getVectorOfCharacteristics().getLabel())).count();
         return (double) p / articles.size();
     }
@@ -87,5 +87,15 @@ public class Statistics {
             sumOfWeights = sumOfWeights + c.getCount();
         }
         return result / sumOfWeights;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        result.append("ACC: ").append(String.format("%.4f", getACC()))
+                .append(" PPVc: ").append(String.format("%.4f", getPPVc()))
+                .append(" TPRc: ").append(String.format("%.4f", getTPRc()))
+                .append(" F1c: ").append(String.format("%.4f", getF1c()));
+        return result.toString();
     }
 }
