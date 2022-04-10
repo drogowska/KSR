@@ -38,7 +38,6 @@ public class Extractor {
                                 return;
                             }
                         }
-                        if(!flag[0]) return;
                     });
                 }
             });
@@ -62,7 +61,11 @@ public class Extractor {
     //l1
     private void setPublishedHour() {
         articles.forEach(article -> {
-            article.getVectorOfCharacteristics().setFeatures(10, article.getDate().substring(12));
+            String hour = article.getDate().substring(12);
+            String formattedHour = "";
+            if (hour.length() != 11) formattedHour = "0";
+            formattedHour += hour;
+            article.getVectorOfCharacteristics().setFeatures(10, formattedHour);
         });
     }
 
