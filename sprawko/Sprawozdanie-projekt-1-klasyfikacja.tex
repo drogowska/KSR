@@ -144,7 +144,8 @@ Po procesie ekstrakcji cech, każdemu tekstowi zostaje przypisany wektor cech po
 
 W celu oceny jakości klasyfikacji dokumentów tekstowych \cite{teksty} przez algorytm, przyjęto konwencje nazewniczą $A_x$, potrzebną do wyznacznia miar jakości klasyfikacji, gdzie:
 \begin{itemize}
-\item $A$ - wartość oznaczająca czy poprawnie zaklasyfikowano dokument (możliwe wartości  $A \in \{N, P, FP, FN\}$)
+\item $A$ - wartość oznaczająca czy poprawnie zaklasyfikowano dokument (możliwe wartości  $A \in \{N, P, FP, FN\}$, gdzie oznaczono: \(N\) - poprawnie negatywną, \(P\) - poprawnie pozytywną, \(FP\) - fałszywie pozytywną, \(FN\) - fałszywie negatywną klasyfikacje. 
+Przy czym, w szczególności \(FP\) i \(FN\) określają sumę wszystkich możliwych scenariuszy dla danej klasy.)
 %FN - fałszywie negatywne, FP - fałszywie pozytywne, 
 \item $x$ - wartość oznaczająca kraj, o którym mowa w dokumencie (możliwe wartości X = $\{$FR, CAN, UK, USA, WGER, JAP$\}$)
 % \item $c$ - wartość oznaczająca kraj, do którego został zaklasyfikowany dokument (możliwe wartości = $\{$France, Canda, UK, USA, West-Germany, Japan$\}$)
@@ -354,7 +355,7 @@ $ACC = \frac{4}{5}$
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.66\textwidth]{uml2.png}
-\caption{Diagram UML klas aplikacji, wraz z ich parametrami}
+\caption{Diagram UML klas aplikacji.}
 \label{fig1}
 \end{figure}
 
