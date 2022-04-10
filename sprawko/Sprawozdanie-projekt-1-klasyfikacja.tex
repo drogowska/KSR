@@ -353,7 +353,7 @@ $ACC = \frac{4}{5}$
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.66\textwidth]{uml1.png}
+\includegraphics[width=0.66\textwidth]{uml2.png}
 \caption{Diagram UML klas aplikacji, wraz z ich parametrami}
 \label{fig1}
 \end{figure}
@@ -368,20 +368,12 @@ Ideą aplikacji jest jej prostota (sposóbu użycia, wyglądu, zapisu danych) or
 \subsection{Prezentacja wyników, interfejs użytkownika}  
 %in - k, proporcje zbiorów na uczącuy i testowy, wybór miary i/lub metryki podobieństwa
 %out - parametry, 
-Aplikacja komunikuje sie z użytkownikiem za pomocą konsolowego interfejsu. Aplikacja jest uruchamiana z linii poleceń, wymagane jest posiadanie JDK w wersji 17. 
-Aby uruchomić program, należy wygenerować, na podstawie kodu źródłowego, plik jar, a następnie wykonać z lini poleceń polecenie 
-\begin{center}
-  \textit{java -jar code.jar splitPercent k metric}.
-\end{center}
-Przy czym aplikacja przyjmuje trzy parametry wejściowe: \(k\) - liczba naturalna, stała określająca ilość sąsiadów branych pod uwagę w algorytmie \(k\)-NN; 
-\(splitPercent\) - liczba dodatnia całkowita, z przedziału [1-99], określająca procent zbioru traktowany jako treningowy; 
-\(metric\) - do wyboru jedna z: M1 (metryka euklidesowa), M2 (metryka uliczna), M3 (metryka Czebyszewa).
-Po zakończeniu klasyfikacji wyniki wraz z obliczonymi miarami jakości klasyfikacji zostają wyświetlone w konsoli, w foramcie tekstowym.
+Aplikacja komunikuje sie z użytkownikiem za pomocą konsolowego interfejsu. Aplikacja jest uruchamiana z linii poleceń, wymagane jest posiadanie JDK w wersji 17. Na początku działania programu użytkownik proszony jest o podanie parametrów takich jak:  
+wartość $k$, określająca liczbę sąsiadów stosowanych w algorytmie klasyfikującym; 
+procent zbioru dokumentów, który ma stanowić zbiór uczący, a także wybiera miary/metryki podobieństwa wektorów cech. Wybór parametrów wejściowych odbywa się poprzez podanie
+symbolu odpowiadającemu jednemu z możliwych do wyboru wariantów, w przypadku wyboru miar/metryk. Natomiast jako wartość zmiennej $k$, jak i podział zbioru na uczący i testowy, jest podana przez użytkownika liczba całkowita mieszcząca się w podanym zakresie.
+Po zakończeniu klasyfikacji wyniki wraz z obliczonymi miarami jakości klasyfikacji zostają wyświetlone w konsoli.
 
-Przykładowe uruchomienie programu dla \(k\) równego 20, podziału 30:70 (treningowy:testowy) i użycie metryki ulicznej:
-\begin{center}
-  java -jar code.jar 30 20 M2
-\end{center}
 
 
 % Krótki ilustrowany opis jak użytkownik może korzystać z aplikacji, w~szczególności wprowadzać parametry klasyfikacji i odczytywać wyniki. Wersja JRE i inne wymogi

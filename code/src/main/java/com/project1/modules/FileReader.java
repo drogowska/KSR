@@ -9,11 +9,6 @@ import org.jsoup.parser.Parser;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.charset.Charset;
-import java.nio.charset.MalformedInputException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -60,10 +55,10 @@ public class FileReader {
         List<String> result = new ArrayList<>();
         try (InputStream resource = FileReader.class.getResourceAsStream(filePath)) {
             Scanner scanner = new Scanner(resource);
-            while(scanner.hasNext()){
+            while (scanner.hasNext()) {
                 result.add(scanner.nextLine());
             }
-        } catch(IOException ignored) {
+        } catch (IOException ignored) {
         }
         return result;
     }

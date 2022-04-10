@@ -5,8 +5,8 @@ import java.util.List;
 
 public class VectorOfCharacteristics {
 
-    private String label;
     private final List<Feature> features = new ArrayList<>();
+    private String label;
 
     public VectorOfCharacteristics() {
         for (int i = 0; i < 11; i++)

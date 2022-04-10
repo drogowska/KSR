@@ -9,8 +9,8 @@ import java.util.stream.Collectors;
 
 public class Dictionary {
 
+    private final String dictionaryFileName = "/dictionaries.txt";
     private List<String> content = new ArrayList<>();
-    private final String dictionaryFileName = "/dic.txt";
 
     public Dictionary(String dictType, String prefix) {
         fill(dictType, prefix);
