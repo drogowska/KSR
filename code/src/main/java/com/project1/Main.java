@@ -61,18 +61,15 @@ public class Main {
         splitArray(splitPercent);
         setDefaultLabel();
 
-        M2 m2 = new M2();
-        for (int k = 2; k <= 11; k = k + 1) {
-            classifier.classify(k, testing, m2, training);
-            statistics = new Statistics(testing);
-            System.out.println(statistics.toString());
-            classes.forEach(clas -> System.out.println(clas.getLabel() + " PPV: " + String.format("%.4f", clas.getPPV()) + " TPR: " + String.format("%.4f", clas.getTPR())));
-            System.out.println();
-
+        /*classifier.classify(k, testing, m, training);
+        statistics = new Statistics(testing);
+        System.out.println(statistics.toString());
+        classes.forEach(clas -> System.out.println(clas.getLabel() + " PPV: " + String.format("%.4f", clas.getPPV()) + " TPR: " + String.format("%.4f", clas.getTPR())));
+        System.out.println();*/
         classifier.classify(k, testing, m, training);
         statistics = new Statistics(testing);
         printResults();
-        }
+
     }
 
     private static void setDefaultLabel() {
