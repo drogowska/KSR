@@ -4,6 +4,7 @@
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{adjustbox}
+\usepackage{amsfonts}
 
 \studycycle{Informatyka, studia STACJONARNE, I st.}
 \coursesemester{VI}
@@ -78,7 +79,7 @@ do których badany element ma najbliżej dla wybranej metryki. Parametrami wejś
 % \noindent {\bf Sekcja uzupełniona jako efekt zadania Tydzień 02 wg Harmonogramu Zajęć
 % na WIKAMP KSR.}
 
-Każdy dokument został poddany procesowi ekstrakcji cech, potrzebnych do procesu klasyfikacji.
+Każdy dokument został poddany procesowi ekstrakcji cech.
 Poniżej znajduje się lista określonych cech liczbowych i tekstowych:
 \begin{enumerate}
 \item cecha tekstowa K1 - Nazwa kraju, dla którego jako pierwsza występuje nazwa geograficzna w danym tekście (nazwa geograficzna $k_1$ taka, że $k_1 \in DK1_x$)
@@ -93,9 +94,9 @@ Poniżej znajduje się lista określonych cech liczbowych i tekstowych:
 \item cecha tekstowa R1 - Najczęściej występująca nazwa kraju w danym tekście (nazwa kraju $r_1$ taka, że $r_1 \in DR1_x$)
 \item cecha tekstowa L1 - Godzina opublikowania dokumentu w formacie tekstowym (wartość cechy dla danego dokumentu jest zawarta w jego sekcji "DATE")\\
 \end{enumerate}
-gdzie $DK1_x$, $DF2_x$, $DP1_x$, $DN_{we}$, $DN_{us}$, $DN_{ja}$, $DN_{fr}$, $DN_{uk}$, $DN_{ca}$, $DR1_x$ oznaczają słowniki dla poszczególnych ementów wektora, \(x\) określa dwie pierwsze litery etykiety danej klasy (\(x \in \{we, ja, us, uk, ca, fr\}\)).
-Poglądowo fragment słownika $DK1$ wygląda następująco:\\
- $DK1_us = \{$Alabama, Alaska, American Samoa, Arizona, Arkansas, ....$\} $. \\
+gdzie $DK1_x$, $DF2_x$, $DP1_x$, $DN_{we}$, $DN_{us}$, $DN_{ja}$, $DN_{fr}$, $DN_{uk}$, $DN_{ca}$, $DR1_x$ oznaczają słowniki dla poszczególnych elementów wektora, \(x\) określa dwie pierwsze litery etykiety danej klasy (\(x \in \{we, ja, us, uk, ca, fr\}\)).
+Poglądowo fragment słownika $DK1_{us}$ wygląda następująco:\\
+ $DK1_{us} = \{$Alabama, Alaska, American Samoa, Arizona, Arkansas, ....$\} $. \\
 Natomiast wszystkie wykorzystane słownik znajdują się w załączonym wraz z raportem plikiem \cite{slowniki}.
 % gdzie:
 % \begin{itemize}
@@ -142,7 +143,7 @@ Po procesie ekstrakcji cech, każdemu tekstowi zostaje przypisany wektor cech po
 
 W celu oceny jakości klasyfikacji dokumentów tekstowych \cite{teksty} przez algorytm, przyjęto konwencje nazewniczą $A_x$, potrzebną do wyznacznia miar jakości klasyfikacji, gdzie:
 \begin{itemize}
-\item $A$ - wartość oznaczająca czy poprawnie zaklasyfikowano dokument (możliwe wartości = $\{N, P, FP, FN\}$)
+\item $A$ - wartość oznaczająca czy poprawnie zaklasyfikowano dokument (możliwe wartości  $A \in \{N, P, FP, FN\}$)
 %FN - fałszywie negatywne, FP - fałszywie pozytywne, 
 \item $x$ - wartość oznaczająca kraj, o którym mowa w dokumencie (możliwe wartości X = $\{$FR, CAN, UK, USA, WGER, JAP$\}$)
 % \item $c$ - wartość oznaczająca kraj, do którego został zaklasyfikowany dokument (możliwe wartości = $\{$France, Canda, UK, USA, West-Germany, Japan$\}$)
@@ -170,20 +171,20 @@ Przykładowo miara $ACC =  0.85$, oznacza, że 85\% wszytkich badanych elementó
   \end{equation}
 
 
-\item miara precyzji PPV (ang. precision) określana dla poszczególnych klas krajów, do których możemy zaklasyfikować dokumenty (iloraz liczby dokumentów zaklasyfikowanych poprawnie do danego kraju "x" i sumy liczby dokumentów zaklasyfikowanych poprawnie do kraju "x" oraz liczby dokumentów niepoprawnie zaklasyfikowanych do kraju "x")
-Wskaźnik ten obrazuje ile wśród przykładów zaklasyfikowanych pozytywnie jest rzeczywiście prawidowo dokanana. Precyzja przyjmuje maksymalną wartość równą 1, co oznacza, że wszystkie poprawnie zaklasyfikowane wektory rzeczywiście należą do danej klasy. 
+\item miara precyzji PPV (ang. precision) określana dla poszczególnych klas krajów, do których możemy zaklasyfikować dokumenty (iloraz liczby dokumentów zaklasyfikowanych poprawnie do danego kraju "x" i sumy liczby dokumentów zaklasyfikowanych poprawnie do kraju "x" oraz liczby dokumentów niepoprawnie zaklasyfikowanych do kraju "x").
+Wskaźnik ten obrazuje ile wśród przykładów zaklasyfikowanych do danej klasy jest rzeczywiście prawidowo dokanana. Precyzja przyjmuje maksymalną wartość równą 1, co oznacza, że wszystkie poprawnie zaklasyfikowane wektory rzeczywiście należą do danej klasy. 
 Przykładowo miara $PPV =  0.55$, oznacza, że 55\% wszytkich pozytywanie zaklasyfikowanych elementów rzeczywiście należy do przyporządkowanej klasy. 
   \begin{equation}
-    PPV(x) = \frac{P_x}{ P_x + \sum_{x}  FP_x}, \text{ gdzie } x\in X
+    PPV(x) = \frac{P_x}{ P_x + FP_x}, \text{ gdzie } x\in X
   \end{equation}
     % $PPV(x) = P$$_x$ $_x$ $ / (P$$_x$ $_x$ $ + \sum_{y}  F$$_y$ $_x$ $)$ , gdzie $ x\neq y$ \\
 
 
-\item miara czułości TPR (ang. recall) określana dla poszczególnych klas krajów, do których możemy zaklasyfikować dokumenty (stosunek liczby dokumentów zaklasyfikowanych poprawnie do danego kraju "x" do sumy liczby dokumentów zaklasyfikowanych poprawnie do kraju "x" oraz liczby dokumentów niepoprawnie zaklasyfikowanych do kraju innego niż "x")\\
-Miara ta pozwala ocenić jaki jest udział prawidłowo rozpoznanych przypadków wśród wszystkich przypadków pozytywnych. Czułość jest również parametrem, który powinien przyjmować wartości jak najbliższe 1.
+\item miara czułości TPR (ang. recall) określana dla poszczególnych klas krajów, do których możemy zaklasyfikować dokumenty (stosunek liczby dokumentów zaklasyfikowanych poprawnie do danego kraju "x" do sumy liczby dokumentów zaklasyfikowanych poprawnie do kraju "x" oraz liczby dokumentów niepoprawnie zaklasyfikowanych do kraju innego niż "x").
+Miara ta pozwala ocenić jaki jest udział prawidłowo rozpoznanych przypadków wśród wszystkich elemnetów które powinny należeć do danej klasy. Czułość jest również parametrem, który powinien przyjmować wartości jak najbliższe 1.
 Przykładowo, kiedy miara TPR osiągneła wartość 0.30, oznacza to, że 30\% wszystkich elementów, które powinny do danej klasy należeć, rzeczywiście do niej należy.
   \begin{equation}
-    TPR(x) = \frac{P_x}{ P_x + \sum_{x}  FN_x} , \text{ gdzie } x\in X 
+    TPR(x) = \frac{P_x}{ P_x + FN_x} , \text{ gdzie } x\in X 
   \end{equation}
     % $TPR(x) = P$$_x$ $_x$ $ / (P$$_x$ $_x$ $ + \sum_{y}  F$$_x$ $_y$ $)$ , gdzie $ x\neq y$ \\
 
@@ -193,14 +194,14 @@ Miara ta przyjmuje wartości z zakresu analogicznego jak miara PPV. W najlepszym
   \begin{equation}
     PPV_c = \frac{\sum_{x} PPV_x \cdot n_{x}}{\sum_{x} n_{x}},
   \end{equation}
-    gdzie $n_x$ jest liczebnością klasy $x$, $n\in C$, oraz $x\in X$.\\
+    gdzie $n_x$ jest liczebnością klasy $x$, $n\in \mathbb{Z} $, oraz $x\in X$.\\
 
 \item miara czułości TPR$_c$, określana dla całości wyników klasyfikacji, obliczana jest jako średnia ważona poszczególnych wartości miary \(TPR\) dla danej klasy i jej liczebności.
 Miara ta przyjmuje wartości z zakresu analogicznego jak miara TPR. W najlepszym przypadku przyjmuje wartość 1, jest to sytuacja kiedy dla wszystkich rozważanych klas poszczególne miary TPR osiągneły wartość maksymalną.
   \begin{equation}
     TPR_c = \frac{\sum_{x} TPR_x \cdot n_{x}}{\sum_{x} n_{x}}, 
   \end{equation}
-gdzie $n$ jest liczebnością danej klasy, $n\in C$.\\
+gdzie $n$ jest liczebnością danej klasy, $n\in \mathbb{Z}$.\\
 
 \item miara F1 \((F1-score)\), określana dla każdej z klas z osobna, oblliczana jako średnia harmoniczna pomiedzy precyzją i czułością.
 Im otrzymana wartość jest bliższa jedynce, tym lepiej to świadczy o dokłdności algorytmu klasyfikującego. W najlepszym przypadku przyjmuje ona wartość 1, zaś w najgorszym - 0.
@@ -213,15 +214,15 @@ Miara ta pozwala na wyznaczenie dokładności algorytmu, bazując tylko wyznaczo
 \begin{equation}
   F1_c = \frac{\sum_{x} F1_x \cdot n_{x}}{\sum_{x} n_{x}}, 
 \end{equation}
-  gdzie $n$ jest liczebnością danej klasy, $n\in C$, $x\in X$.
+  gdzie $n$ jest liczebnością danej klasy, $n\in \mathbb{Z}$, $x\in X$.
 \end{enumerate}
 
 
 
 \section{Klasyfikacja z użyciem metryk i miar podobieństwa tekstów}
 
-Aby porównać dwa wetory cech, zawierające zawrówno wartości będące liczbą jak i tesktem, należy w pierwszej fazie obliczeń zbadać podobieństwo dwóch odpowiadających sobie
-wartości tesktowych. Wynikiem czego otrzymujemy liczbę charakteryzującą jak bardzo podobne są do siebie dwie frazy. 
+Aby porównać dwa wetory cech, zawierające zawrówno wartości będące liczbą jak i tesktem, należy w pierwszej fazie obliczeń zbadać podobieństwo dwóch, odpowiadających sobie,
+tekstowych elementów wektorów. Wynikiem czego otrzymujemy liczbę charakteryzującą jak bardzo podobne są do siebie dwie frazy. 
 Obliczamy
 podobieństwo pomiędzy $K_1$, $F_2$, $P_1$, $R_1$, i $L_1$ odpowiadającymi elementami wektorów, a otrzymane wartości wynikowe, dla każdej pary tekstów, wykorzystujemy 
 przy obliczeniach odległości badanego wektora od sąsiadów. %zapisujemy w miejsca odpowiednich fraz, przy czym
@@ -266,7 +267,7 @@ jeden z trzech możliwych metryk:
 %Ze względu na różne przyjmowane typy elementów wektora cech, zarówno wartości liczbowe jak i tekstowe,  
 
 \begin{enumerate}
-  \item Metryka euklidesowa ($M1$) -  metryka, pozwalająca na obliczenie odległości pomiędzy dwoma liczbowymi elementami wektora. Wyliczana zgodnie ze wzorem:
+  \item Metryka euklidesowa ($M1$) -  metryka, pozwalająca na obliczenie odległości pomiędzy dwoma wektorami. Wyliczana zgodnie ze wzorem:
   \begin{equation}
     M1(a,b) = \sqrt{\sum_{i=1}^{11} W(a, b)^2},
   \end{equation} 
@@ -274,16 +275,16 @@ jeden z trzech możliwych metryk:
   \begin{equation}
     W(a, b) = 
     \begin{cases}
-      (a - b)   & \text{ jeśli a i b - liczbowe elementy wektora, } a,b \in C,\\
+      (a - b)   & \text{ jeśli a i b - liczbowe elementy wektora, } a,b \in \mathbb{Z},\\
       1- M4(a, b) & \text{ jeśli a i b - tekstowe elementy wektora.} 
     \end{cases}
   \end{equation}
 
   Zbiór wartości metryki $\in [0; \infty) $.
   Metryka przyjmuje najmniejszą możliwą wartość równą 0, w sytuacji gdy badane wartości liczbowe są sobie równe.
-  Im większa wartość metryki, tym dwa badane wektory są od siebie bardziej różne. Przykładowo:
+  Im większa wartość metryki, tym dwa badane wektory są od siebie bardziej różne, odległe. Przykładowo:
   \begin{equation}
-    M1(c, d) = \sqrt{19} \approx 4
+    M1(c, d) = \sqrt{16} = 4
   \end{equation}
   \item Metryka uliczna ($M2$)
   \begin{equation}
@@ -306,8 +307,9 @@ jeden z trzech możliwych metryk:
 
 \end{enumerate} 
 
-Przeprowadzono również 2 próbne klasyfikacje a następnie w każdej z nich obliczono miarę Accuracy. 
-Zbiór testowy wszystkich próbnych klasyfikacji składał się z 6 dokumentów, każdy mówiący o innym państwie spośród: Francji, Zachodnich Niemiec, Kanady, Japonii, Ameryki oraz Wielkiej Brytanii. W klasyfikacji nr 1, 2, 3 wykorzystano kolejno miarę M1, M2 oraz M3. We wszystkich klasyfikacjach przyjmujemy wartość parametru K = 1 oraz ilość klasyfikowanych dokumentów równą 5. Wykorzystano miarę podobieństwa tekstów 4-gram.
+Przeprowadzono również 2 próbne klasyfikacje, a następnie w każdej z nich obliczono miarę Accuracy. 
+Zbiór testowy wszystkich próbnych klasyfikacji składał się z 6 dokumentów, każdy mówiący o innym państwie spośród: Francji, Zachodnich Niemiec, Kanady, Japonii, Stanów Zjednoczonych oraz Wielkiej Brytanii.
+W klasyfikacji nr 1, 2, 3 wykorzystano kolejno miarę M1, M2 oraz M3. We wszystkich klasyfikacjach przyjmujemy wartość parametru $k = 1$ oraz ilość klasyfikowanych dokumentów równą 5. Wykorzystano miarę podobieństwa tekstów 2-gram.
 
 Wektory cech dokumentu w zbiorze testowym mówiącego o:
 \begin{itemize}
@@ -365,13 +367,21 @@ Ideą aplikacji jest jej prostota (sposóbu użycia, wyglądu, zapisu danych) or
 \subsection{Prezentacja wyników, interfejs użytkownika}  
 %in - k, proporcje zbiorów na uczącuy i testowy, wybór miary i/lub metryki podobieństwa
 %out - parametry, 
-Aplikacja komunikuje sie z użytkownikiem za pomocą konsolowego interfejsu. Na początku działania programu użytkownik proszony jest o podanie parametrów takich jak:  
-wartość $k$, określająca liczbę sąsiadów stosowanych w algorytmie klasyfikującym; 
-procent zbioru dokumentów, który ma stanowić zbiór uczący, a także wybiera miary/metryki podobieństwa wektorów cech. Wybór parametrów wejściowych odbywa się poprzez podanie
-cyfry/litery odpowiadającej jednemu z możliwych do wyboru wariantów, w przypadku wyboru miar/metryk. Natomiast jako wartość zmiennej $k$, jak i podział zbioru na uczący i testowy, jest podana przez użytkownika liczba całkowita mieszcząca się w podanym zakresie.
-Po zakończeniu klasyfikacji wyniki wraz z obliczonymi miarami jakości klasyfikacji zostają wyświetlone w konsolowym interfejsie oraz zapisane do pliku tekstowego o wybranej przez użytkownika nazwie bądź domyślnie o nazwie: \textbf{"results.txt"}
+Aplikacja komunikuje sie z użytkownikiem za pomocą konsolowego interfejsu. Aplikacja jest uruchamiana z linii poleceń, wymagane jest posiadanie JDK w wersji 17. 
+Aby uruchomić program, należy wygenerować, na podstawie kodu źródłowego, plik jar, a następnie wykonać z lini poleceń polecenie 
+\begin{center}
+  \textit{java -jar code.jar splitPercent k metric}.
+\end{center}
+Przy czym aplikacja przyjmuje trzy parametry wejściowe: \(k\) - liczba naturalna, stała określająca ilość sąsiadów branych pod uwagę w algorytmie \(k\)-NN; 
+\(splitPercent\) - liczba dodatnia całkowita, z przedziału [1-99], określająca procent zbioru traktowany jako treningowy; 
+\(metric\) - do wyboru jedna z: M1 (metryka euklidesowa), M2 (metryka uliczna), M3 (metryka Czebyszewa).
+Po zakończeniu klasyfikacji wyniki wraz z obliczonymi miarami jakości klasyfikacji zostają wyświetlone w konsoli, w foramcie tekstowym.
 
-Aplikacja jest uruchamiana z linii poleceń, wymagane jest posiadanie JDK w wersji 17. 
+Przykładowe uruchomienie programu dla \(k\) równego 20, podziału 30:70 (treningowy:testowy) i użycie metryki ulicznej:
+\begin{center}
+  java -jar code.jar 30 20 M2
+\end{center}
+
 
 % Krótki ilustrowany opis jak użytkownik może korzystać z aplikacji, w~szczególności wprowadzać parametry klasyfikacji i odczytywać wyniki. Wersja JRE i inne wymogi
 % niezbędne do uruchomienia aplikacji przez użytkownika na własnym komputerze. \\

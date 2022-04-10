@@ -20,19 +20,6 @@ public class Extractor {
         setPublishedHour();
         mostCommonCountry(2);
         mostCommonCountry(9);
-        /*articles.forEach(article -> {
-            //article.getVectorOfCharacteristics().setFeatures(0, ""); // K1
-            //article.getVectorOfCharacteristics().setFeatures(1, ""); // F2
-            //article.getVectorOfCharacteristics().setFeatures(2, ""); // P1
-            //article.getVectorOfCharacteristics().setFeatures(3, 0); // N1
-            //article.getVectorOfCharacteristics().setFeatures(4, 0); // N2
-            //article.getVectorOfCharacteristics().setFeatures(5, 0); // N3
-            //article.getVectorOfCharacteristics().setFeatures(6, 0); // N4
-            //article.getVectorOfCharacteristics().setFeatures(7, 0); // N5
-            //article.getVectorOfCharacteristics().setFeatures(8, 0); // N6
-            article.getVectorOfCharacteristics().setFeatures(9, ""); // R1
-            article.getVectorOfCharacteristics().setFeatures(10, ""); // L1
-        });*/
         return this.articles;
     }
 
@@ -51,6 +38,7 @@ public class Extractor {
                                 return;
                             }
                         }
+                        if(!flag[0]) return;
                     });
                 }
             });
@@ -81,7 +69,6 @@ public class Extractor {
     //r1, p1 (9,2)
     private void mostCommonCountry(int party) {
         articles.forEach(article -> {
-//        for (Article article : articles) {
             HashMap<String, Integer> countryOccur = new HashMap<>();
             classes.forEach(c -> countryOccur.put(c.getLabel(), 0));
             classes.forEach(c -> {
@@ -99,7 +86,6 @@ public class Extractor {
             if (entry.getValue() != 0)
                 article.getVectorOfCharacteristics().setFeatures(party, entry.getKey());
         });
-//        }
     }
 
 }
