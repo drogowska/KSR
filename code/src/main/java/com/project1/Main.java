@@ -12,6 +12,9 @@ import com.project1.modules.FileReader;
 import com.project1.modules.Statistics;
 
 import javax.xml.parsers.ParserConfigurationException;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -19,45 +22,38 @@ import static com.project1.Constants.placesList;
 
 public class Main {
 
+    private static final List<Article> testing = new ArrayList<>();
     public static List<Class> classes = new ArrayList();
     private static List<Article> training = new ArrayList<>();
-    private static final List<Article> testing = new ArrayList<>();
-
     private static Extractor extractor;
     private static Classifier classifier;
     private static Statistics statistics;
     private static Metric m = null;
     private static int k = 0;
     private static int splitPercent = 0;
+    private static String metric = "";
 
-    public static void main(String[] args) throws ParserConfigurationException {
-        if (args.length != 3) {
-            printParameters();
-        } else {
-            switch (args[2].toUpperCase()) {
-                case "M1":
-                    m = new M1();
-                    break;
-                case "M2":
-                    m = new M2();
-                    break;
-                case "M3":
-                    m = new M3();
-                    break;
-                default:
-                    System.out.println("Podano niewłaściwą metrykę.");
-                    printParameters();
-                    break;
-            }
-            splitPercent = Integer.valueOf(args[0]);
-            k = Integer.valueOf(args[1]);
+    public static void main(String[] args) throws ParserConfigurationException, IOException {
+        printParameters();
+        switch (metric.toUpperCase()) {
+            case "M1":
+                m = new M1();
+                break;
+            case "M2":
+                m = new M2();
+                break;
+            case "M3":
+                m = new M3();
+                break;
+            default:
+                System.out.println("Podano niewłaściwą metrykę.");
+                System.exit(0);
         }
 
         initialClasses();
         initializeModules();
         loadTraining();
         training = new ArrayList<>(extractor.extract(training));
-//        int splitPercent = 30;
         splitArray(splitPercent);
         setDefaultLabel();
 
@@ -81,8 +77,8 @@ public class Main {
         if (m.getClass().equals(M1.class)) metric = "Euklidesowej";
         else if (m.getClass().equals(M2.class)) metric = "Ulicznej";
         else if (m.getClass().equals(M3.class)) metric = "Czebyszewa";
-        System.out.println("Wyniki dla stałek k równej " + k
-                + ", podziale zbioru " + splitPercent + ":" + String.valueOf(100-splitPercent)
+        System.out.println("\nWyniki dla stałek k równej " + k
+                + ", podziale zbioru " + splitPercent + ":" + String.valueOf(100 - splitPercent)
                 + ", wykorzystaneje metryki " + metric
                 + ":\n\n"
                 + "\t ACC:  " + statistics.getACC() + "\n"
@@ -94,19 +90,24 @@ public class Main {
                     + "\t PPV: " + clas.getPPV()
                     + "\t TPR: " + clas.getTPR()
                     + "\t F1:  " + clas.getF1()
-                    + "\n");
-                });
+            );
+        });
     }
 
-    private static void printParameters() {
+    private static void printParameters() throws IOException {
+        Scanner sc = new Scanner(System.in);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Wymagrane parametry:  \n"
-                + "\tProcent zbioru dokumentów, stanowiący zbiór treningowy (liczba całkowita [1,99])\n"
-                + "\tStała k (liczba całkowita dodatnia)\n"
-                + "\tMetryka:\n"
+                + "\tProcent zbioru dokumentów, stanowiący zbiór treningowy (liczba całkowita [1,99]): ");
+        splitPercent = sc.nextInt();
+        System.out.println("\tStała k (liczba całkowita dodatnia): ");
+        k = sc.nextInt();
+        System.out.println("\tMetryka:\n"
                 + "\t\t M1 - metryka euklidesowa\n"
                 + "\t\t M2 - metryka uliczna\n"
                 + "\t\t M3 - metryka czebyszewa");
-        System.exit(0);
+        metric = reader.readLine();
+//        System.exit(0);
     }
 
     private static void initializeModules() {

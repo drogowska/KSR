@@ -62,7 +62,7 @@ public class Extractor {
     private void setPublishedHour() {
         articles.forEach(article -> {
             String hour = article.getDate().substring(12);
-            String formattedHour = (hour.length() != 11)? "0" : "" ;
+            String formattedHour = (hour.length() != 11) ? "0" : "";
             formattedHour += hour;
             article.getVectorOfCharacteristics().setFeatures(10, formattedHour.replaceAll("\\p{Punct}", ""));
         });
