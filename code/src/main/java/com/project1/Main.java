@@ -56,12 +56,6 @@ public class Main {
         training = new ArrayList<>(extractor.extract(training));
         splitArray(splitPercent);
         setDefaultLabel();
-
-        /*classifier.classify(k, testing, m, training);
-        statistics = new Statistics(testing);
-        System.out.println(statistics.toString());
-        classes.forEach(clas -> System.out.println(clas.getLabel() + " PPV: " + String.format("%.4f", clas.getPPV()) + " TPR: " + String.format("%.4f", clas.getTPR())));
-        System.out.println();*/
         classifier.classify(k, testing, m, training);
         statistics = new Statistics(testing);
         printResults();
@@ -107,7 +101,6 @@ public class Main {
                 + "\t\t M2 - metryka uliczna\n"
                 + "\t\t M3 - metryka czebyszewa");
         metric = reader.readLine();
-//        System.exit(0);
     }
 
     private static void initializeModules() {
