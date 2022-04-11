@@ -10,7 +10,6 @@ public class Article {
     private final List<String> topic;
     private final List<String> places;
     private final String title;
-    //    private String dateline;
     private final List<String> body;
 
     private VectorOfCharacteristics vectorOfCharacteristics;
@@ -21,7 +20,6 @@ public class Article {
         this.topic = topic;
         this.places = places;
         this.title = title;
-//        this.dateline = dateline;
         this.body = Arrays.stream(body.toLowerCase().replaceAll("\\p{Punct}", "").split(" ")).collect(Collectors.toList());
         vectorOfCharacteristics = new VectorOfCharacteristics();
     }

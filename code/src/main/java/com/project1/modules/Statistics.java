@@ -41,16 +41,9 @@ public class Statistics {
             clas.setP((int) zaklasyfikowaneDoClas.stream().filter(article ->
                     article.getPlaces().get(0).equals(article.getVectorOfCharacteristics().getLabel())).count());
 
-//            clas.setN((int) nieZaklasyfikowaneDoClas.stream().filter(article ->
-//                    article.getPlaces().get(0).equals(article.getVectorOfCharacteristics().getLabel())).count());//?
-
             clas.setFP((int) zaklasyfikowaneDoClas.stream().filter(article ->
                     !article.getPlaces().get(0).equals(article.getVectorOfCharacteristics().getLabel())).count());
 
-//            clas.setFN((int) nieZaklasyfikowaneDoClas.stream().filter(article ->
-//                    !article.getPlaces().get(0).equals(clas.getLabel())).count());
-
-            //fn
             int n = (int) nieZaklasyfikowaneDoClas.stream().filter(article ->
                     article.getPlaces().get(0).equals(clas.getLabel())
             ).count();

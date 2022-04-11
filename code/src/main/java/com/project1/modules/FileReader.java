@@ -26,7 +26,6 @@ public class FileReader {
     private static final String BODY = "BODY";
 
     public static List<Article> extract(String filePath) throws ParserConfigurationException {
-
         List<Article> docs = new ArrayList<>();
         List<String> sgml = readFromResources(filePath);
 

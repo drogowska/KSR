@@ -17,7 +17,6 @@ public class Dictionary {
     }
 
     private void fill(String type, String prefix) {
-        String dic;
         List<String> lines = FileReader.readFromResources(dictionaryFileName);
         String dicLine = lines.stream().filter(line -> line.contains(type + "_" + prefix)).collect(Collectors.toList()).get(0);
         dicLine = dicLine.toLowerCase().substring(10, dicLine.length() - 1);
