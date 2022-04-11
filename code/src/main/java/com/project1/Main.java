@@ -137,8 +137,9 @@ public class Main {
             }
             training.addAll(FileReader.extract("/articles/reut2-" + number + ".sgm"));
         }
-        Collections.shuffle(training);
         filterArticles();
+        Collections.shuffle(training);
+        training = training.subList(0,2000);
         Collections.shuffle(training);
     }
 
