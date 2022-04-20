@@ -396,34 +396,34 @@ Poniżej zamieszczono tabele wynikowe oraz wykresy zależności miary Accuracy o
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.66\textwidth]{wykres5.png}
-\caption{Wykres zależności miary Accuracy od wartości parametru k algorytmu k-NN dla metryki M2 oraz klasyfikacji 30\% zbioru artykułów (70\% dokumentów należało do zbioru uczącego).}
+\caption{Wykres zależności miary ACC od wartości parametru \(k\) algorytmu \(k\)-NN dla metryki M2 oraz klasyfikacji 30\% zbioru artykułów (70\% dokumentów należało do zbioru uczącego).}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.66\textwidth]{wykres6.png}
-\caption{Wykres zależności miary Accuracy od wartości procentowej zbioru klasyfikowanego dla metryki M1 oraz wartości parametru k algorytmu k-NN równej 7.}
+\caption{Wykres zależności miary ACC od wartości procentowej zbioru klasyfikowanego dla metryki M1 oraz wartości parametru \(k\) algorytmu równej 7.}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.66\textwidth]{wykres7.png}
-\caption{Wykres zależności miary Accuracy od wybranej metryki dla wartości parametru k algorytmu k-NN równej 7 oraz dla klasyfikacji 30\% zbioru artykułów (70\% dokumentów należało do zbioru uczącego).}
+\caption{Wykres zależności miary ACC od wybranej metryki dla wartości parametru \(k\) algorytmu \(k\)-NN równej 7 oraz dla klasyfikacji 30\% zbioru artykułów (70\% - zbiór treningowy).}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.66\textwidth]{wykres8.png}
-\caption{Wykres zależności miary Accuracy od wybranych podzbiorów cech używanych w obliczeniach odległości w algorytmie k-NN dla klasyfikacji 30\% zbioru artykułów (70\% dokumentów należało do zbioru uczącego), wartości parametru k algorytmu k-NN równej 7 oraz dla metryki M1.}
+\caption{Wykres zależności miary ACC od wybranych podzbiorów cech używanych w obliczeniach odległości w algorytmie \(k\)-NN dla klasyfikacji 30\% zbioru artykułów (70\% dokumentów należało do zbioru treningowego), wartości parametru k algorytmu k-NN równej 7 oraz dla metryki M1.}
 \end{figure}
 
 \begin{table}[H]
     \centering
-\caption{Tabela zawierająca wyniki klasyfikacji dla poszczególnych klas w zależności od wartości parametru k algorytmu k-NN dla metryki M2 oraz dla klasyfikacji 30\% zbioru artykułów (70\% dokumentów należało do zbioru uczącego).}
+\caption{Tabela zawierająca wyniki klasyfikacji dla poszczególnych klas w zależności od wartości parametru \(k\) algorytmu \(k\)-NN dla metryki M2 oraz dla podziału zbioru 30:70 (testowy:treningowy).}
 \begin{adjustbox}{max width=\textwidth}
     \begin{tabular}{|l|l|l|l|l|l|l|l|}
     \hline
-        Miara & west-germany  & usa  & japan & france & uk & canada & K \\ \hline
+        Miara & west-germany  & usa  & japan & france & uk & canada & \(k\) \\ \hline
         PPV & 0.8145 & 0.8479 & 0.6728 & 0.7013 & 0.4727 & 0.5582 & 2 \\ \hline
         TPR & 0.455 & 0.9679 & 0.4479 & 0.2857 & 0.1564 & 0.2685 & 2 \\ \hline
         F1 & 0.5838 & 0.9039 & 0.5378 & 0.406 & 0.235 & 0.3626 & 2 \\ \hline
@@ -476,7 +476,7 @@ Poniżej zamieszczono tabele wynikowe oraz wykresy zależności miary Accuracy o
 \begin{adjustbox}{max width=\textwidth}
     \begin{tabular}{|l|l|l|l|l|}
     \hline
-        K & Acc & PPVc & TPRc & F1c \\ \hline
+        \(k\) & ACC & PPVc & TPRc & F1c \\ \hline
         2 & 0.825 & 0.7942 & 0.825 & 0.7941 \\ \hline
         3 & 0.8378 & 0.8145 & 0.8378 & 0.8134 \\ \hline
         4 & 0.8465 & 0.8276 & 0.8465 & 0.8208 \\ \hline
@@ -500,22 +500,22 @@ klasyfikowanego dla metryki M1 oraz wartości parametru $k$ algorytmu $k$-NN ró
 \begin{adjustbox}{max width=\textwidth}
     \begin{tabular}{|l|l|l|l|l|l|l|l|}
     \hline
-        Miara & west-germany  & usa  & japan & france & uk & canada & Podział zbioru \\ \hline
-        PPV & 0.8344 & 0.8674 & 0.7516 & 0.8021 & 0.6823 & 0.7959 & 10 \\ \hline
-        TPR & 0.5351 & 0.9774 & 0.5154 & 0.6 & 0.2614 & 0.3587 & 10 \\ \hline
-        F1 & 0.6517 & 0.9191 & 0.6115 & 0.6864 & 0.378 & 0.4945 & 10 \\ \hline
-        PPV & 0.8275 & 0.8626 & 0.7605 & 0.796 & 0.6842 & 0.7686 & 30 \\ \hline
-        TPR & 0.5106 & 0.9773 & 0.5261 & 0.6111 & 0.2352 & 0.3427 & 30 \\ \hline
-        F1 & 0.6315 & 0.9164 & 0.6219 & 0.6914 & 0.3501 & 0.4741 & 30 \\ \hline
-        PPV & 0.8365 & 0.8654 & 0.7415 & 0.8285 & 0.6878 & 0.8062 & 50 \\ \hline
-        TPR & 0.5304 & 0.9779 & 0.5546 & 0.6041 & 0.2327 & 0.3564 & 50 \\ \hline
-        F1 & 0.6492 & 0.9182 & 0.6346 & 0.6987 & 0.3478 & 0.4943 & 50 \\ \hline
-        PPV & 0.8545 & 0.8685 & 0.7425 & 0.8245 & 0.7289 & 0.4051 & 70 \\ \hline
-        TPR & 0.4845 & 0.9804 & 0.4901 & 0.5595 & 0.2805 & 0.4072 & 70 \\ \hline
-        F1 & 0.6184 & 0.9211 & 0.5905 & 0.6666 & 0.4051 & 0.5504 & 70 \\ \hline
-        PPV & 0.85 & 0.8726 & 0.7209 & 0.8571 & 0.6842 & 0.921 & 90 \\ \hline
-        TPR & 0.5151 & 0.9777 & 0.62 & 0.75 & 0.3023 & 0.3645 & 90 \\ \hline
-        F1 & 0.6415 & 0.9222 & 0.6666 & 0.7999 & 0.4193 & 0.5223 & 90 \\ \hline
+        Miara & west-germany  & usa  & japan & france & uk & canada & Zbiór testowy:treningowy \\ \hline
+        PPV & 0.8344 & 0.8674 & 0.7516 & 0.8021 & 0.6823 & 0.7959 & 10:90 \\ \hline
+        TPR & 0.5351 & 0.9774 & 0.5154 & 0.6 & 0.2614 & 0.3587 & 10:90 \\ \hline
+        F1 & 0.6517 & 0.9191 & 0.6115 & 0.6864 & 0.378 & 0.4945 & 10:90 \\ \hline
+        PPV & 0.8275 & 0.8626 & 0.7605 & 0.796 & 0.6842 & 0.7686 & 30:70 \\ \hline
+        TPR & 0.5106 & 0.9773 & 0.5261 & 0.6111 & 0.2352 & 0.3427 & 30:70 \\ \hline
+        F1 & 0.6315 & 0.9164 & 0.6219 & 0.6914 & 0.3501 & 0.4741 & 30:70 \\ \hline
+        PPV & 0.8365 & 0.8654 & 0.7415 & 0.8285 & 0.6878 & 0.8062 & 50:50 \\ \hline
+        TPR & 0.5304 & 0.9779 & 0.5546 & 0.6041 & 0.2327 & 0.3564 & 50:50 \\ \hline
+        F1 & 0.6492 & 0.9182 & 0.6346 & 0.6987 & 0.3478 & 0.4943 & 50:50 \\ \hline
+        PPV & 0.8545 & 0.8685 & 0.7425 & 0.8245 & 0.7289 & 0.4051 & 70:30 \\ \hline
+        TPR & 0.4845 & 0.9804 & 0.4901 & 0.5595 & 0.2805 & 0.4072 & 70:30 \\ \hline
+        F1 & 0.6184 & 0.9211 & 0.5905 & 0.6666 & 0.4051 & 0.5504 & 70:30 \\ \hline
+        PPV & 0.85 & 0.8726 & 0.7209 & 0.8571 & 0.6842 & 0.921 & 90:10 \\ \hline
+        TPR & 0.5151 & 0.9777 & 0.62 & 0.75 & 0.3023 & 0.3645 & 90:10 \\ \hline
+        F1 & 0.6415 & 0.9222 & 0.6666 & 0.7999 & 0.4193 & 0.5223 & 90:10 \\ \hline
     \end{tabular}
 \end{adjustbox}
 \end{table}
@@ -635,14 +635,14 @@ algorytmu $k$-NN równej 7.}
 %\section{Braki w realizacji projektu 1.}
 %Wymienić wg opisu Projektu 1. wszystkie niezrealizowane obowiązkowe elementy projektu, ewentualnie
 %podać merytoryczne (ale nie czasowe) przyczyny tych braków. 
-\subsection{Badanie wpływu parametru $k$ na jakosc klasyfikacji}
+\subsection{Badanie wpływu parametru $k$ na jakość klasyfikacji}
 Na wykresie zawartym na Rysunku nr. 2 oraz dzięki danym zawartych w tabelach 1 oraz 2 zauważyć można znaczący wzrost wartości miary Accuracy dla wartości parametru k równym 2, 3, 4 oraz 5. Wzrost ten jest mniejszy, gdy k przyjmuje wartości większe bądź równe 6 i dalsze zmiany tego parametru do wartości k równej 130 nie wpływają w sposób znaczny na wartość miary Accuracy. Podobna zależność istnieje również pomiędzy wartością parametru k oraz wartościami miar PPV, TPR i F1 dla poszczególnych klas oraz PPVc, TPRc, F1c dla wszystkich klasyfikowanych dokumentów. Przy największej badanej wartości parametru k, równej 7, otrzymano wartość miary Accuracy dla klasy USA, rzędu ok 0.8 a wzros dla k mniejszego od 130 zmiennej wpływał dalej na wyniki. Dzieję się tak, z racji tego, że klasa dokumentów dotyczących kraju USA jest klasą najbardziej liczną, a dokładniej stanowi ona ok 80\% badanego zbioru. Stąd też wskaźnik Accuracy stabilizuje się po osiągnięciu właśnie tej wartości. Zauważyć można jednak również, że dla wartości k większych od 100, Accuracy zmieniejsza się. Jest to spowodowane faktem, że przy wybraniu dużych ilości najbliższych sąsiadów w celu klasfyfikacji, większość z nich będzie należała do klasy najliczniej występującej pomimo tego, że oprócz niej w zbiorze sąsiadów znajdować się będą również dokumenty o klasie odpowiadającej prawdziwej klasie badanego dokumentu.
 \\
-\subsection{Badanie wpływu proporcji podziału na zbiory uczacy i testowy na jakosc klasyfikacji}
+\subsection{Badanie wpływu proporcji podziału na zbiory uczący i testowy na jakość klasyfikacji}
 Na wykresie zawartym na rysunku nr. 3 widać, że zmiana podziału zbioru dokumentów na zbiór testowy i treningowy wpływa na zmianę wartości wskaźnika ACC. Po wstępnej analizie wyników, można dostrzec, że przy podziale 30:70 (testowy:treningowy) następuje nieznaczny spadek miary Accuracy. Natomiast dla kolejnych, badanych wartości stosunku liczby artykułów w zbiorze testowym do liczby wszystkich dokumentów branych pod uwagę, zaobserwować można jednostajny wzrost wartości miary Accuracy. Jednakże, wyniki badanego wskaźnika utrzymują się na dość wysokim poziomie. Wartości oscylują w granicach 85\%-86\%, co oznacza dość nieznaczne polepszenie się jakości klasyfikacji. Po analizie zawartości tabel nr. 3 i 4, na pierwszy plan wychodzą wysokie wartości wskaźników dla klasy USA. Dzieję się tak, gdyż jest to najliczniejsza ze wszystkich klas oraz w większości dokumentów, nie mówiących o Stanach Zjednoczonych, jest wspominana nazwa tego kraju, co niewątpliwie wpływa na wynik klasyfikacji. Niemniej jednak, we wszystkich klasach widać wzrost wartości każdej z miar.
 \\
-\subsection{Badanie wpływu wybranej metryki i miary podobienstwa tekstów na jakosc klasyfikacji}
-Na wykresie nr. 4 zostały przedstawione zmiany wartości ACC przy użyciu wszystkich dostępnych miar odległości. Po wstępnej analizie zauważyć można, że wyniki dla miar Eukidesowej (M1) I Ulicznej (M2) są bardzo zbliżone. Natomiast, po przyjrzeniu się danym zawartym w tabeli nr. 6 i 7, wyniki metryk są wręcz identyczne. Zastosowanie miary Czebyszewa (M3) do obliczania odległości pomiędzy dwoma wektorami spowodowało uzyskanie niższych wartości miar jakości klasyfikacji względem dwóch pozostałych miar odległościowych. Jednakże, wartości Accuracy nadal pozostają na wysokim poziomie 0.85, a zmiana widoczna jest na setnej części wyniku. Podkreślić należy również, że wszystkie wykorzystane miary korzystają z jednej dostępnej miary podobieństwa tekstów - metody 2-gramów.  Na podstawie uzyskanych danych, można stwierdzić, że dla miar M1 oraz M2 miara Accuracy osiągała wyższe wartości niż dla miary M3.  
+\subsection{Badanie wpływu wybranej metryki na jakość klasyfikacji}
+Na wykresie nr. 4 zostały przedstawione zmiany wartości ACC przy użyciu wszystkich dostępnych miar odległości. Po wstępnej analizie zauważyć można, że wyniki dla miar Eukidesowej (M1) i Ulicznej (M2) są bardzo zbliżone. Natomiast, po przyjrzeniu się danym zawartym w tabeli nr. 6 i 7, wyniki metryk są wręcz identyczne. Zastosowanie miary Czebyszewa (M3) do obliczania odległości pomiędzy dwoma wektorami spowodowało uzyskanie niższych wartości miar jakości klasyfikacji względem dwóch pozostałych miar odległościowych. Jednakże, wartości Accuracy nadal pozostają na wysokim poziomie 0.85, a zmiana widoczna jest na setnej części wyniku. Podkreślić należy również, że wszystkie wykorzystane miary korzystają z jednej dostępnej miary podobieństwa tekstów - metody 2-gramów.  Na podstawie uzyskanych danych, można stwierdzić, że dla miar M1 oraz M2 miara Accuracy osiągała wyższe wartości niż dla miary M3.  
 \\
 \subsection{Badanie wpływu poszczególnych cech na jakość klasyfikacji}
 Po analizie wykresu na rysunku 5 oraz danych znajdujących się w tabelach 1 oraz 2 zauważyć można niewielkie znaczenie cech liczbowych N1, N2, N3, N4, N5, N6 na osiągane wyniki klasyfikacji. W przypadku tego podzbioru wykorzystanych cech tylko klasa usa uzyskała wyniki większe od 0. W przypadku wyboru cech K1, F2, P1, N1, N2, N3, N4, N5, N6 wystąpiła podobna sytuacja, tutaj jednak również klasa uk uzyskała wyniki większe od 0. Wybór tych cech sprawił jednak, że wartość miary Accuracy zmalała w porównaniu do cech N1, N2, N3, N4, N5, N6. Zauważalny jest więc fakt pogarszania wyników przez cechy K1, F2 oraz P1. Potwierdza to również różnica między wynikami klasyfikacji K1, F2, P1, R1, L1 oraz R1, L1 gdzie wyniki klasyfikacji z większą ilością cech wskazywały na mniejsze Accuracy. Najwyższe wartości miary Accuracy w zestawieniu 4 użytych w eksperymencie podzbiorów cech osiągnęły cechy R1 oraz L1. Może to wskazywać na silną zależność pomiędzy godziną opublikowania dokumentu i najczęściej występującą nazwą kraju w dokumencie a krajem, o którym jest w nim mowa.
