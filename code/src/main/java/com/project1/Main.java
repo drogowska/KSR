@@ -33,6 +33,8 @@ public class Main {
     private static int splitPercent = 0;
     private static String metric = "";
 
+    private static Random random = new Random(new Date().getMonth() * 100 + new Date().getDay());
+
     public static void main(String[] args) throws ParserConfigurationException, IOException {
         printParameters();
         switch (metric.toUpperCase()) {
@@ -123,7 +125,7 @@ public class Main {
         testing.clear();
         int tmp = (training.size() * (100 - splitPercent)) / 100;
         for (int i = 0; i < tmp; i++) {
-            int numb = new Random().nextInt(training.size());
+            int numb = random.nextInt(training.size());
             testing.add(training.get(numb));
             training.remove(numb);
         }
